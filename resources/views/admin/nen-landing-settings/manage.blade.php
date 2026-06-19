@@ -51,6 +51,18 @@
                             <div class="col-md-6"><div class="form-group"><label>Hero Image (fallback)</label><x-file-upload class="form-control" data-folder="nen-landing" name="hero_image-file" /></div></div>
                             <div class="col-md-3"><div class="form-group"><label>Button Text</label><input class="form-control" name="hero_btn_text" value="{{ $row->hero_btn_text }}"></div></div>
                             <div class="col-md-3"><div class="form-group"><label>Button URL</label><input class="form-control" name="hero_btn_url" value="{{ $row->hero_btn_url }}"></div></div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Official Partner Logo (bottom-right of hero)</label>
+                                    <input type="hidden" name="hero_official_logo" value="{{ $row->hero_official_logo }}">
+                                    <x-file-upload class="form-control" data-folder="nen-landing" name="hero_official_logo-file" />
+                                    @if ($row->hero_official_logo)
+                                        <small class="form-text text-muted">Current: <a href="{{ asset($row->hero_official_logo) }}" target="_blank">{{ $row->hero_official_logo }}</a></small>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="col-md-3"><div class="form-group"><label>Official Partner Label</label><input class="form-control" name="hero_official_label" value="{{ $row->hero_official_label }}" placeholder="Official Partner"></div></div>
+                            <div class="col-md-3 d-flex align-items-end"><p class="text-muted small mb-3"><a href="{{ route('admin.nen-landing-items.index', 'partners') }}">→ Manage partner logos &amp; names</a></p></div>
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="featured_event_id">Featured Event (Hero Countdown)</label>

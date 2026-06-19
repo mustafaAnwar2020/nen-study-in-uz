@@ -642,6 +642,45 @@
         align-items: center;
     }
 
+    /* ── Hero partner strip: spread logos left, push official partner to far right ── */
+    body.nen-landing-body .row12 {
+        max-width: none;
+        width: calc(100% - 50px);
+        left: 25px;
+        align-items: center;
+        gap: 24px;
+    }
+    body.nen-landing-body .nen-hero-partners {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+    body.nen-landing-body .nen-hero-partner {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        text-decoration: none;
+    }
+    body.nen-landing-body .nen-hero-partner .row-img1 {
+        width: 52px;
+        height: auto;
+        object-fit: contain;
+    }
+    body.nen-landing-body .nen-hero-divider {
+        height: 50px;
+        border-left: 0.5px solid #9e9e9e;
+    }
+    body.nen-landing-body .row12 .col-right1 {
+        margin-left: auto;
+        flex-shrink: 0;
+    }
+    @container body (width < 768px) {
+        body.nen-landing-body .row12 .col-right1 {
+            margin-left: 0;
+        }
+    }
+
     /* ── Footer (redesigned) ── */
     body.nen-landing-body .nen-foot {
         background: #fff;
@@ -984,30 +1023,52 @@
                 </div>
 
                 <div class="row12">
-                    <div class="row-b row13">
-                        <img src="{{ asset('site/home/assets/row/row-img1.png') }}" class="row-img1" alt="Ministry" />
-                        <div class="row-col1">
-                            <p class="row-text1">Ministry of Higher Education</p>
-                            <p class="row-text-republic-of">Republic of Uzbekistan</p>
-                        </div>
+                    <div class="nen-hero-partners">
+                        @php
+                            $stripPartners = ($partners ?? collect())->take(3);
+                        @endphp
+                        @forelse ($stripPartners as $pi => $partner)
+                            @if ($pi > 0)
+                                <div class="line nen-hero-divider"></div>
+                            @endif
+                            <{{ $partner->url ? 'a' : 'div' }} class="row-b nen-hero-partner"
+                                @if ($partner->url) href="{{ $partner->url }}" target="_blank" rel="noopener" @endif>
+                                @if ($partner->image)
+                                    <img src="{{ asset($partner->image) }}" class="row-img1"
+                                        alt="{{ $partner->name }}" />
+                                @endif
+                                <div class="row-col1">
+                                    <p class="row-text1">{{ $partner->name }}</p>
+                                    @if ($partner->description)
+                                        <p class="row-text-republic-of">{{ $partner->description }}</p>
+                                    @endif
+                                </div>
+                            </{{ $partner->url ? 'a' : 'div' }}>
+                        @empty
+                            <div class="row-b nen-hero-partner">
+                                <img src="{{ asset('site/home/assets/row/row-img1.png') }}" class="row-img1"
+                                    alt="Ministry" />
+                                <div class="row-col1">
+                                    <p class="row-text1">Ministry of Higher Education</p>
+                                    <p class="row-text-republic-of">Republic of Uzbekistan</p>
+                                </div>
+                            </div>
+                            <div class="line nen-hero-divider"></div>
+                            <div class="row-b nen-hero-partner">
+                                <img src="{{ asset('site/home/assets/row/row-img2.png') }}" class="row-img1"
+                                    alt="Prime Minister" />
+                                <div class="row-col1">
+                                    <p class="row-text1">Prime Minister's Office</p>
+                                    <p class="row-text-republic-of">Republic of Uzbekistan</p>
+                                </div>
+                            </div>
+                        @endforelse
                     </div>
-
-                    <div class="line line1"></div>
-
-                    <div class="row-b row14">
-                        <img src="{{ asset('site/home/assets/row/row-img2.png') }}" class="row-img1"
-                            alt="Prime Minister" />
-                        <div class="row-col1">
-                            <p class="row-text1">Prime Minister's Office</p>
-                            <p class="row-text-republic-of">Republic of Uzbekistan</p>
-                        </div>
-                    </div>
-
-                    <div class="line line2"></div>
 
                     <div class="col-right1">
-                        <img src="{{ asset('site/home/assets/img2.png') }}" class="img2" alt="Official Partner" />
-                        <p>Official Partner</p>
+                        <img src="{{ $landing->hero_official_logo ? asset($landing->hero_official_logo) : asset('site/home/assets/img2.png') }}"
+                            class="img2" alt="{{ $landing->hero_official_label ?? 'Official Partner' }}" />
+                        <p>{{ $landing->hero_official_label ?? 'Official Partner' }}</p>
                     </div>
                 </div>
             </div>

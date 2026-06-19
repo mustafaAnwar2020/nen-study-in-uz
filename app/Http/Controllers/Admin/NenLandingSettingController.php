@@ -35,6 +35,8 @@ class NenLandingSettingController extends Controller
             'hero_image'            => 'nullable|string',
             'hero_btn_text'         => 'nullable|string|max:100',
             'hero_btn_url'          => 'nullable|string|max:500',
+            'hero_official_logo'    => 'nullable|string',
+            'hero_official_label'   => 'nullable|string|max:255',
             'featured_event_id'     => 'nullable|integer|exists:events,id',
 
             // About
@@ -125,7 +127,7 @@ class NenLandingSettingController extends Controller
 
         $row = NenLandingSetting::getInstance();
 
-        foreach (['hero_image', 'about_image', 'about_image_main', 'about_image_secondary', 'about_image_side'] as $field) {
+        foreach (['hero_image', 'hero_official_logo', 'about_image', 'about_image_main', 'about_image_secondary', 'about_image_side'] as $field) {
             if ($request->filled($field) && $row->{$field} && $request->{$field} !== $row->{$field}) {
                 $this->deleteOldFile($row->{$field});
             }
