@@ -1,0 +1,12 @@
+  apps:
+    - name: mehany-worker-default
+      script: artisan
+      exec_mode: fork
+      interpreter: /usr/bin/php8.2
+      instances: 1
+      max_memory_restart: '150M'
+      cron-restart: "0 0/12 * * *"
+      args:
+        - queue:work
+        - --queue=default
+        - --timeout=0

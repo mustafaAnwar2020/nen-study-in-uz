@@ -1,0 +1,372 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    background: #eee;
+    font-size: 14px;
+}
+
+h1, h2, h3 {
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 300;
+    font-size: 33px;
+    margin: 2px 0;
+}
+
+.container {
+    width: 1200px;
+    margin: auto;
+    background: #fff;
+    padding: 40px 50px;
+}
+
+.section {
+    display: block;
+    width: 100%;
+    border-bottom: 4px solid #333;
+    position: relative;
+    padding: 2px 0;
+}
+
+.section:first-of-type {
+    border-bottom: 2px solid #333;
+}
+
+.section::after {
+    content: " ";
+    clear: both;
+    display: block;
+}
+
+.row {
+    display: block;
+    width: 100%;
+    padding: 0 15px;
+}
+
+p {
+    display: inline-block;
+    margin: 0;
+    font-size: 20px;
+}
+
+input {
+    border: none;
+    border-bottom: 2px dotted #ccc;
+    outline: none;
+    color: #0504aa;
+    direction: rtl;
+    padding-right: 5px;
+}
+
+.title {
+    background: #2fb339;
+    color: #fff;
+    padding: 5px 20px;
+    font-size: 28px;
+    margin: 2px;
+    line-height: 38px;
+    height: 45px;
+    vertical-align: top;
+}
+
+.field {
+    background: #e5edbf;
+    padding: 5px 10px;
+    margin: 2px;
+    font-size: 22px;
+    height: 45px;
+    overflow: hidden;
+    vertical-align: top;
+    border-bottom: none;
+}
+
+h2 {
+    background: #c10f12;
+    color: #fff;
+    display: inline-block;
+    padding: 4px 15px;
+    width: 230px;
+    font-size: 27px;
+    margin: 5px 0;
+}
+
+h3 {
+    display: inline-block;
+}
+
+.logo {
+    float: right;
+    width: 190px;
+    padding: 10px;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.number {
+    width: 245px;
+    float: left;
+    margin-bottom: 30px;
+}
+
+.number hr {
+    border-style: solid;
+}
+
+.number p {
+    font-size: 20px;
+    display: block;
+}
+
+.date {
+    display: inline-block;
+}
+
+.date p {
+    font-size: 20px;
+}
+
+.date > p:first-of-type {
+    margin-left: 8px;
+}
+
+.date input {
+    background: #e5edbf;
+    border-width: 1px;
+    text-align: center;
+    font-size: 18px;
+    vertical-align: baseline;
+    height: 22px;
+    font-family: Helvetica, sans-serif;
+    padding: 0;
+}
+
+.personal-pic {
+    border: 2px solid #c10f12;
+    height: 230px;
+    width: 205px;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    background: #fff;
+    background-position: center;
+}
+
+.personal-info p,
+.personal-info input {
+    margin-top: 4px;
+}
+
+.personal-info p:nth-of-type(1) {
+    height: 32px;
+    line-height: 28px;
+    font-size: 22px;
+}
+
+.personal-info p:nth-of-type(2) {
+    font-size: 16px;
+    line-height: 28px;
+    height: 32px;
+}
+
+.personal-info p:nth-of-type(3),
+.personal-info p:nth-of-type(4) {
+    font-size: 26px;
+}
+
+.personal-details .row {
+    margin: 4px 0;
+    padding: 0;
+}
+
+/*
+.personal-details .row .title:first-child {
+    margin-right: 0;
+}
+
+.personal-details .row .field:last-of-type {
+    margin-left: 0;
+}*/
+
+.personal-details h2 {
+    margin: 15px 0;
+}
+
+.pay-heading {
+    display: inline-block;
+}
+
+.checkbox {
+    padding: 10px;
+    border: 2px solid #c10f12;
+    border-radius: 3px;
+    display: inline-block;
+    margin: 0 10px;
+    vertical-align: sub;
+}
+
+.paying .title {
+    padding-right: 8px;
+}
+
+.pay {
+    color: #c10f12;
+    display: block;
+    font-size: 23px;
+    display: inline-block;
+}
+
+.personal-details .title {
+    padding: 4px 8px;
+    font-size: 20px;
+    height: auto;
+    line-height: 28px;
+    height: 34px;
+    margin: 2px;
+}
+
+.personal-details .field {
+    height: 28px;
+    line-height: 1;
+    padding: 0 10px;
+    height: 34px;
+    line-height: 28px;
+    margin: 2px;
+}
+
+.bank-account {
+    margin-right: -2px;
+    margin-left: -2px;
+}
+
+.bank-account p:not(.pay) {
+    height: 30px;
+    font-size: 20px;
+    line-height: 22px;
+    width: 333px;
+}
+
+.bank-account .title {
+    height: 30px;
+    width: 205px;
+    font-size: 22px;
+    line-height: 22px;
+}
+
+.pay-note {
+    height: auto;
+    margin: 10px 0 -2px 0;
+}
+
+.pay-note ul {
+    margin: 0;
+    padding-right: 30px;
+}
+
+.pay-note ul li {
+    list-style: none;
+    font-size: 18px;
+}
+
+.roles h2 {
+    position: absolute;
+    right: 0;
+    top: 32%;
+    transform: translateY(-27px);
+}
+
+.roles ul {
+    margin-right: 230px;
+}
+
+.roles li {
+    font-size: 20px;
+}
+
+.agree {
+    padding-bottom: 10px;
+}
+
+.agree .row {
+    margin: 10px 0;
+}
+
+.agree .row p,
+.personal-details .row p,
+.sign p {
+    vertical-align: text-top;
+}
+
+.en-number {
+    font-size: 18px;
+    text-align: center;
+    font-family: Helvetica, sans-serif;
+}
+
+footer {
+    border: none !important;
+    page-break-after: always;
+}
+
+footer .qr {
+    width: 60px;
+    height: 60px;
+    display: inline-block;
+    margin: 20px;
+}
+
+footer .qr img {
+    width: 100%;
+}
+
+footer .row-3 {
+    width: 990px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 20px;
+}
+
+footer .row-3 p {
+    line-height: 32px;
+    font-size: 19px;
+}
+
+span {
+    font-family: Helvetica, sans-serif;
+}
+
+@page {
+    size: A4;
+    margin: -15px -10px -20px 0;
+}
+
+@media print {
+    html, body {
+        width: 210mm;
+        height: 297mm;
+    }
+}
+
+.sign {
+    margin-bottom: 10px !important;
+    margin-top: -10px !important;
+}
+
+input {
+    font-family: Helvetica, sans-serif !important;
+    font-size: 20px;
+}
