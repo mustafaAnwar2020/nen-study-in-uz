@@ -22,14 +22,14 @@
                 </div>
             </div>
 
-            <div class="col-md-6">
+            {{-- <div class="col-md-6">
                 <div class="form-group">
                     <label>ETS logo
                         <a target="_blank" href="{{getSerializedSettingsData('media')->ets_logo}}">show current</a>
                     </label>
                     <x-file-upload class="form-control" data-folder="profile_process" name="ets_logo-file"/>
                 </div>
-            </div>
+            </div> --}}
 
 
 

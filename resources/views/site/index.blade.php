@@ -641,6 +641,221 @@
         display: flex;
         align-items: center;
     }
+
+    /* ── Footer (redesigned) ── */
+    body.nen-landing-body .nen-foot {
+        background: #fff;
+        color: #232323;
+        text-align: left;
+        letter-spacing: normal;
+        border-top: 1px solid #ececec;
+    }
+    body.nen-landing-body .nen-foot__top {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1.2fr;
+        gap: 56px;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 64px 40px 56px;
+    }
+    body.nen-landing-body .nen-foot__logo {
+        width: 96px;
+        height: auto;
+        margin-bottom: 18px;
+    }
+    body.nen-landing-body .nen-foot__tagline {
+        margin: 0 0 22px;
+        max-width: 330px;
+        font-size: 15px;
+        line-height: 1.65;
+        color: #6b7a76;
+    }
+    body.nen-landing-body .nen-foot__socials {
+        display: flex;
+        gap: 10px;
+    }
+    body.nen-landing-body .nen-foot__social {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #e2e2e2;
+        border-radius: 50%;
+        background: #fff;
+        transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+    body.nen-landing-body .nen-foot__social img {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+        transition: filter 0.2s ease;
+    }
+    body.nen-landing-body .nen-foot__social:hover {
+        transform: translateY(-3px);
+        border-color: #017785;
+        box-shadow: 0 10px 20px rgba(1, 119, 133, 0.18);
+    }
+    body.nen-landing-body .nen-foot__heading {
+        margin: 0 0 20px;
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        color: #017785;
+    }
+    body.nen-landing-body .nen-foot__links,
+    body.nen-landing-body .nen-foot__contacts {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    body.nen-landing-body .nen-foot__links a {
+        color: #5b5b5b;
+        font-size: 15px;
+        line-height: 1.4;
+        transition: color 0.2s ease, padding-left 0.2s ease;
+    }
+    body.nen-landing-body .nen-foot__links a:hover {
+        color: #017785;
+        padding-left: 5px;
+    }
+    body.nen-landing-body .nen-foot__contact {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: 15px;
+        color: #5b5b5b;
+    }
+    body.nen-landing-body .nen-foot__contact a {
+        color: #5b5b5b;
+        transition: color 0.2s ease;
+    }
+    body.nen-landing-body .nen-foot__contact a:hover {
+        color: #017785;
+    }
+    body.nen-landing-body .nen-foot__cicon {
+        width: 18px;
+        height: 18px;
+        object-fit: contain;
+        flex-shrink: 0;
+    }
+    body.nen-landing-body .nen-foot__lang {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        font-size: 11px;
+        font-weight: 700;
+        color: #017785;
+        background: #e6f1f3;
+        border-radius: 8px;
+        padding: 4px 9px;
+        flex-shrink: 0;
+        line-height: 1;
+    }
+    body.nen-landing-body .nen-foot__lang .bi-headset {
+        font-size: 14px;
+        line-height: 1;
+    }
+    body.nen-landing-body .nen-foot__lang-text {
+        letter-spacing: 0.3px;
+    }
+    body.nen-landing-body .nen-foot__chat {
+        display: inline-flex;
+        gap: 6px;
+        margin-left: auto;
+    }
+    body.nen-landing-body .nen-foot__chat a {
+        width: 28px;
+        height: 28px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #f1f3f2;
+        transition: transform 0.2s ease, background 0.2s ease;
+    }
+    body.nen-landing-body .nen-foot__chat a:hover {
+        transform: scale(1.12);
+        background: #e6f1f3;
+    }
+    body.nen-landing-body .nen-foot__chat img {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+    }
+    /* Big brand CTA line */
+    body.nen-landing-body .nen-foot__cta {
+        border-top: 1px solid #ececec;
+        background: #fff;
+        text-align: center;
+        padding: 28px 24px 8px;
+        overflow: hidden;
+    }
+    body.nen-landing-body .nen-foot__cta-title {
+        margin: 0;
+        color: #111;
+        font-weight: 800;
+        text-transform: capitalize;
+        font-size: clamp(58px, 15vw, 190px);
+        line-height: 1;
+        letter-spacing: -0.045em;
+        white-space: nowrap;
+    }
+    body.nen-landing-body .nen-foot__cta-title span {
+        color: #017785;
+    }
+    /* Bottom bar */
+    body.nen-landing-body .nen-foot__bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        flex-wrap: wrap;
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 26px 40px;
+        border-top: 1px solid #ececec;
+        font-size: 14px;
+        color: #6b7a76;
+    }
+    body.nen-landing-body .nen-foot__copy {
+        margin: 0;
+    }
+    body.nen-landing-body .nen-foot__bottom-links {
+        display: flex;
+        gap: 22px;
+    }
+    body.nen-landing-body .nen-foot__bottom-links a {
+        color: #6b7a76;
+        transition: color 0.2s ease;
+    }
+    body.nen-landing-body .nen-foot__bottom-links a:hover {
+        color: #017785;
+    }
+    @media (max-width: 900px) {
+        body.nen-landing-body .nen-foot__top {
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        body.nen-landing-body .nen-foot__brand {
+            grid-column: 1 / -1;
+        }
+    }
+    @media (max-width: 600px) {
+        body.nen-landing-body .nen-foot__top {
+            grid-template-columns: 1fr;
+            padding: 48px 22px 36px;
+        }
+        body.nen-landing-body .nen-foot__bottom {
+            padding: 22px;
+            justify-content: center;
+            text-align: center;
+        }
+    }
 </style>
 @endpush
 
@@ -649,7 +864,7 @@
     {{-- ===================== HERO ===================== --}}
     @if ($landing->show_hero ?? true)
         <div class="col-top1" id="hero">
-            <img src="{{ asset('site/home/assets/img1.png') }}" class="img1" alt="Study in Uzbekistan" />
+            <img src="{{ asset($landing->hero_image ?? 'site/home/assets/img1.png') }}" class="img1" alt="Study in Uzbekistan" />
 
             <div class="row-top4">
                 <div class="row-a row1">
@@ -660,7 +875,7 @@
 
                 {{-- Floating Navigation Bar --}}
                 <div class="row2">
-                    <img src="{{ asset('site/home/assets/nen.png') }}" class="nen" alt="NEN" />
+                    <img src="{{ asset($settings['media']->logo) }}" class="nen" alt="NEN" />
 
                     <div class="row3">
                         <div class="col-left1">
@@ -1427,105 +1642,100 @@
     @endif
 
     {{-- ===================== FOOTER ===================== --}}
-    <footer class="footer">
-        <div class="footer-row-top">
-            <img src="{{ asset('site/home/assets/footer-nen.png') }}" class="footer-nen" alt="NEN" />
-
-            <div class="footer-col-left">
-                <p class="footer-text-important-links">IMPORTANT LINKS</p>
-                <div class="footer-col1">
-                    <a href="https://studyin-uzbekistan.uz" target="_blank" rel="noopener"
-                        class="footer-text">studyin-uzbekistan.uz</a>
-                    <a href="https://edu.uz" target="_blank" rel="noopener" class="footer-text">Ministry of Higher
-                        Education (Uzbekistan)</a>
-                    <a href="#" class="footer-text">Embassy of Uzbekistan in Egypt</a>
+    @php
+        $footerPhone = $landing->footer_phone ?? '+20 10 6160 0400';
+        $footerEmail = $landing->contact_email ?? 'admissions@nen-global.org';
+        $waNumber = preg_replace('/[^0-9]/', '', $footerPhone);
+    @endphp
+    <footer class="footer nen-foot">
+        <div class="nen-foot__top">
+            <div class="nen-foot__brand">
+                <img src="{{ asset($settings['media']->logo) }}" class="nen-foot__logo" alt="NEN" />
+                <p class="nen-foot__tagline">
+                    {{ $landing->footer_tagline ?? 'National Education Network — your official gateway to studying at world-class universities in Uzbekistan.' }}
+                </p>
+                <div class="nen-foot__socials">
+                    <a href="{{ $landing->social_facebook ?? '#' }}" class="nen-foot__social" aria-label="Facebook"
+                        target="_blank" rel="noopener">
+                        <img src="{{ asset('site/home/assets/circle/circle-facebook.png') }}" alt="" />
+                    </a>
+                    <a href="{{ $landing->social_instagram ?? '#' }}" class="nen-foot__social" aria-label="Instagram"
+                        target="_blank" rel="noopener">
+                        <img src="{{ asset('site/home/assets/circle/circle-instagram.png') }}" alt="" />
+                    </a>
+                    <a href="{{ $landing->social_whatsapp ?? ('https://wa.me/' . $waNumber) }}" class="nen-foot__social"
+                        aria-label="WhatsApp" target="_blank" rel="noopener">
+                        <img src="{{ asset('site/home/assets/circle/circle-whatsapp.png') }}" alt="" />
+                    </a>
+                    <a href="{{ $landing->social_linkedin ?? '#' }}" class="nen-foot__social" aria-label="LinkedIn"
+                        target="_blank" rel="noopener">
+                        <img src="{{ asset('site/home/assets/circle/circle-linkedin.png') }}" alt="" />
+                    </a>
+                    <a href="{{ $landing->social_youtube ?? '#' }}" class="nen-foot__social" aria-label="YouTube"
+                        target="_blank" rel="noopener">
+                        <img src="{{ asset('site/home/assets/circle/circle-youtube.png') }}" alt="" />
+                    </a>
                 </div>
             </div>
 
-            <div class="footer-col2">
-                <p class="footer-text-contact-us">CONTACT US</p>
-                <div class="footer-col3">
-                    <div class="row-g row23">
-                        <img src="{{ asset('site/home/assets/row/row-mail.png') }}" class="row-globe row-mail"
-                            alt="Email" />
-                        <p class="row-text4">{{ $landing->contact_email ?? 'admissions@nen-global.org' }}</p>
-                    </div>
+            <div class="nen-foot__col">
+                <h4 class="nen-foot__heading">Important Links</h4>
+                <ul class="nen-foot__links">
+                    <li><a href="https://studyin-uzbekistan.uz" target="_blank"
+                            rel="noopener">studyin-uzbekistan.uz</a></li>
+                    <li><a href="https://edu.uz" target="_blank" rel="noopener">Ministry of Higher Education
+                            (Uzbekistan)</a></li>
+                    <li><a href="#">Embassy of Uzbekistan in Egypt</a></li>
+                </ul>
+            </div>
 
-                    <div class="row-h row24">
-                        <div class="row-group-left">
-                            <div class="headphones row-headphones">AR</div>
-                            <img src="{{ asset('site/home/assets/row-group/row-img.png') }}" class="row-img4"
-                                alt="" />
-                        </div>
-                        <p class="text-plus">{{ $landing->footer_phone ?? '+20 10 6160 0400' }}</p>
-                        <div class="row-i row-right">
-                            <img src="{{ asset('site/home/assets/row/row-whatsapp.png') }}" class="row-whatsapp"
-                                alt="WhatsApp" />
-                            <div class="circle-telegram">
-                                <img src="{{ asset('site/home/assets/circle-telegram/circle-telegram-img.png') }}"
-                                    class="circle-telegram-img" alt="Telegram" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="footer-row">
-                        <div class="footer-group-left">
-                            <div class="headphones footer-headphones">EN</div>
-                            <img src="{{ asset('site/home/assets/row-group/row-img.png') }}" class="footer-img"
-                                alt="" />
-                        </div>
-                        <p class="text-plus">{{ $landing->footer_phone ?? '+20 10 6160 0400' }}</p>
-                        <div class="row-i row-right3">
-                            <img src="{{ asset('site/home/assets/row/row-whatsapp.png') }}" class="row-whatsapp"
-                                alt="WhatsApp" />
-                            <div class="circle-telegram">
-                                <img src="{{ asset('site/home/assets/circle-telegram/circle-telegram-img.png') }}"
-                                    class="circle-telegram-img" alt="Telegram" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row-g row26">
-                        <img src="{{ asset('site/home/assets/row/row-globe.png') }}" class="row-globe row-mail"
-                            alt="Website" />
+            <div class="nen-foot__col">
+                <h4 class="nen-foot__heading">Contact Us</h4>
+                <ul class="nen-foot__contacts">
+                    <li class="nen-foot__contact">
+                        <img class="nen-foot__cicon" src="{{ asset('site/home/assets/row/row-mail.png') }}" alt="" />
+                        <a href="mailto:{{ $footerEmail }}">{{ $footerEmail }}</a>
+                    </li>
+                    @foreach (['EN', 'AR'] as $lang)
+                        <li class="nen-foot__contact nen-foot__contact--phone">
+                            <span class="nen-foot__lang">
+                                <i class="bi bi-headset" aria-hidden="true"></i>
+                                <span class="nen-foot__lang-text">{{ $lang }}</span>
+                            </span>
+                            <a href="tel:{{ preg_replace('/\s+/', '', $footerPhone) }}">{{ $footerPhone }}</a>
+                            <span class="nen-foot__chat">
+                                <a href="https://wa.me/{{ $waNumber }}" aria-label="WhatsApp" target="_blank"
+                                    rel="noopener">
+                                    <img src="{{ asset('site/home/assets/row/row-whatsapp.png') }}" alt="" />
+                                </a>
+                                <a href="#" aria-label="Telegram" target="_blank" rel="noopener">
+                                    <img src="{{ asset('site/home/assets/circle-telegram/circle-telegram-img.png') }}"
+                                        alt="" />
+                                </a>
+                            </span>
+                        </li>
+                    @endforeach
+                    <li class="nen-foot__contact">
+                        <img class="nen-foot__cicon" src="{{ asset('site/home/assets/row/row-globe.png') }}" alt="" />
                         <a href="{{ $landing->footer_collaboration_url ?? 'https://nen-global.org/contacts' }}"
-                            class="row-text4" target="_blank" rel="noopener">nen-global.org/contacts</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="footer-col-right">
-                <p class="footer-text">FOLLOW US</p>
-                <div class="footer-row-bottom">
-                    <a href="#" class="circle circle1">
-                        <img src="{{ asset('site/home/assets/circle/circle-facebook.png') }}" class="circle-youtube"
-                            alt="Facebook" />
-                    </a>
-                    <a href="#" class="circle circle2">
-                        <img src="{{ asset('site/home/assets/circle/circle-instagram.png') }}" class="circle-youtube"
-                            alt="Instagram" />
-                    </a>
-                    <a href="#" class="circle circle3">
-                        <img src="{{ asset('site/home/assets/circle/circle-whatsapp.png') }}" class="circle-youtube"
-                            alt="WhatsApp" />
-                    </a>
-                    <a href="#" class="circle circle4">
-                        <img src="{{ asset('site/home/assets/circle/circle-linkedin.png') }}" class="circle-youtube"
-                            alt="LinkedIn" />
-                    </a>
-                    <a href="#" class="circle circle5">
-                        <img src="{{ asset('site/home/assets/circle/circle-youtube.png') }}" class="circle-youtube"
-                            alt="YouTube" />
-                    </a>
-                </div>
+                            target="_blank" rel="noopener">nen-global.org/contacts</a>
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <h1 class="footer-title">
-            <span class="sub-text-brand-brand-main">Apply</span> For Future
-        </h1>
-        <div class="footer-footer">
-            {{ $landing->footer_copyright ?? '© ' . date('Y') . ' NEN | National Education Network. All Rights Reserved.' }}
+        <div class="nen-foot__cta">
+            <h2 class="nen-foot__cta-title"><span>Apply</span> For Future</h2>
+        </div>
+
+        <div class="nen-foot__bottom">
+            <p class="nen-foot__copy">
+                {{ $landing->footer_copyright ?? '© ' . date('Y') . ' NEN | National Education Network. All Rights Reserved.' }}
+            </p>
+            {{-- <div class="nen-foot__bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div> --}}
         </div>
     </footer>
 

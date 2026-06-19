@@ -106,10 +106,10 @@ class SettingController extends Controller
 
     public function updateMedia($request)
     {
-        $logo = getSerializedSettingsData('media')->logo;
-        $ets_logo = getSerializedSettingsData('ets_logo')->ets_logo;
-        $fav_icon = getSerializedSettingsData('media')->fav_icon;
-
+        $logo = getSerializedSettingsData('media')?->logo;
+        $ets_logo = getSerializedSettingsData('ets_logo')?->ets_logo;
+        $fav_icon = getSerializedSettingsData('media')?->fav_icon;
+        
         $data['logo'] = $request->logo ?: $logo;
         $data['ets_logo'] = $request->logo ?: $ets_logo;
         $data['fav_icon'] = $request->fav_icon ?: $fav_icon;

@@ -3,7 +3,6 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
         <a href="{{ route('site.index') }}" class="logo d-flex align-items-center">
-            <img src="{{ asset($settings['media']->ets_logo) }}" alt="">
             <img src="{{ asset($settings['media']->logo) }}" style="margin-top: 12px;" alt="">
         </a>
 
@@ -94,7 +93,7 @@
                     </a>
                 </li>
                 <li><a href="/#nen"><i class="bi bi-building"></i> NEN</a></li>
-                <li><a href="/#ets"><img src="{{ asset('site/images/nen-logo.png') }}" width="20"> ETS</a>
+                <li><a href="/#ets"><img src="{{ asset('site/images/logo-retina.png') }}" width="20"> ETS</a>
                 </li>
                 <li><a href="/#cefr"><i class="bi bi-graph-up"></i> CEFR </a></li>
                 <li><a href="/#products"><i class="bi bi-box"></i> Products</a></li>
