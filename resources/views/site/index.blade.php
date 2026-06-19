@@ -140,10 +140,20 @@
             margin-left: unset !important;
         }
 
-        /* Prevent hero title from wrapping — matches home.html visual */
+        /* Prevent hero title from wrapping — matches home.html visual (desktop only) */
         body.nen-landing-body .subtitle1 {
             white-space: nowrap;
             font-size: clamp(38px, 4.5vw, 65px) !important;
+        }
+
+        /* home.css sets line-height:0.7 which makes multi-line headings overlap */
+        body.nen-landing-body .column-subtitle1 {
+            line-height: 1.12 !important;
+        }
+
+        /* Mobile nav toggle (hidden on desktop) */
+        body.nen-landing-body .nen-nav-toggle {
+            display: none;
         }
 
         /* ── FAQ section ── */
@@ -186,6 +196,11 @@
 
         .faq-answer.open {
             display: block;
+        }
+
+        /* FAQ: desktop shows card19 panel; mobile uses accordion for all items */
+        body.nen-landing-body .nen-faq-mobile-only {
+            display: none !important;
         }
 
         /* ── Agency horizontal scroll carousel ──
@@ -895,6 +910,482 @@
             text-align: center;
         }
     }
+
+    /* ============================================================
+       MOBILE RESPONSIVE FIXES
+       The home.css hero is a fixed desktop "canvas": the nav, hero
+       text, image and partner strip are all position:absolute, while
+       only decorative circle rows sit in the flow. That overflows and
+       overlaps on small screens. Below we convert the hero into a
+       normal vertical stack and stop horizontal scrolling.
+       ============================================================ */
+    @media (max-width: 768px) {
+        html,
+        body.nen-landing-body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        body.nen-landing-body {
+            gap: 48px;
+            padding-top: 12px;
+        }
+        body.nen-landing-body img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Decorative dot rows break the mobile layout — hide them */
+        body.nen-landing-body #hero .row-a {
+            display: none !important;
+        }
+
+        /* Hero wrapper → vertical stack (text then image, like design intent) */
+        body.nen-landing-body .col-top1 {
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
+            padding: 16px 14px 24px;
+            gap: 20px;
+            border-radius: 20px;
+        }
+        body.nen-landing-body .col-top1 > .row-top4 { order: 1; }
+        body.nen-landing-body .col-top1 > .row5 { order: 2; }
+        body.nen-landing-body .col-top1 > .img1 { order: 3; }
+        body.nen-landing-body .col-top1 > .row-bottom3 { order: 4; }
+
+        body.nen-landing-body .img1 {
+            position: static !important;
+            top: auto !important;
+            left: auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            border-radius: 16px;
+        }
+
+        /* Nav: compact white pill + hamburger (matches desktop bar, saves space) */
+        body.nen-landing-body .row-top4 {
+            position: static !important;
+            padding-top: 0 !important;
+        }
+        body.nen-landing-body .row2 {
+            position: static !important;
+            top: auto !important;
+            left: auto !important;
+            width: 100%;
+            display: grid !important;
+            grid-template-columns: auto 1fr auto;
+            grid-template-rows: auto auto;
+            align-items: center;
+            gap: 0 10px;
+            box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.08) !important;
+            background: #fff !important;
+            padding: 10px 14px !important;
+            border-radius: 100px;
+        }
+        body.nen-landing-body .row2 > .nen {
+            grid-column: 1;
+            grid-row: 1;
+            width: 72px;
+            height: auto;
+        }
+        body.nen-landing-body .nen-nav-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 5px;
+            grid-column: 3;
+            grid-row: 1;
+            width: 36px;
+            height: 36px;
+            padding: 6px;
+            margin-left: auto;
+            background: none;
+            border: 0;
+            cursor: pointer;
+        }
+        body.nen-landing-body .nen-nav-toggle__bar {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background: #111;
+            border-radius: 2px;
+            transition: transform 0.25s ease, opacity 0.25s ease;
+        }
+        body.nen-landing-body .row2.is-open .nen-nav-toggle__bar:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        body.nen-landing-body .row2.is-open .nen-nav-toggle__bar:nth-child(2) {
+            opacity: 0;
+        }
+        body.nen-landing-body .row2.is-open .nen-nav-toggle__bar:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+        body.nen-landing-body .row-right2 {
+            grid-column: 2;
+            grid-row: 1;
+            justify-content: flex-end;
+            gap: 10px !important;
+        }
+        body.nen-landing-body .row3.nen-nav-links {
+            display: none;
+            grid-column: 1 / -1;
+            grid-row: 2;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 4px !important;
+            width: 100%;
+            padding: 10px 4px 4px;
+            margin-top: 6px;
+            border-top: 1px solid #eee;
+        }
+        body.nen-landing-body .row2.is-open .row3.nen-nav-links {
+            display: flex;
+        }
+        body.nen-landing-body .row3.nen-nav-links a {
+            padding: 10px 12px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        body.nen-landing-body .row3.nen-nav-links a:active {
+            background: #f5f5f5;
+        }
+        body.nen-landing-body .col-left1 {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        body.nen-landing-body .col-left1 .circle-black-bottom {
+            position: static;
+            margin-top: 4px;
+        }
+
+        /* Hero text */
+        body.nen-landing-body .row5 {
+            position: static !important;
+            display: block !important;
+            margin-top: 0 !important;
+            padding: 0 !important;
+        }
+        body.nen-landing-body .col1 {
+            position: static !important;
+            top: auto !important;
+            left: auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            align-items: flex-start !important;
+            text-align: left;
+        }
+        body.nen-landing-body .col2 {
+            text-align: left;
+        }
+        body.nen-landing-body .subtitle1 {
+            white-space: normal !important;
+            font-size: clamp(32px, 8.5vw, 48px) !important;
+            letter-spacing: -1px !important;
+            line-height: 1.15 !important;
+        }
+        body.nen-landing-body .text-join-the-ultimate {
+            text-align: left;
+        }
+        body.nen-landing-body .frame-bottom {
+            width: auto !important;
+        }
+
+        /* Partner strip */
+        body.nen-landing-body .row-bottom3 {
+            position: static !important;
+            padding: 0 !important;
+        }
+        body.nen-landing-body .row12 {
+            position: static !important;
+            top: auto !important;
+            left: auto !important;
+            width: 100% !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 16px !important;
+        }
+        body.nen-landing-body .row12 .col-right1 {
+            margin-left: 0 !important;
+        }
+        body.nen-landing-body .nen-hero-partners {
+            justify-content: center;
+        }
+
+        /* ── About Program ── */
+        body.nen-landing-body #about .col3 {
+            width: 100%;
+            padding: 0 16px;
+            gap: 28px;
+        }
+        body.nen-landing-body #about .column-subtitle1 {
+            font-size: clamp(28px, 7vw, 40px) !important;
+            line-height: 1.15 !important;
+            padding: 0 8px;
+        }
+        body.nen-landing-body #about .group-top {
+            position: relative;
+            min-height: auto;
+            display: block;
+        }
+        body.nen-landing-body #about .img3 {
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            display: block;
+            border-radius: 16px;
+        }
+        body.nen-landing-body #about .group1 {
+            position: absolute !important;
+            top: 16px !important;
+            right: 8px !important;
+            left: auto !important;
+            padding: 0 !important;
+        }
+        body.nen-landing-body #about .group3 {
+            position: absolute !important;
+            bottom: 16px !important;
+            left: 8px !important;
+            top: auto !important;
+            padding: 0 !important;
+        }
+        body.nen-landing-body #about .group1 .btn-b,
+        body.nen-landing-body #about .group3 .btn-b {
+            font-size: 13px;
+            padding: 8px 14px;
+        }
+        body.nen-landing-body #about .subtitle2 {
+            font-size: clamp(15px, 4vw, 18px) !important;
+            line-height: 1.55 !important;
+            text-align: center;
+            padding: 0 4px;
+        }
+        body.nen-landing-body #about .row-bottom4 {
+            flex-direction: column;
+            align-items: stretch !important;
+            gap: 12px;
+        }
+        body.nen-landing-body #about .row-bottom4 .frame-b {
+            justify-content: center;
+        }
+
+        /* ── Why Uzbekistan ── */
+        body.nen-landing-body #why-uzbekistan .col5 {
+            width: 100%;
+            padding: 0 16px;
+        }
+        body.nen-landing-body #why-uzbekistan .col6 {
+            gap: 32px;
+        }
+        body.nen-landing-body #why-uzbekistan .container {
+            flex-direction: column !important;
+            gap: 24px !important;
+            width: 100% !important;
+        }
+        body.nen-landing-body #why-uzbekistan .container-container1 {
+            width: 100% !important;
+            overflow: visible;
+        }
+        body.nen-landing-body #why-uzbekistan .container-row-top,
+        body.nen-landing-body #why-uzbekistan .container-row {
+            gap: 16px !important;
+        }
+        body.nen-landing-body #why-uzbekistan .card6,
+        body.nen-landing-body #why-uzbekistan .card-a {
+            align-items: flex-start !important;
+            text-align: left !important;
+            padding: 24px 20px !important;
+            min-height: auto;
+        }
+        body.nen-landing-body #why-uzbekistan .row-c {
+            width: 100%;
+            justify-content: space-between;
+        }
+        body.nen-landing-body #why-uzbekistan .card-container1,
+        body.nen-landing-body #why-uzbekistan .card-container3 {
+            align-items: flex-start !important;
+            text-align: left !important;
+            width: 100%;
+        }
+        body.nen-landing-body #why-uzbekistan .container-frame-right {
+            width: 100% !important;
+            padding: min(52vw, 320px) 20px 24px !important;
+            background-size: cover !important;
+            background-position: center top !important;
+            border-radius: 16px;
+            min-height: 280px;
+        }
+        body.nen-landing-body #why-uzbekistan .card10 {
+            margin-left: 0;
+        }
+
+        /* ── Required Documents ── */
+        body.nen-landing-body #documents .col14,
+        body.nen-landing-body #documents .col15 {
+            width: 100%;
+            max-width: 100%;
+            padding: 0 4px;
+        }
+        body.nen-landing-body #documents .row-f {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            width: 100%;
+            gap: 12px !important;
+        }
+        body.nen-landing-body #documents .row-f > * {
+            text-align: left !important;
+        }
+        body.nen-landing-body #documents .card-b {
+            flex: none !important;
+            width: 100% !important;
+            min-width: 0 !important;
+            height: auto !important;
+            min-height: 88px !important;
+            flex-direction: row !important;
+            align-items: center !important;
+            justify-content: flex-start !important;
+            gap: 14px !important;
+            padding: 12px 14px !important;
+            box-sizing: border-box;
+        }
+        body.nen-landing-body #documents .card-b > * {
+            text-align: left !important;
+        }
+        body.nen-landing-body #documents .card-b .card-img {
+            width: 64px !important;
+            height: 64px !important;
+            flex-shrink: 0 !important;
+        }
+        body.nen-landing-body #documents .card-b .card-text2 {
+            width: auto !important;
+            flex: 1 1 auto !important;
+            min-width: 0;
+            word-break: normal;
+            overflow-wrap: break-word;
+        }
+        body.nen-landing-body #documents .column-subtitle3 {
+            font-size: clamp(24px, 6.5vw, 32px) !important;
+            line-height: 1.15 !important;
+        }
+
+        /* ── FAQ ── */
+        body.nen-landing-body .nen-faq-desktop-only {
+            display: none !important;
+        }
+        body.nen-landing-body button.nen-faq-mobile-only {
+            display: flex !important;
+        }
+        body.nen-landing-body .faq-answer.nen-faq-mobile-only {
+            display: none;
+        }
+        body.nen-landing-body .faq-answer.nen-faq-mobile-only.open {
+            display: block;
+        }
+        body.nen-landing-body #faq .col19 {
+            padding: 0 16px;
+            gap: 28px;
+        }
+        body.nen-landing-body #faq .row20 {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 12px !important;
+        }
+        body.nen-landing-body #faq .col-left3,
+        body.nen-landing-body #faq .col-right2 {
+            gap: 12px !important;
+            width: 100% !important;
+        }
+        body.nen-landing-body #faq .faq-btn-d {
+            width: 100%;
+            box-sizing: border-box;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            padding: 18px 16px !important;
+            text-align: left;
+            background: #fff;
+        }
+        body.nen-landing-body #faq .faq-btn-d .btn-label {
+            flex: 1;
+            min-width: 0;
+            margin: 0;
+            text-align: left;
+            font-size: 15px;
+            line-height: 1.45;
+        }
+        body.nen-landing-body #faq .faq-btn-d .btn-icon-add {
+            flex-shrink: 0;
+            width: 22px;
+            height: 22px;
+        }
+        body.nen-landing-body #faq .faq-btn-d.active {
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-color: #8e8e8e;
+        }
+        body.nen-landing-body #faq .faq-answer {
+            padding: 0 16px 18px;
+            margin-top: -1px;
+            font-size: 14px;
+            border: 0.2px solid #8e8e8e;
+            border-top: 0;
+            border-radius: 0 0 16px 16px;
+            background: var(--neutrals-neutrals-2);
+        }
+        body.nen-landing-body #faq .column-subtitle3 {
+            font-size: clamp(24px, 6.5vw, 32px) !important;
+            line-height: 1.15 !important;
+            padding: 0 8px;
+        }
+
+        /* ── Trusted Agencies ── */
+        body.nen-landing-body #trusted-agencies .col17 {
+            padding: 0 16px;
+            gap: 28px;
+        }
+        body.nen-landing-body #trusted-agencies .row-top9 {
+            width: 100% !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 20px !important;
+            padding: 0 !important;
+        }
+        body.nen-landing-body #trusted-agencies .row-top9 .row-col2 {
+            width: 100% !important;
+            max-width: 100% !important;
+            align-items: center !important;
+        }
+        body.nen-landing-body #trusted-agencies .row-subtitle {
+            font-size: clamp(26px, 7vw, 36px) !important;
+            line-height: 1.15 !important;
+            word-wrap: break-word;
+        }
+        body.nen-landing-body #trusted-agencies .row-text-bottom {
+            max-width: 100% !important;
+        }
+        body.nen-landing-body #trusted-agencies .col-bottom2,
+        body.nen-landing-body #trusted-agencies .group5 {
+            width: 100%;
+            overflow: hidden;
+        }
+        body.nen-landing-body #trusted-agencies .nen-scroll-wrap {
+            margin: 0 auto;
+        }
+        body.nen-landing-body #trusted-agencies .nen-scroll-wrap .row19 > .card-c {
+            flex: 0 0 calc(100vw - 64px) !important;
+            width: calc(100vw - 64px) !important;
+            min-width: calc(100vw - 64px) !important;
+            max-width: 320px;
+        }
+
+        /* Footer CTA */
+        body.nen-landing-body .nen-foot__cta-title {
+            white-space: normal !important;
+        }
+    }
 </style>
 @endpush
 
@@ -916,7 +1407,14 @@
                 <div class="row2">
                     <img src="{{ asset($settings['media']->logo) }}" class="nen" alt="NEN" />
 
-                    <div class="row3">
+                    <button class="nen-nav-toggle" id="nenNavToggle" type="button" aria-expanded="false"
+                        aria-controls="nenNavLinks" aria-label="Toggle menu">
+                        <span class="nen-nav-toggle__bar"></span>
+                        <span class="nen-nav-toggle__bar"></span>
+                        <span class="nen-nav-toggle__bar"></span>
+                    </button>
+
+                    <div class="row3 nen-nav-links" id="nenNavLinks">
                         <div class="col-left1">
                             <a href="#hero" class="text-home">Home</a>
                             <div class="circle-black-bottom"></div>
@@ -1588,7 +2086,8 @@
 
                     <div class="col-right2">
                         @if ($expandedFaq)
-                            <div class="card19">
+                            {{-- Desktop: always-open panel (matches home.html right column) --}}
+                            <div class="card19 nen-faq-desktop-only">
                                 <div class="card-container4">
                                     <p class="card-text-paragraph1">{{ $expandedFaq->question }}</p>
                                     <img src="{{ asset('site/home/assets/card-minus-sign.png') }}"
@@ -1598,6 +2097,17 @@
                                     <p class="card-text-paragraph2">{{ $expandedFaq->answer }}</p>
                                 @endif
                             </div>
+                            {{-- Mobile: same FAQ in the accordion list --}}
+                            <button class="btn-d faq-btn-d hover-zoom nen-faq-mobile-only" data-faq="{{ $expandedFaq->id }}"
+                                type="button">
+                                <p class="btn-label">{{ $expandedFaq->question }}</p>
+                                <img src="{{ asset('site/home/assets/btn/btn-icon.png') }}"
+                                    class="btn-icon-add btn-icon" alt="+" />
+                            </button>
+                            @if ($expandedFaq->answer)
+                                <div class="faq-answer nen-faq-mobile-only" data-answer="{{ $expandedFaq->id }}">
+                                    {{ $expandedFaq->answer }}</div>
+                            @endif
                         @endif
 
                         @foreach ($restRightFaqs as $faq)
@@ -1805,6 +2315,23 @@
 @push('scripts')
     <script>
         (function() {
+            /* ── Mobile nav toggle ── */
+            const navBar = document.querySelector('#hero .row2');
+            const navToggle = document.getElementById('nenNavToggle');
+            const navLinks = document.getElementById('nenNavLinks');
+            if (navBar && navToggle && navLinks) {
+                navToggle.addEventListener('click', function() {
+                    const open = navBar.classList.toggle('is-open');
+                    navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+                });
+                navLinks.querySelectorAll('a').forEach(function(link) {
+                    link.addEventListener('click', function() {
+                        navBar.classList.remove('is-open');
+                        navToggle.setAttribute('aria-expanded', 'false');
+                    });
+                });
+            }
+
             /* ── Language dropdown ── */
             const langBtn = document.getElementById('nenLangBtn');
             const langMenu = document.getElementById('nenLangMenu');
