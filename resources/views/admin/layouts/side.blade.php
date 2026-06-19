@@ -202,7 +202,7 @@
                     </a>
                 </li>
                 @endif --}}
-
+{{-- 
                 @if(auth()->user()->hasPermissionTo('events.index') || auth()->user()->assignedEvents()->count() > 0)
                 <li class="nav-item">
                     <a href="{{route('admin.events.index')}}"
@@ -213,7 +213,7 @@
                         </p>
                     </a>
                 </li>
-                @endif
+                @endif --}}
 
                 {{-- @if(auth()->user()->hasPermissionTo('products.index'))
                 <li class="nav-item">
@@ -437,7 +437,7 @@
                 @endif --}}
 
 
-                @if(auth()->user()->hasPermissionTo('contact-messages.index'))
+                {{-- @if(auth()->user()->hasPermissionTo('contact-messages.index'))
                 <li class="nav-item">
                     <a href="{{route('admin.contact-messages.index')}}"
                        class="nav-link {{(in_array('contact-messages', request()->segments())) ? 'active' : ''}}">
@@ -447,9 +447,9 @@
                         </p>
                     </a>
                 </li>
-                @endif
+                @endif --}}
 
-                @if(auth()->user()->hasPermissionTo('event-requests.index'))
+                {{-- @if(auth()->user()->hasPermissionTo('event-requests.index'))
                 <li class="nav-item">
                     <a href="{{ route('admin.event-requests.index') }}"
                        class="nav-link {{ request()->is('admin/event-requests*') ? 'active' : '' }}">
@@ -457,7 +457,7 @@
                         <p>Event Requests</p>
                     </a>
                 </li>
-                @endif
+                @endif --}}
 
 
                 {{-- @if(auth()->user()->hasPermissionTo('newsletter.index'))
