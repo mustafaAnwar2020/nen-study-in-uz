@@ -1,0 +1,221 @@
+
+:root {
+	/* color variables */
+	--brand-brand-1: #e6f1f3;
+	--brand-brand-2: #97c7cd;
+	--brand-brand-3: #6cb0b8;
+	--brand-brand-4: #2c8e9a;
+	--brand-brand-main: #017785;
+	--brand-brand-6: #01535d;
+	--brand-brand-7: #014951;
+	--neutrals-neutrals-3: #dadada;
+	--neutrals-neutrals-4: #b1b1b1;
+	--neutrals-neutrals-5: #8b8b8b;
+	--neutrals-neutrals-6: #686868;
+	--neutrals-neutrals-8: #393939;
+	--neutrals-neutrals-9: #232323;
+	--success-success-1: #ecf8ee;
+	--success-success-2: #afe2ba;
+	--success-success-3: #8ed69d;
+	--success-success-4: #5ec473;
+	--success-success-5: #3db856;
+	--success-success-6: #2b813c;
+	--success-success-7: #257034;
+	--warning-warning-1: #fef9ec;
+	--warning-warning-2: #fce5b3;
+	--warning-warning-3: #fada93;
+	--warning-warning-4: #f8ca65;
+	--warning-warning-5: #f7bf45;
+	--warning-warning-6: #ad8630;
+	--warning-warning-7: #97752a;
+	--error-error-1: #ffeded;
+	--error-error-2: #ffb6b6;
+	--error-error-3: #ff9898;
+	--error-error-4: #ff6b6b;
+	--error-error-5: #ff4d4d;
+	--error-error-6: #b33636;
+	--error-error-7: #9c2f2f;
+	--screen-basics-navbar: var(--neutrals-neutrals-1);
+	--button-primary: var(--brand-brand-7);
+	--button-primary-hover-fill: var(--brand-brand-6);
+	--button-primary-disabled: var(--brand-brand-3);
+	--border-default: var(--brand-brand-7);
+	--border-active: var(--brand-brand-7);
+	--border-disabled: var(--brand-brand-4);
+	--text-brand: var(--brand-brand-7);
+	--text-error: var(--error-error-5);
+	--text-white: var(--neutrals-neutrals-1);
+	--text-disabled: var(--neutrals-neutrals-5);
+	--button-primary-hover-border: var(--brand-brand-1);
+	--border-disabled-gray: var(--neutrals-neutrals-3);
+	--border-active-white: var(--neutrals-neutrals-1);
+	--secondary-brand-1: #e6eaee;
+	--secondary-brand-2: #97a9b8;
+	--secondary-brand-3: #6c859b;
+	--secondary-brand-4: #2c5170;
+	--secondary-brand-main: #012d53;
+	--secondary-brand-6: #011f3a;
+	--secondary-brand-7: #011b33;
+	--neutrals-neutrals-10: #000;
+	--text-title: var(--neutrals-neutrals-10);
+	--neutrals-neutrals-7: #4a4a4a;
+	--text-description: var(--neutrals-neutrals-7);
+	--neutrals-neutrals-2: #f5f5f5;
+	--screen-basics-bg-web: var(--neutrals-neutrals-2);
+	--colors-base-black: #161616;
+	--icon-icon-default: var(--colors-base-black);
+	--neutrals-neutrals-1: #fff;
+	--screen-basics-bg-mobile: var(--neutrals-neutrals-1);
+
+	/* string variables */
+	--language: "ar";
+	--font: "IBM Plex Sans Arabic";
+
+	/* number variables */
+	--size-new-heading-40: 40px;
+	--size-new-heading-36: 36px;
+	--size-new-heading-32: 32px;
+	--size-new-heading-28: 28px;
+	--size-new-subtitle-24: 24px;
+	--size-new-subtitle-20: 20px;
+	--size-new-subtitle-18: 18px;
+	--size-new-subtitle-16: 16px;
+	--size-new-subtitle-14: 14px;
+	--size-new-text-12: 12px;
+	--size-new-text-10: 10px;
+	--size-new-text-8: 8px;
+	--height-new-heading-40: 48px;
+	--height-new-heading-36: 44px;
+	--height-new-heading-32: 48px;
+	--height-new-heading-28: 36px;
+	--height-new-subtitle-24: 32px;
+	--height-new-subtitle-20: 28px;
+	--height-new-subtitle-18: 26px;
+	--height-new-subtitle-16: 28.799999237060547px;
+	--height-new-subtitle-14: 22px;
+	--height-new-text-12: 16px;
+	--height-new-text-10: 14px;
+	--height-new-text-8: 12px;
+	--spacing-spacing-0: 0px;
+	--spacing-spacing-4: 4px;
+	--spacing-spacing-12: 12px;
+	--spacing-spacing-20: 20px;
+	--spacing-spacing-28: 28px;
+	--spacing-spacing-36: 36px;
+	--spacing-spacing-40: 40px;
+	--spacing-spacing-44: 44px;
+	--spacing-spacing-56: 56px;
+	--spacing-spacing-64: 64px;
+	--spacing-spacing-80: 80px;
+	--spacing-spacing-96: 96px;
+	--spacing-spacing-128: 128px;
+	--corner-radius-s: var(--spacing-spacing-4);
+	--corner-radius-l: var(--spacing-spacing-12);
+	--corner-radius-null: var(--spacing-spacing-0);
+	--padding-null: var(--spacing-spacing-0);
+	--padding-s: var(--spacing-spacing-8);
+	--padding-m: var(--spacing-spacing-16);
+	--padding-l: var(--spacing-spacing-24);
+	--padding-xl: var(--spacing-spacing-40);
+	--padding-2-xl: var(--spacing-spacing-56);
+	--padding-3-xl: var(--spacing-spacing-64);
+	--padding-4-xl: var(--spacing-spacing-80);
+	--size-new-heading-48: 48px;
+	--height-new-heading-48: 67px;
+	--spacing-spacing-32: 32px;
+	--corner-radius-3-xl: var(--spacing-spacing-32);
+	--spacing-spacing-24: 24px;
+	--corner-radius-2-xl: var(--spacing-spacing-24);
+	--spacing-spacing-8: 8px;
+	--corner-radius-m: var(--spacing-spacing-8);
+	--spacing-spacing-16: 16px;
+	--corner-radius-xl: var(--spacing-spacing-16);
+	--spacing-spacing-48: 48px;
+	--corner-radius-4-xl: var(--spacing-spacing-48);
+
+	/* responsive margins / paddings */
+	--margin-sm: 16px;
+	--margin-md: 32px;
+}
+
+* {
+	--min-screen-size: 430;
+	--max-screen-size: 1440;
+	--interpolate-diff: calc(var(--max-font-size) - var(--min-font-size));
+	--interpolate: clamp(calc(var(--min-font-size) * 1px), calc((var(--min-font-size) * 1px) + var(--interpolate-diff) * ((100vw - calc(var(--min-screen-size) * 1px)) / (var(--max-screen-size) - var(--min-screen-size)))), calc(var(--max-font-size) * 1px));
+}
+
+html {
+	height: 100%;
+	font-size: 16px;
+}
+
+
+
+/* text utility classes */
+
+.sub-text-text-title {
+	color: var(--text-title);
+}
+
+.sub-text-brand-brand-main {
+	color: var(--brand-brand-main);
+}
+
+.sub-text-dark {
+	color: #232323;
+}
+
+
+
+/* section utility classes */
+
+.section {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--screen-basics-bg-mobile);
+	padding: 80px 24px;
+}
+
+
+
+/* ui objects utility classes */
+
+.circle-black {
+	box-shadow: inset 0px 0px 8.4px 0px #ebebeb;
+	width: 48px; height: 48px;
+	background-color: #000;
+	padding: 10px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.input {
+	border-radius: 8px;
+}
+
+.card1 {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	background-color: var(--screen-basics-bg-mobile);
+	padding: 32px 32px 39px 32px;
+	border-radius: 16px;
+}
+
+
+
+/* button hover utility classes */
+
+.hover-zoom:hover {
+	scale: 1.05;
+}
+
+.hover-dark:hover {
+	filter: brightness(0.85);
+}
+
+.hover-bright:hover {
+	filter: brightness(1.2);
+}

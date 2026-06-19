@@ -85,40 +85,84 @@
                 </li>
                 @endif
                 @if(auth()->user()->hasPermissionTo('sections.index'))
-                <li class="nav-item">
-                    <a href="{{ route('admin.nen-landing-items.index', 'hero-slides') }}"
-                       class="nav-link {{ request()->is('admin/nen-landing-items/hero-slides*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-images"></i>
-                        <p>Hero Slides</p>
+                {{-- Content Items --}}
+                <li class="nav-item has-treeview {{ request()->is('admin/nen-landing-items*') ? 'menu-open' : '' }}">
+                    <a href="#" class="nav-link {{ request()->is('admin/nen-landing-items*') ? 'active' : '' }}">
+                        <i class="nav-icon fa fa-layer-group"></i>
+                        <p>Page Sections <i class="right fas fa-angle-left"></i></p>
                     </a>
-                </li>
-                {{-- <li class="nav-item">
-                    <a href="{{ route('admin.nen-landing-items.index', 'events') }}"
-                       class="nav-link {{ request()->is('admin/nen-landing-items/events*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-calendar-alt"></i>
-                        <p>Events</p>
-                    </a>
-                </li> --}}
-                <li class="nav-item">
-                    <a href="{{ route('admin.nen-landing-items.index', 'partners') }}"
-                       class="nav-link {{ request()->is('admin/nen-landing-items/partners*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-handshake"></i>
-                        <p>Partners</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.nen-landing-items.index', 'faqs') }}"
-                       class="nav-link {{ request()->is('admin/nen-landing-items/faqs*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-question-circle"></i>
-                        <p>FAQs</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('admin.nen-landing-items.index', 'media') }}"
-                       class="nav-link {{ request()->is('admin/nen-landing-items/media*') ? 'active' : '' }}">
-                        <i class="nav-icon fa fa-images"></i>
-                        <p>Media Gallery</p>
-                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nen-landing-items.index', 'hero-slides') }}"
+                               class="nav-link {{ request()->is('admin/nen-landing-items/hero-slides*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-images"></i>
+                                <p>Hero Slides</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nen-landing-items.index', 'feature-cards') }}"
+                               class="nav-link {{ request()->is('admin/nen-landing-items/feature-cards*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-th-large"></i>
+                                <p>Why Uzbekistan</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nen-landing-items.index', 'how-it-works') }}"
+                               class="nav-link {{ request()->is('admin/nen-landing-items/how-it-works*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-list-ol"></i>
+                                <p>How It Works</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nen-landing-items.index', 'partners') }}"
+                               class="nav-link {{ request()->is('admin/nen-landing-items/partners*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-handshake"></i>
+                                <p>Partners</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nen-landing-items.index', 'translation-agencies') }}"
+                               class="nav-link {{ request()->is('admin/nen-landing-items/translation-agencies*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-language"></i>
+                                <p>Translation Agencies</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nen-landing-items.index', 'documents') }}"
+                               class="nav-link {{ request()->is('admin/nen-landing-items/documents*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-file-alt"></i>
+                                <p>App. Documents</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nen-landing-items.index', 'trusted-agencies') }}"
+                               class="nav-link {{ request()->is('admin/nen-landing-items/trusted-agencies*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-user-check"></i>
+                                <p>Study Abroad Agencies</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nen-landing-items.index', 'university-logos') }}"
+                               class="nav-link {{ request()->is('admin/nen-landing-items/university-logos*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-university"></i>
+                                <p>University Logos</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nen-landing-items.index', 'faqs') }}"
+                               class="nav-link {{ request()->is('admin/nen-landing-items/faqs*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-question-circle"></i>
+                                <p>FAQs</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('admin.nen-landing-items.index', 'media') }}"
+                               class="nav-link {{ request()->is('admin/nen-landing-items/media*') ? 'active' : '' }}">
+                                <i class="nav-icon fa fa-photo-video"></i>
+                                <p>Media Gallery</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
                 @endif
                 @endif

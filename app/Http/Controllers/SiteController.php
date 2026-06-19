@@ -25,11 +25,17 @@ use App\Models\TpiJoinPartnerSection;
 use App\Models\TpiKeyBenefitsSection;
 use App\Models\TpiOverviewSection;
 use App\Models\TpiSection;
+use App\Models\NenLandingAgency;
+use App\Models\NenLandingDocument;
 use App\Models\NenLandingFaqItem;
+use App\Models\NenLandingFeatureCard;
 use App\Models\NenLandingHeroSlide;
+use App\Models\NenLandingHowItWorksStep;
 use App\Models\NenLandingMediaItem;
 use App\Models\NenLandingPartnerItem;
 use App\Models\NenLandingSetting;
+use App\Models\NenLandingUniversityLogo;
+use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -157,6 +163,46 @@ class SiteController extends Controller
         }
 
         $mediaTotalCount = $mediaItems->count();
+
+        // New dynamic sections
+        $featureCards = NenLandingFeatureCard::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
+
+        $howItWorksSteps = NenLandingHowItWorksStep::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('step_number')
+            ->orderBy('id')
+            ->get();
+
+        $translationAgencies = NenLandingAgency::query()
+            ->where('is_active', true)
+            ->where('type', NenLandingAgency::TYPE_TRANSLATION)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
+
+        $trustedAgencies = NenLandingAgency::query()
+            ->where('is_active', true)
+            ->where('type', NenLandingAgency::TYPE_TRUSTED)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
+
+        $applicationDocuments = NenLandingDocument::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
+
+        $universityLogos = NenLandingUniversityLogo::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
 
         return view('site.index', get_defined_vars());
     }
