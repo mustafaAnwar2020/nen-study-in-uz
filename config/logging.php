@@ -54,13 +54,13 @@ return [
             'days' => 14,
         ],
 
-        'slack' => [
-            'driver' => 'slack',
-            'url' => env('LOG_SLACK_WEBHOOK_URL', 'https://hooks.slack.com/services/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'),
-            'username' => 'Laravel Log',
-            'emoji' => ':boom:',
-            //'level' => env('LOG_LEVEL', 'critical'),
-        ],
+        // 'slack' => [
+        //     'driver' => 'slack',
+        //     'url' => env('LOG_SLACK_WEBHOOK_URL', 'https://hooks.slack.com/services/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'),
+        //     'username' => 'Laravel Log',
+        //     'emoji' => ':boom:',
+        //     //'level' => env('LOG_LEVEL', 'critical'),
+        // ],
 
         'papertrail' => [
             'driver' => 'monolog',
