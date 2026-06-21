@@ -482,3 +482,17 @@ if (!function_exists('getCoordinatesFromGoogleMapsUrl')) {
         return null;
     }
 }
+
+if (! function_exists('landing_get')) {
+    function landing_get(object $landing, string $key): mixed
+    {
+        return \App\Support\LandingContent::get($landing, $key);
+    }
+}
+
+if (! function_exists('is_rtl')) {
+    function is_rtl(): bool
+    {
+        return app()->getLocale() === 'ar';
+    }
+}

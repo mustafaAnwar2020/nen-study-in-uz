@@ -1,0 +1,89 @@
+/* NEN Landing — RTL overrides (Arabic) */
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
+
+html[dir="rtl"] body.nen-landing-body,
+html[dir="rtl"] body.nen-landing-body * {
+    font-family: 'Cairo', 'Manrope', sans-serif;
+}
+
+html[dir="rtl"] body.nen-landing-body {
+    text-align: right;
+    line-height: 1.65;
+    letter-spacing: 0;
+}
+
+html[dir="rtl"] body.nen-landing-body .col1,
+html[dir="rtl"] body.nen-landing-body .col2,
+html[dir="rtl"] body.nen-landing-body .text-join-the-ultimate,
+html[dir="rtl"] body.nen-landing-body #about .subtitle2,
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card6,
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-a,
+html[dir="rtl"] body.nen-landing-body .nen-foot {
+    text-align: right;
+}
+
+html[dir="rtl"] body.nen-landing-body .row3.nen-nav-links a,
+html[dir="rtl"] body.nen-landing-body .nen-foot__links a,
+html[dir="rtl"] body.nen-landing-body .nen-foot__contact,
+html[dir="rtl"] body.nen-landing-body #faq .faq-btn-d .btn-label,
+html[dir="rtl"] body.nen-landing-body #documents .card-b .card-text2 {
+    text-align: right;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__chat {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+html[dir="rtl"] body.nen-landing-body .row12 .col-right1 {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-scroll-wrap .row15,
+html[dir="rtl"] body.nen-landing-body .nen-scroll-wrap .row19 {
+    direction: ltr; /* keep carousel transform math LTR */
+}
+
+html[dir="rtl"] body.nen-landing-body .row-circle-black-left img,
+html[dir="rtl"] body.nen-landing-body .row-circle-black-right img {
+    transform: scaleX(-1);
+}
+
+html[dir="rtl"] body.nen-landing-body .frame-img1,
+html[dir="rtl"] body.nen-landing-body .frame-img2,
+html[dir="rtl"] body.nen-landing-body .card-lucide-arrow2 {
+    transform: scaleX(-1);
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__cta {
+    overflow: visible;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__cta-title {
+    text-transform: none;
+    letter-spacing: 0;
+    line-height: 1.12;
+    white-space: normal;
+    font-size: clamp(40px, 11vw, 120px);
+    overflow: visible;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-lang-dropdown__menu {
+    right: auto;
+    left: 0;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-step__front::after {
+    right: auto;
+    left: 18px;
+}
+
+@media (max-width: 768px) {
+    html[dir="rtl"] body.nen-landing-body .col1,
+    html[dir="rtl"] body.nen-landing-body .col2,
+    html[dir="rtl"] body.nen-landing-body .text-join-the-ultimate {
+        text-align: right;
+    }
+}

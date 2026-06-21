@@ -25,6 +25,8 @@ class NenLandingPageSeeder extends Seeder
         $this->seedDocuments();
         $this->seedFaqs();
         $this->seedUniversityLogos();
+
+        $this->call(NenLandingArabicSeeder::class);
     }
 
     private function seedSettings(): void

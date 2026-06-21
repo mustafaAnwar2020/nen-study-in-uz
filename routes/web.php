@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProtectedFileAccessController;
 use App\Http\Controllers\SiteController;
@@ -10,6 +11,7 @@ Route::get('/maintenance-mode', [SiteController::class, 'MaintenanceMode'])->nam
 
 Route::group(['middleware' => 'MaintenanceModeMiddleware',], function () {
     Route::group(['middleware' => 'web', 'as' => 'site.'], function () {
+        Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
         Route::get('/', [SiteController::class, 'index'])->name('index');
         Route::get('/offers', [SiteController::class, 'offers'])->name('offers');
         Route::get('/products', [SiteController::class, 'products'])->name('products');

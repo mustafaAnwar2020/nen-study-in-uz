@@ -204,6 +204,24 @@ class SiteController extends Controller
             ->orderBy('id')
             ->get();
 
+        $collectionPoints = Location::collectionPoints();
+        $collectionPointsJson = $collectionPoints->mapWithKeys(function ($location) {
+            return [
+                $location->slug => [
+                    'slug'        => $location->slug,
+                    'name'        => $location->name,
+                    'address'     => $location->address,
+                    'landLine'    => $location->land_line,
+                    'callCenter'  => $location->call_center,
+                    'email'       => $location->email,
+                    'schedule'    => $location->schedule,
+                    'coords'      => [(float) $location->latitude, (float) $location->longitude],
+                    'mapUrl'      => $location->mapsShareUrl(),
+                    'cityLabel'   => __('landing.collection_points.cities.' . $location->slug),
+                ],
+            ];
+        })->toArray();
+
         return view('site.index', get_defined_vars());
     }
 

@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="{{ asset('site/home/css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('site/home/css/global.css') }}">
     <link rel="stylesheet" href="{{ asset('site/home/css/home.css') }}">
+    @if($isRtl ?? is_rtl())
+        <link rel="stylesheet" href="{{ asset('site/home/css/nen-rtl.css') }}">
+    @endif
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" crossorigin="">
     <style>
         /* Hide default site chrome */
         body.nen-landing-body>header.header,
@@ -48,6 +52,7 @@
             position: relative;
             display: inline-flex;
             align-items: center;
+            z-index: 30;
         }
 
         .nen-lang-dropdown__toggle {
@@ -75,7 +80,22 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, .1);
             min-width: 160px;
             padding: 6px 0;
-            z-index: 1000;
+            z-index: 1001;
+        }
+
+        /* Keep nav + language menu above the hero image (img1 is z-index: 9 in home.css) */
+        body.nen-landing-body #hero .row-top4 {
+            z-index: 11 !important;
+            overflow: visible;
+        }
+
+        body.nen-landing-body #hero .row2 {
+            z-index: 11 !important;
+            overflow: visible;
+        }
+
+        body.nen-landing-body #hero .row-right2 {
+            overflow: visible;
         }
 
         .nen-lang-dropdown__menu.open {
@@ -847,7 +867,7 @@
         background: #fff;
         text-align: center;
         padding: 28px 24px 8px;
-        overflow: hidden;
+        overflow: visible;
     }
     body.nen-landing-body .nen-foot__cta-title {
         margin: 0;
@@ -858,6 +878,15 @@
         line-height: 1;
         letter-spacing: -0.045em;
         white-space: nowrap;
+    }
+    html[dir="rtl"] body.nen-landing-body .nen-foot__cta-title {
+        text-transform: none;
+        letter-spacing: 0;
+        line-height: 1.12;
+        white-space: normal;
+        font-size: clamp(40px, 11vw, 120px);
+        overflow: visible;
+        word-spacing: 0.04em;
     }
     body.nen-landing-body .nen-foot__cta-title span {
         color: #017785;
@@ -901,11 +930,32 @@
     }
     @media (max-width: 600px) {
         body.nen-landing-body .nen-foot__top {
-            grid-template-columns: 1fr;
-            padding: 48px 22px 36px;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px 16px;
+            padding: 24px 18px 20px;
+        }
+        body.nen-landing-body .nen-foot__brand {
+            grid-column: 1 / -1;
+        }
+        body.nen-landing-body .nen-foot__tagline {
+            font-size: 13px;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+        body.nen-landing-body .nen-foot__heading {
+            margin-bottom: 10px;
+            font-size: 11px;
+        }
+        body.nen-landing-body .nen-foot__links,
+        body.nen-landing-body .nen-foot__contacts {
+            gap: 10px;
+        }
+        body.nen-landing-body .nen-foot__links a,
+        body.nen-landing-body .nen-foot__contact {
+            font-size: 13px;
         }
         body.nen-landing-body .nen-foot__bottom {
-            padding: 22px;
+            padding: 16px 18px;
             justify-content: center;
             text-align: center;
         }
@@ -1381,9 +1431,184 @@
             max-width: 320px;
         }
 
-        /* Footer CTA */
+        /* Footer: show "Apply For Future" first, compact the rest */
+        body.nen-landing-body .nen-foot {
+            display: flex;
+            flex-direction: column;
+        }
+        body.nen-landing-body .nen-foot__cta {
+            order: 1;
+            border-top: none;
+            padding: 32px 16px 12px;
+        }
+        body.nen-landing-body .nen-foot__top {
+            order: 2;
+            border-top: 1px solid #ececec;
+        }
+        body.nen-landing-body .nen-foot__bottom {
+            order: 3;
+        }
         body.nen-landing-body .nen-foot__cta-title {
             white-space: normal !important;
+            font-size: clamp(36px, 11vw, 52px) !important;
+            line-height: 1.05 !important;
+        }
+    }
+
+    @media (max-width: 380px) {
+        body.nen-landing-body .nen-foot__top {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ── Egypt collection points map (milestones right column) ── */
+    body.nen-landing-body .tesrimonials-group-right.nen-collection-map {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        width: 105%;
+        max-width: 1020px;
+        height: auto;
+        min-height: 653px;
+        flex-grow: 1;
+        background: #f5f8f9 !important;
+        border-radius: 16px;
+        padding: 24px;
+        overflow: hidden;
+    }
+
+    body.nen-landing-body .nen-collection-map__title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: -0.4px;
+        color: #111;
+    }
+
+    body.nen-landing-body .nen-collection-map__tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    body.nen-landing-body .nen-collection-map__tab {
+        border: 1px solid #d8e3e6;
+        background: #fff;
+        color: #111;
+        font-size: 14px;
+        font-weight: 600;
+        padding: 8px 14px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    body.nen-landing-body .nen-collection-map__tab.is-active,
+    body.nen-landing-body .nen-collection-map__tab:hover {
+        background: #017785;
+        border-color: #017785;
+        color: #fff;
+    }
+
+    body.nen-landing-body .nen-collection-map__canvas {
+        width: 100%;
+        height: 280px;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #dce7ea;
+        z-index: 1;
+    }
+
+    body.nen-landing-body .nen-collection-map__panel {
+        position: relative;
+        min-height: 180px;
+    }
+
+    body.nen-landing-body .nen-collection-map__details {
+        display: none;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    body.nen-landing-body .nen-collection-map__details.is-active {
+        display: flex;
+    }
+
+    body.nen-landing-body .nen-collection-map__office {
+        margin: 0;
+        font-size: 16px;
+        font-weight: 700;
+        color: #111;
+    }
+
+    body.nen-landing-body .nen-collection-map__meta {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        font-size: 13px;
+        line-height: 1.45;
+        color: #444;
+    }
+
+    body.nen-landing-body .nen-collection-map__meta a {
+        color: #017785;
+    }
+
+    body.nen-landing-body .nen-collection-map__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 4px;
+    }
+
+    body.nen-landing-body .nen-collection-map__btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        border: none;
+        transition: opacity 0.2s ease;
+    }
+
+    body.nen-landing-body .nen-collection-map__btn--maps {
+        background: #017785;
+        color: #fff;
+    }
+
+    body.nen-landing-body .nen-collection-map__btn--share {
+        background: #fff;
+        color: #111;
+        border: 1px solid #d8e3e6;
+    }
+
+    body.nen-landing-body .nen-collection-map__btn:hover {
+        opacity: 0.88;
+    }
+
+    html[dir="rtl"] body.nen-landing-body .nen-collection-map__meta,
+    html[dir="rtl"] body.nen-landing-body .nen-collection-map__title,
+    html[dir="rtl"] body.nen-landing-body .nen-collection-map__office {
+        text-align: right;
+    }
+
+    @media (max-width: 768px) {
+        body.nen-landing-body .nen-collection-map {
+            width: 100%;
+            min-height: 0;
+            padding: 18px;
+        }
+
+        body.nen-landing-body .nen-collection-map__canvas {
+            height: 240px;
         }
     }
 </style>
@@ -1416,14 +1641,14 @@
 
                     <div class="row3 nen-nav-links" id="nenNavLinks">
                         <div class="col-left1">
-                            <a href="#hero" class="text-home">Home</a>
+                            <a href="#hero" class="text-home">{{ __('landing.nav.home') }}</a>
                             <div class="circle-black-bottom"></div>
                         </div>
-                        <a href="{{ $landing->nav_about_url ?? '#about' }}" class="text-about-program">About Program</a>
+                        <a href="{{ $landing->nav_about_url ?? '#about' }}" class="text-about-program">{{ __('landing.nav.about_program') }}</a>
                         <a href="{{ $landing->nav_events_url ?? '#why-uzbekistan' }}"
-                            class="text-why-uzbekistan-question">Why Uzbekistan?</a>
-                        <a href="{{ $landing->nav_partners_url ?? '#how-it-works' }}" class="text-about-nen">About NEN</a>
-                        <a href="{{ $landing->nav_contact_url ?? '#faq' }}" class="text-right">FAQ</a>
+                            class="text-why-uzbekistan-question">{{ __('landing.nav.why_uzbekistan') }}</a>
+                        <a href="{{ $landing->nav_partners_url ?? '#how-it-works' }}" class="text-about-nen">{{ __('landing.nav.about_nen') }}</a>
+                        <a href="{{ $landing->nav_contact_url ?? '#faq' }}" class="text-right">{{ __('landing.nav.faq') }}</a>
                     </div>
 
                     <div class="row-right2">
@@ -1431,20 +1656,16 @@
                         <div class="nen-lang-dropdown">
                             <button class="nen-lang-dropdown__toggle" id="nenLangBtn" type="button">
                                 <img src="{{ asset('site/home/assets/globe.png') }}" class="globe" alt="Language" />
-                                <span id="nenCurrentLang">EN</span>
+                                <span id="nenCurrentLang">{{ app()->getLocale() === 'ar' ? 'AR' : 'EN' }}</span>
                             </button>
                             <div class="nen-lang-dropdown__menu" id="nenLangMenu">
-                                <a class="nen-lang-dropdown__item translate-trigger" href="#" data-lang="en"
-                                    data-label="EN">
-                                    <span class="flag-icon flag-icon-us"></span> English
+                                <a class="nen-lang-dropdown__item {{ app()->getLocale() === 'en' ? 'is-active' : '' }}"
+                                    href="{{ route('site.locale.switch', 'en') }}" data-lang="en" data-label="EN">
+                                    <span class="flag-icon flag-icon-us"></span> {{ __('landing.language.english') }}
                                 </a>
-                                <a class="nen-lang-dropdown__item translate-trigger" href="#" data-lang="ar"
-                                    data-label="AR">
-                                    <span class="flag-icon flag-icon-sa"></span> العربية
-                                </a>
-                                <a class="nen-lang-dropdown__item translate-trigger" href="#" data-lang="ru"
-                                    data-label="RU">
-                                    <span class="flag-icon flag-icon-ru"></span> Русский
+                                <a class="nen-lang-dropdown__item {{ app()->getLocale() === 'ar' ? 'is-active' : '' }}"
+                                    href="{{ route('site.locale.switch', 'ar') }}" data-lang="ar" data-label="AR">
+                                    <span class="flag-icon flag-icon-sa"></span> {{ __('landing.language.arabic') }}
                                 </a>
                             </div>
                         </div>
@@ -1453,7 +1674,7 @@
                         @if ($landing->header_register_url)
                             <a href="{{ $landing->header_register_url }}" class="card5">
                                 <img src="{{ asset('site/home/assets/card-img.png') }}" class="card-img2" />
-                                <p class="card-text-left1">{{ $landing->header_register_text ?? 'Apply Now' }}</p>
+                                <p class="card-text-left1">{{ landing_get($landing, 'header_register_text') ?? __('landing.nav.apply_now') }}</p>
                                 <img src="{{ asset('site/home/assets/card-lucide-arrow.png') }}"
                                     class="card-lucide-arrow1" />
                             </a>
@@ -1487,16 +1708,16 @@
                 <div class="col1">
                     <div class="col2">
                         <h2 class="subtitle1">
-                            <span class="sub-text-text-title">Study in
-                            </span>{{ $landing->hero_product_title ?? 'Uzbekistan.' }}
+                            <span class="sub-text-text-title">{{ __('landing.hero.study_in') }}
+                            </span>{{ landing_get($landing, 'hero_product_title') ?? 'Uzbekistan.' }}
                         </h2>
                         <p class="text-join-the-ultimate">
-                            {{ $landing->hero_subtitle ?? 'Join the ultimate educational network where students, top universities, and world-class programs come together!' }}
+                            {{ landing_get($landing, 'hero_subtitle') ?? 'Join the ultimate educational network where students, top universities, and world-class programs come together!' }}
                         </p>
                     </div>
 
                     <a href="{{ $landing->hero_btn_url ?? '#collection-point' }}" class="frame-a frame-bottom">
-                        <p>{{ $landing->hero_btn_text ?? 'Find a collection point' }}</p>
+                        <p>{{ landing_get($landing, 'hero_btn_text') ?? __('landing.hero.find_collection_point') }}</p>
                         <img src="{{ asset('site/home/assets/card-img.png') }}" class="frame-img1" />
                     </a>
                 </div>
@@ -1533,12 +1754,12 @@
                                 @if ($partner->url) href="{{ $partner->url }}" target="_blank" rel="noopener" @endif>
                                 @if ($partner->image)
                                     <img src="{{ asset($partner->image) }}" class="row-img1"
-                                        alt="{{ $partner->name }}" />
+                                        alt="{{ $partner->localized('name') }}" />
                                 @endif
                                 <div class="row-col1">
-                                    <p class="row-text1">{{ $partner->name }}</p>
-                                    @if ($partner->description)
-                                        <p class="row-text-republic-of">{{ $partner->description }}</p>
+                                    <p class="row-text1">{{ $partner->localized('name') }}</p>
+                                    @if ($partner->localized('description'))
+                                        <p class="row-text-republic-of">{{ $partner->localized('description') }}</p>
                                     @endif
                                 </div>
                             </{{ $partner->url ? 'a' : 'div' }}>
@@ -1565,8 +1786,8 @@
 
                     <div class="col-right1">
                         <img src="{{ $landing->hero_official_logo ? asset($landing->hero_official_logo) : asset('site/home/assets/img2.png') }}"
-                            class="img2" alt="{{ $landing->hero_official_label ?? 'Official Partner' }}" />
-                        <p>{{ $landing->hero_official_label ?? 'Official Partner' }}</p>
+                            class="img2" alt="{{ landing_get($landing, 'hero_official_label') ?? __('landing.hero.official_partner') }}" />
+                        <p>{{ landing_get($landing, 'hero_official_label') ?? __('landing.hero.official_partner') }}</p>
                     </div>
                 </div>
             </div>
@@ -1577,15 +1798,15 @@
     @if ($landing->show_about ?? true)
         <div class="col3" id="about">
             <div class="column-a col-top2">
-                <button class="btn-a column-btn1 hover-dark">{{ $landing->about_label ?? 'About Program' }}</button>
-                <h2 class="column-subtitle1">{{ $landing->about_title ?? 'About Study In Uzbekistan?' }}</h2>
+                <button class="btn-a column-btn1 hover-dark">{{ landing_get($landing, 'about_label') ?? __('landing.about.badge') }}</button>
+                <h2 class="column-subtitle1">{{ landing_get($landing, 'about_title') ?? __('landing.about.title') }}</h2>
             </div>
 
             <div class="col4">
                 <div class="group-top">
                     <div class="group1">
                         <img src="{{ asset('site/home/assets/group1.png') }}" class="group2" alt="" />
-                        <button class="btn-b btn1 hover-bright">Official Initiative</button>
+                        <button class="btn-b btn1 hover-bright">{{ __('landing.about.official_initiative') }}</button>
                     </div>
 
                     <img src="{{ $landing->about_image_main ? asset($landing->about_image_main) : asset('site/home/assets/img3.png') }}"
@@ -1593,23 +1814,23 @@
 
                     <div class="group3">
                         <img src="{{ asset('site/home/assets/group2.png') }}" class="group4" alt="" />
-                        <button class="btn-b btn-world-class hover-bright">World-Class</button>
+                        <button class="btn-b btn-world-class hover-bright">{{ __('landing.about.world_class') }}</button>
                     </div>
                 </div>
 
                 <div class="col-bottom1">
                     {{-- Text starts dimmed and "lights up" word-by-word as it scrolls into view (JS-driven) --}}
-                    <h2 class="subtitle2 nen-reveal" data-reveal>{{ $landing->about_description ?? 'Study in Uzbekistan is an official initiative of the Ministry of Higher Education to attract international students to world-class universities. Through the official portal, you can explore programs, requirements, and scholarship opportunities.' }}</h2>
+                    <h2 class="subtitle2 nen-reveal" data-reveal>{{ landing_get($landing, 'about_description') ?? __('landing.about.description') }}</h2>
 
                     <div class="row-bottom4">
                         <a href="{{ $landing->footer_collaboration_url ?? 'https://studyin-uzbekistan.uz' }}"
                             class="frame-b frame-left">
-                            <p>Visit Official Portal</p>
+                            <p>{{ __('landing.about.visit_portal') }}</p>
                             <img src="{{ asset('site/home/assets/card-img.png') }}" class="frame-img2" />
                         </a>
 
                         <a href="#how-it-works" class="frame-b frame-right1">
-                            <p>Life in Uzbekistan</p>
+                            <p>{{ __('landing.about.life_in_uzbekistan') }}</p>
                             <img src="{{ asset('site/home/assets/card-img.png') }}" class="frame-img2" />
                         </a>
                     </div>
@@ -1623,8 +1844,8 @@
         <div class="col5 section" id="why-uzbekistan">
             <div class="col6">
                 <div class="column-a col-top3">
-                    <button class="btn-a column-btn1 hover-dark">Why Uzbekistan?</button>
-                    <h2 class="column-subtitle1">{{ $landing->features_title ?? 'Why Study In Uzbekistan?' }}</h2>
+                    <button class="btn-a column-btn1 hover-dark">{{ __('landing.features.badge') }}</button>
+                    <h2 class="column-subtitle1">{{ landing_get($landing, 'features_title') ?? __('landing.features.title') }}</h2>
                 </div>
 
                 <div class="container">
@@ -1648,14 +1869,14 @@
                             {{-- Card 1 (card6 style - larger) --}}
                             <div class="card6">
                                 <div class="row-c row-top5">
-                                    <p class="row-text2">{{ $card0->title ?? 'Quality Education' }}</p>
+                                    <p class="row-text2">{{ $card0 ? $card0->localized('title') : __('landing.features.cards.quality_title') }}</p>
                                     <img src="{{ $card0 && $card0->image ? asset($card0->image) : $cardIcons[0] }}"
                                         class="row-group" alt="" />
                                 </div>
                                 <div class="card-container3">
                                     <h2 class="card-subtitle2">{{ $card0->stat_value ?? '100+' }}</h2>
                                     <p class="card-text4">
-                                        {{ $card0->description ?? 'Internationally recognized universities with modern campuses and English-taught programs.' }}
+                                        {{ ($card0 ? $card0->localized('description') : null) ?? __('landing.features.cards.quality_desc') }}
                                     </p>
                                 </div>
                             </div>
@@ -1663,7 +1884,7 @@
                             {{-- Card 2 (card7 style) --}}
                             <div class="card-a card7">
                                 <div class="row-c row-top1">
-                                    <p class="row-text2">{{ $card1->title ?? 'Affordable Costs' }}</p>
+                                    <p class="row-text2">{{ $card1 ? $card1->localized('title') : __('landing.features.cards.affordable_title') }}</p>
                                     <img src="{{ $card1 && $card1->image ? asset($card1->image) : $cardIcons[1] }}"
                                         class="row-group" alt="" />
                                 </div>
@@ -1672,7 +1893,7 @@
                                         <h2>{{ $card1->stat_value ?? '50%' }}</h2>
                                     </div>
                                     <p class="card-text1">
-                                        {{ $card1->description ?? 'Students can save up to 50% on tuition and living expenses compared to other countries.' }}
+                                        {{ ($card1 ? $card1->localized('description') : null) ?? __('landing.features.cards.affordable_desc') }}
                                     </p>
                                 </div>
                             </div>
@@ -1683,7 +1904,7 @@
                                 {{-- Card 3 (card8 style) --}}
                                 <div class="card-a card8">
                                     <div class="row-c row-top1">
-                                        <p class="row-text2">{{ $card2->title ?? 'Safe & Welcoming' }}</p>
+                                        <p class="row-text2">{{ $card2 ? $card2->localized('title') : __('landing.features.cards.safe_title') }}</p>
                                         <img src="{{ $card2 && $card2->image ? asset($card2->image) : $cardIcons[2] }}"
                                             class="row-group" alt="" />
                                     </div>
@@ -1692,7 +1913,7 @@
                                             <h2>{{ $card2->stat_value ?? '100%' }}</h2>
                                         </div>
                                         <p class="card-text1">
-                                            {{ $card2->description ?? 'A safe and welcoming country with a rich cultural heritage for international students.' }}
+                                            {{ ($card2 ? $card2->localized('description') : null) ?? __('landing.features.cards.safe_desc') }}
                                         </p>
                                     </div>
                                 </div>
@@ -1700,7 +1921,7 @@
                                 {{-- Card 4 (card9 style) --}}
                                 <div class="card-a card9">
                                     <div class="row-c row-top1">
-                                        <p class="row-text2">{{ $card3->title ?? 'International Environment' }}</p>
+                                        <p class="row-text2">{{ $card3 ? $card3->localized('title') : __('landing.features.cards.international_title') }}</p>
                                         <img src="{{ $card3 && $card3->image ? asset($card3->image) : $cardIcons[3] }}"
                                             class="row-group" alt="" />
                                     </div>
@@ -1709,7 +1930,7 @@
                                             <h2>{{ $card3->stat_value ?? '50+' }}</h2>
                                         </div>
                                         <p class="card-text1">
-                                            {{ $card3->description ?? 'Welcoming international student community and a growing number of programs in English.' }}
+                                            {{ ($card3 ? $card3->localized('description') : null) ?? __('landing.features.cards.international_desc') }}
                                         </p>
                                     </div>
                                 </div>
@@ -1721,7 +1942,7 @@
                         <a href="{{ $landing->footer_collaboration_url ?? 'https://studyin-uzbekistan.uz' }}"
                             class="card10">
                             <img src="{{ asset('site/home/assets/card-img.png') }}" class="card-img3" />
-                            <p class="card-text-left2">Explore University</p>
+                            <p class="card-text-left2">{{ __('landing.features.explore_university') }}</p>
                             <img src="{{ asset('site/home/assets/card-lucide-arrow.png') }}"
                                 class="card-lucide-arrow2" />
                         </a>
@@ -1736,15 +1957,15 @@
         <div class="col7" id="how-it-works">
             <div class="row-top6">
                 <div class="col-left2">
-                    <button class="btn-a btn2 hover-dark">Your Path</button>
-                    <h2 class="subtitle-we-re-not-just-about">{{ $landing->how_it_works_title ?? 'How It Works' }}</h2>
+                    <button class="btn-a btn2 hover-dark">{{ __('landing.how_it_works.badge') }}</button>
+                    <h2 class="subtitle-we-re-not-just-about">{{ landing_get($landing, 'how_it_works_title') ?? __('landing.how_it_works.title') }}</h2>
                     <p class="text">
-                        {{ $landing->how_it_works_subtitle ?? 'Simple steps from application to arrival. Fast admission, certified future.' }}
+                        {{ landing_get($landing, 'how_it_works_subtitle') ?? __('landing.how_it_works.subtitle') }}
                     </p>
                 </div>
 
                 <a href="{{ $landing->how_it_works_btn_url ?? '#collection-point' }}" class="frame-a frame-right2">
-                    <p>{{ $landing->how_it_works_btn_text ?? 'Apply for a student visa' }}</p>
+                    <p>{{ landing_get($landing, 'how_it_works_btn_text') ?? __('landing.how_it_works.btn_text') }}</p>
                     <img src="{{ asset('site/home/assets/card-img.png') }}" class="frame-img1" />
                 </a>
             </div>
@@ -1760,22 +1981,8 @@
                     asset('site/home/assets/component/component-checkmark.png'),
                     asset('site/home/assets/component/component-folder-view.png'),
                 ];
-                $stepTitles = [
-                    'Register Online',
-                    'Choose University',
-                    'Prepare Documents',
-                    'Visit a Collection Point',
-                    'Verify',
-                    'Admission Follow-Up',
-                ];
-                $stepDescs = [
-                    'Create your account on the Study in Uzbekistan portal.',
-                    'Explore universities and programmes on the portal and select up to 5 universities and programmes.',
-                    'Prepare and submit the required documents through NEN collection points.',
-                    'NEN verifies your documents and coordinates with the relevant authorities.',
-                    'Receive admission updates and application support.',
-                    'Complete your visa application and prepare for your study journey.',
-                ];
+                $stepTitles = collect(__('landing.how_it_works.steps'))->pluck('title')->all();
+                $stepDescs = collect(__('landing.how_it_works.steps'))->pluck('desc')->all();
                 $topRowIdxs = [0, 1, 2];
                 $botRowIdxs = [3, 4, 5];
             @endphp
@@ -1787,8 +1994,8 @@
                             @php
                                 $step = $stepsArr->get($idx);
                                 $icon = $step && $step->image ? asset($step->image) : ($stepComponents[$idx] ?? '');
-                                $title = $step ? $step->title : ($stepTitles[$idx] ?? '');
-                                $desc = $step ? $step->description : ($stepDescs[$idx] ?? '');
+                                $title = $step ? $step->localized('title') : ($stepTitles[$idx] ?? '');
+                                $desc = $step ? $step->localized('description') : ($stepDescs[$idx] ?? '');
                                 $num = str_pad((string) ($idx + 1), 2, '0', STR_PAD_LEFT);
                             @endphp
                             <div class="nen-step" tabindex="0" role="button"
@@ -1825,54 +2032,104 @@
             <div class="tesrimonials-col-left">
                 <a href="{{ $landing->milestones_cta_url ?? '#collection-point' }}"
                     class="btn-c tesrimonials-btn hover-bright">
-                    {{ $landing->milestones_cta_text ?? 'Find collection point' }}
+                    {{ landing_get($landing, 'milestones_cta_text') ?? __('landing.milestones.find_collection_point') }}
                 </a>
 
                 <div class="tesrimonials-col1">
                     <div class="tesrimonials-col2">
                         <h2 class="tesrimonials-subtitle-national">
-                            {{ $landing->milestones_title ?? 'National Education Network Global Learning Portal' }}</h2>
+                            {{ landing_get($landing, 'milestones_title') ?? __('landing.milestones.title') }}</h2>
                         <p class="text tesrimonials-text-an-international">
-                            {{ $landing->milestones_subtitle ?? 'An international education network providing top services in university partnerships, student recruitment, and certified academic projects worldwide.' }}
+                            {{ landing_get($landing, 'milestones_subtitle') ?? __('landing.milestones.subtitle') }}
                         </p>
                     </div>
 
                     <div class="tesrimonials-col-bottom">
-                        <h2 class="tesrimonials-subtitle-key-milestones">Key Milestones</h2>
+                        <h2 class="tesrimonials-subtitle-key-milestones">{{ __('landing.milestones.key_milestones') }}</h2>
 
                         <div class="tesrimonials-row">
                             <div class="column-b">
                                 <h2 class="column-subtitle2">{{ $landing->about_stat_value ?? '15+' }}</h2>
-                                <p class="column-text">{{ $landing->about_stat_label ?? 'Years of Experience' }}</p>
+                                <p class="column-text">{{ landing_get($landing, 'about_stat_label') ?? __('landing.milestones.years_experience') }}</p>
                             </div>
                             <div class="line tesrimonials-line1"></div>
                             <div class="column-b">
                                 <h2 class="column-subtitle2">{{ $landing->about_metric1_value ?? '100+' }}</h2>
-                                <p class="column-text">{{ $landing->about_metric1_label ?? 'Global Universities' }}</p>
+                                <p class="column-text">{{ landing_get($landing, 'about_metric1_label') ?? __('landing.milestones.global_universities') }}</p>
                             </div>
                             <div class="line tesrimonials-line2"></div>
                             <div class="column-b">
                                 <h2 class="column-subtitle2">{{ $landing->about_metric2_value ?? '29' }}</h2>
-                                <p class="column-text">{{ $landing->about_metric2_label ?? 'Countries Worldwide' }}</p>
+                                <p class="column-text">{{ landing_get($landing, 'about_metric2_label') ?? __('landing.milestones.countries_worldwide') }}</p>
                             </div>
                         </div>
 
                         <p class="text tesrimonials-text-bottom">
-                            {{ $landing->milestones_description ?? 'Our mission is making international education more accessible. Join a thriving global academic community with verified university programs, direct admissions, and guidance led by experienced mentors.' }}
+                            {{ landing_get($landing, 'milestones_description') ?? __('landing.milestones.description') }}
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div class="tesrimonials-group-right">
-                <img src="{{ asset('site/home/assets/tesrimonials-group2.png') }}" class="tesrimonials-group1"
-                    alt="" />
-                <img src="{{ asset('site/home/assets/tesrimonials-group3.png') }}" class="tesrimonials-group2"
-                    alt="" />
-                <img src="{{ asset('site/home/assets/tesrimonials-group3.png') }}" class="tesrimonials-group3"
-                    alt="" />
-                <img src="{{ asset('site/home/assets/tesrimonials-group3.png') }}" class="tesrimonials-group4"
-                    alt="" />
+            <div class="tesrimonials-group-right nen-collection-map" id="collection-point">
+                <h3 class="nen-collection-map__title">{{ __('landing.collection_points.map_title') }}</h3>
+
+                @if (($collectionPoints ?? collect())->isNotEmpty())
+                    <div class="nen-collection-map__tabs" role="tablist" aria-label="{{ __('landing.collection_points.map_title') }}">
+                        @foreach ($collectionPoints as $i => $point)
+                            <button type="button"
+                                class="nen-collection-map__tab{{ $i === 0 ? ' is-active' : '' }}"
+                                role="tab"
+                                aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
+                                data-slug="{{ $point->slug }}">
+                                {{ __('landing.collection_points.cities.' . $point->slug) }}
+                            </button>
+                        @endforeach
+                    </div>
+
+                    <div id="nenCollectionMap" class="nen-collection-map__canvas" aria-hidden="false"></div>
+
+                    <div class="nen-collection-map__panel">
+                        @foreach ($collectionPoints as $i => $point)
+                            <div class="nen-collection-map__details{{ $i === 0 ? ' is-active' : '' }}"
+                                data-slug="{{ $point->slug }}">
+                                <h4 class="nen-collection-map__office">{{ $point->name }}</h4>
+                                <ul class="nen-collection-map__meta">
+                                    @if ($point->address)
+                                        <li><strong>{{ __('landing.collection_points.address') }}:</strong> {{ $point->address }}</li>
+                                    @endif
+                                    @if ($point->land_line)
+                                        <li><strong>{{ __('landing.collection_points.landline') }}:</strong> <a href="tel:{{ preg_replace('/[^0-9+]/', '', $point->land_line) }}">{{ $point->land_line }}</a></li>
+                                    @endif
+                                    @if ($point->call_center)
+                                        <li><strong>{{ __('landing.collection_points.call_center') }}:</strong> <a href="tel:{{ preg_replace('/[^0-9+]/', '', $point->call_center) }}">{{ $point->call_center }}</a></li>
+                                    @endif
+                                    @if ($point->email)
+                                        <li><strong>{{ __('landing.collection_points.email') }}:</strong> <a href="mailto:{{ $point->email }}">{{ $point->email }}</a></li>
+                                    @endif
+                                    @if ($point->schedule)
+                                        <li><strong>{{ __('landing.collection_points.schedule') }}:</strong> {{ $point->schedule }}</li>
+                                    @endif
+                                </ul>
+                                <div class="nen-collection-map__actions">
+                                    <a href="{{ $point->mapsShareUrl() }}" class="nen-collection-map__btn nen-collection-map__btn--maps"
+                                        target="_blank" rel="noopener">
+                                        {{ __('landing.collection_points.open_maps') }}
+                                    </a>
+                                    <button type="button" class="nen-collection-map__btn nen-collection-map__btn--share"
+                                        data-share-url="{{ $point->mapsShareUrl() }}"
+                                        data-share-title="{{ $point->name }}">
+                                        {{ __('landing.collection_points.share') }}
+                                    </button>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="nen-collection-map__empty">
+                        <img src="{{ asset('site/home/assets/tesrimonials-group2.png') }}" alt="" />
+                    </div>
+                @endif
             </div>
         </div>
     @endif
@@ -1882,22 +2139,22 @@
         <div class="col12" id="translation-agencies">
             <div class="row-d row-top8">
                 <div class="row-col2">
-                    <button class="btn-c row-btn hover-dark">Certified Agencies</button>
-                    <h2 class="row-subtitle">{{ $landing->agencies_title ?? 'Certified Translation Agencies' }}</h2>
+                    <button class="btn-c row-btn hover-dark">{{ __('landing.agencies.translation_badge') }}</button>
+                    <h2 class="row-subtitle">{{ landing_get($landing, 'agencies_title') ?? __('landing.agencies.translation_title') }}</h2>
                     <p class="text row-text-bottom">
-                        {{ $landing->agencies_subtitle ?? 'Translate your official documents quickly and securely through our network of trusted, certified translation offices.' }}
+                        {{ landing_get($landing, 'agencies_subtitle') ?? __('landing.agencies.translation_subtitle') }}
                     </p>
                 </div>
 
                 <div class="row-row-right">
                     <div class="row-circle-black-left circle-black hover-bright" id="transAgencyPrev">
                         <img src="{{ asset('site/home/assets/row-circle-black/row-lucide-arrow.png') }}"
-                            alt="Previous" />
+                            alt="{{ __('landing.agencies.prev') }}" />
                         <img src="{{ asset('site/home/assets/row-circle-black/row-img.png') }}" class="row-img2" />
                     </div>
                     <div class="row-circle-black-right circle-black hover-bright" id="transAgencyNext">
                         <img src="{{ asset('site/home/assets/row-circle-black/row-lucide-arrow.png') }}"
-                            alt="Next" />
+                            alt="{{ __('landing.agencies.next') }}" />
                         <img src="{{ asset('site/home/assets/row-circle-black/row-img2.png') }}" class="row-img3" />
                     </div>
                 </div>
@@ -1909,18 +2166,18 @@
                         @foreach ($translationAgencies as $i => $agency)
                             <div class="frame-c frame{{ $i + 1 }}">
                                 <img src="{{ $agency->image ? asset($agency->image) : asset('site/home/assets/frame/frame-img' . (($i % 4) + 5) . '.png') }}"
-                                    class="frame-img3 input" alt="{{ $agency->name }}" />
+                                    class="frame-img3 input" alt="{{ $agency->localized('name') }}" />
                                 <div class="frame-col">
                                     <div class="frame-col-top">
-                                        <p class="frame-text3">{{ $agency->name }}</p>
-                                        <p class="frame-text4">{{ $agency->service_description }}</p>
+                                        <p class="frame-text3">{{ $agency->localized('name') }}</p>
+                                        <p class="frame-text4">{{ $agency->localized('service_description') }}</p>
                                     </div>
                                     <div class="frame-col-bottom">
-                                        @if ($agency->location)
+                                        @if ($agency->localized('location'))
                                             <div class="row-e row-top2">
                                                 <img src="{{ asset('site/home/assets/row/row-location.png') }}"
                                                     class="row-smart-phone row-location" alt="Location" />
-                                                <p class="row-text3">{{ $agency->location }}</p>
+                                                <p class="row-text3">{{ $agency->localized('location') }}</p>
                                             </div>
                                         @endif
                                         @if ($agency->phone)
@@ -1946,10 +2203,10 @@
         <div class="col13 section" id="documents">
             <div class="col14">
                 <div class="column-c col-top4">
-                    <button class="btn-a column-btn2 hover-dark">Application Prep</button>
-                    <h2 class="column-subtitle3">{{ $landing->documents_title ?? 'Required Application Documents' }}</h2>
+                    <button class="btn-a column-btn2 hover-dark">{{ __('landing.documents.badge') }}</button>
+                    <h2 class="column-subtitle3">{{ landing_get($landing, 'documents_title') ?? __('landing.documents.title') }}</h2>
                     <p class="column-text-bottom">
-                        {{ $landing->documents_subtitle ?? 'Prepare your official papers to complete your university application smoothly.' }}
+                        {{ landing_get($landing, 'documents_subtitle') ?? __('landing.documents.subtitle') }}
                     </p>
                 </div>
 
@@ -1967,8 +2224,8 @@
                                 @endphp
                                 <div class="card-b {{ $cardClass }}">
                                     <img src="{{ $doc->image ? asset($doc->image) : asset('site/home/assets/card/card-img' . (($docs->search($doc) % 9) + 1) . '.png') }}"
-                                        class="card-img input" alt="{{ $doc->title }}" />
-                                    <p class="card-text2">{!! nl2br(e($doc->title)) !!}</p>
+                                        class="card-img input" alt="{{ $doc->localized('title') }}" />
+                                    <p class="card-text2">{!! nl2br(e($doc->localized('title'))) !!}</p>
                                 </div>
                             @endforeach
                         </div>
@@ -1984,23 +2241,23 @@
             <div class="col17">
                 <div class="row-d row-top9">
                     <div class="row-col2">
-                        <button class="btn-c row-btn hover-dark">Trusted Agencies</button>
+                        <button class="btn-c row-btn hover-dark">{{ __('landing.agencies.trusted_badge') }}</button>
                         <h2 class="row-subtitle">
-                            {{ $landing->trusted_agencies_title ?? 'Trusted Study Abroad Agencies' }}</h2>
+                            {{ landing_get($landing, 'trusted_agencies_title') ?? __('landing.agencies.trusted_title') }}</h2>
                         <p class="text row-text-bottom">
-                            {{ $landing->trusted_agencies_subtitle ?? 'Connect with certified consultants to simplify your university admission.' }}
+                            {{ landing_get($landing, 'trusted_agencies_subtitle') ?? __('landing.agencies.trusted_subtitle') }}
                         </p>
                     </div>
 
                     <div class="row-row-right">
                         <div class="row-circle-black-left circle-black hover-bright" id="trustedAgencyPrev">
                             <img src="{{ asset('site/home/assets/row-circle-black/row-lucide-arrow.png') }}"
-                                alt="Previous" />
+                                alt="{{ __('landing.agencies.prev') }}" />
                             <img src="{{ asset('site/home/assets/row-circle-black/row-img.png') }}" class="row-img2" />
                         </div>
                         <div class="row-circle-black-right circle-black hover-bright" id="trustedAgencyNext">
                             <img src="{{ asset('site/home/assets/row-circle-black/row-lucide-arrow.png') }}"
-                                alt="Next" />
+                                alt="{{ __('landing.agencies.next') }}" />
                             <img src="{{ asset('site/home/assets/row-circle-black/row-img2.png') }}" class="row-img3" />
                         </div>
                     </div>
@@ -2020,16 +2277,16 @@
                                             </a>
                                         @else
                                             <img src="{{ $agency->image ? asset($agency->image) : asset('site/home/assets/card/card-whats-app.png') }}"
-                                                class="card-whats-app" alt="{{ $agency->name }}" />
+                                                class="card-whats-app" alt="{{ $agency->localized('name') }}" />
                                         @endif
                                         <div class="card-col-bottom">
-                                            <p class="card-text3">{{ $agency->name }}</p>
+                                            <p class="card-text3">{{ $agency->localized('name') }}</p>
                                             <div class="card-col">
-                                                @if ($agency->location)
+                                                @if ($agency->localized('location'))
                                                     <div class="row-e row-top3">
                                                         <img src="{{ asset('site/home/assets/row/row-location.png') }}"
                                                             class="row-smart-phone row-location" alt="Location" />
-                                                        <p class="row-text3">{{ $agency->location }}</p>
+                                                        <p class="row-text3">{{ $agency->localized('location') }}</p>
                                                     </div>
                                                 @endif
                                                 @if ($agency->phone)
@@ -2056,9 +2313,9 @@
         <div class="col18 section" id="faq">
             <div class="col19">
                 <div class="column-c col-top5">
-                    <button class="btn-a column-btn2 hover-dark">FAQ</button>
-                    <h2 class="column-subtitle3">{{ $landing->faq_title ?? 'Frequently Asked Questions' }}</h2>
-                    <p class="column-text-bottom">Quick answers to common questions, all in one place</p>
+                    <button class="btn-a column-btn2 hover-dark">{{ __('landing.faq.badge') }}</button>
+                    <h2 class="column-subtitle3">{{ landing_get($landing, 'faq_title') ?? __('landing.faq.title') }}</h2>
+                    <p class="column-text-bottom">{{ __('landing.faq.subtitle') }}</p>
                 </div>
 
                 @php
@@ -2074,12 +2331,12 @@
                     <div class="col-left3">
                         @foreach ($leftFaqs as $faq)
                             <button class="btn-d faq-btn-d hover-zoom" data-faq="{{ $faq->id }}" type="button">
-                                <p class="btn-label">{{ $faq->question }}</p>
+                                <p class="btn-label">{{ $faq->localized('question') }}</p>
                                 <img src="{{ asset('site/home/assets/btn/btn-icon.png') }}"
                                     class="btn-icon-add btn-icon" alt="+" />
                             </button>
-                            @if ($faq->answer)
-                                <div class="faq-answer" data-answer="{{ $faq->id }}">{{ $faq->answer }}</div>
+                            @if ($faq->localized('answer'))
+                                <div class="faq-answer" data-answer="{{ $faq->id }}">{{ $faq->localized('answer') }}</div>
                             @endif
                         @endforeach
                     </div>
@@ -2089,35 +2346,35 @@
                             {{-- Desktop: always-open panel (matches home.html right column) --}}
                             <div class="card19 nen-faq-desktop-only">
                                 <div class="card-container4">
-                                    <p class="card-text-paragraph1">{{ $expandedFaq->question }}</p>
+                                    <p class="card-text-paragraph1">{{ $expandedFaq->localized('question') }}</p>
                                     <img src="{{ asset('site/home/assets/card-minus-sign.png') }}"
                                         class="card-minus-sign" alt="-" />
                                 </div>
-                                @if ($expandedFaq->answer)
-                                    <p class="card-text-paragraph2">{{ $expandedFaq->answer }}</p>
+                                @if ($expandedFaq->localized('answer'))
+                                    <p class="card-text-paragraph2">{{ $expandedFaq->localized('answer') }}</p>
                                 @endif
                             </div>
                             {{-- Mobile: same FAQ in the accordion list --}}
                             <button class="btn-d faq-btn-d hover-zoom nen-faq-mobile-only" data-faq="{{ $expandedFaq->id }}"
                                 type="button">
-                                <p class="btn-label">{{ $expandedFaq->question }}</p>
+                                <p class="btn-label">{{ $expandedFaq->localized('question') }}</p>
                                 <img src="{{ asset('site/home/assets/btn/btn-icon.png') }}"
                                     class="btn-icon-add btn-icon" alt="+" />
                             </button>
-                            @if ($expandedFaq->answer)
+                            @if ($expandedFaq->localized('answer'))
                                 <div class="faq-answer nen-faq-mobile-only" data-answer="{{ $expandedFaq->id }}">
-                                    {{ $expandedFaq->answer }}</div>
+                                    {{ $expandedFaq->localized('answer') }}</div>
                             @endif
                         @endif
 
                         @foreach ($restRightFaqs as $faq)
                             <button class="btn-d faq-btn-d hover-zoom" data-faq="{{ $faq->id }}" type="button">
-                                <p class="btn-label">{{ $faq->question }}</p>
+                                <p class="btn-label">{{ $faq->localized('question') }}</p>
                                 <img src="{{ asset('site/home/assets/btn/btn-icon.png') }}"
                                     class="btn-icon-add btn-icon" alt="+" />
                             </button>
-                            @if ($faq->answer)
-                                <div class="faq-answer" data-answer="{{ $faq->id }}">{{ $faq->answer }}</div>
+                            @if ($faq->localized('answer'))
+                                <div class="faq-answer" data-answer="{{ $faq->id }}">{{ $faq->localized('answer') }}</div>
                             @endif
                         @endforeach
                     </div>
@@ -2129,7 +2386,7 @@
     {{-- ===================== SUCCESS PARTNERS (UNIVERSITY LOGOS) ===================== --}}
     @if ($landing->show_university_logos ?? true)
         <div class="col20" id="success-partners">
-            <button class="btn-a btn9 hover-dark">{{ $landing->university_logos_title ?? 'Success Partners' }}</button>
+            <button class="btn-a btn9 hover-dark">{{ landing_get($landing, 'university_logos_title') ?? __('landing.partners.success_badge') }}</button>
 
             @php
                 $logos = ($universityLogos ?? collect())->values();
@@ -2204,7 +2461,7 @@
                     {{-- No partners uploaded yet: placeholders so the section stays intentional --}}
                     <div class="nen-partners-static">
                         @for ($i = 0; $i < 6; $i++)
-                            <img src="{{ $placeholder }}" class="mask-group" alt="University Partner" />
+                            <img src="{{ $placeholder }}" class="mask-group" alt="{{ __('landing.partners.placeholder') }}" />
                         @endfor
                     </div>
                 @endif
@@ -2223,7 +2480,7 @@
             <div class="nen-foot__brand">
                 <img src="{{ asset($settings['media']->logo) }}" class="nen-foot__logo" alt="NEN" />
                 <p class="nen-foot__tagline">
-                    {{ $landing->footer_tagline ?? 'National Education Network — your official gateway to studying at world-class universities in Uzbekistan.' }}
+                    {{ landing_get($landing, 'footer_tagline') ?? __('landing.footer.tagline') }}
                 </p>
                 <div class="nen-foot__socials">
                     <a href="{{ $landing->social_facebook ?? '#' }}" class="nen-foot__social" aria-label="Facebook"
@@ -2250,18 +2507,17 @@
             </div>
 
             <div class="nen-foot__col">
-                <h4 class="nen-foot__heading">Important Links</h4>
+                <h4 class="nen-foot__heading">{{ __('landing.footer.important_links') }}</h4>
                 <ul class="nen-foot__links">
                     <li><a href="https://studyin-uzbekistan.uz" target="_blank"
-                            rel="noopener">studyin-uzbekistan.uz</a></li>
-                    <li><a href="https://edu.uz" target="_blank" rel="noopener">Ministry of Higher Education
-                            (Uzbekistan)</a></li>
-                    <li><a href="#">Embassy of Uzbekistan in Egypt</a></li>
+                            rel="noopener">{{ __('landing.footer.link_study_portal') }}</a></li>
+                    <li><a href="https://edu.uz" target="_blank" rel="noopener">{{ __('landing.footer.link_ministry') }}</a></li>
+                    <li><a href="#">{{ __('landing.footer.link_embassy') }}</a></li>
                 </ul>
             </div>
 
             <div class="nen-foot__col">
-                <h4 class="nen-foot__heading">Contact Us</h4>
+                <h4 class="nen-foot__heading">{{ __('landing.footer.contact_us') }}</h4>
                 <ul class="nen-foot__contacts">
                     <li class="nen-foot__contact">
                         <img class="nen-foot__cicon" src="{{ asset('site/home/assets/row/row-mail.png') }}" alt="" />
@@ -2289,19 +2545,19 @@
                     <li class="nen-foot__contact">
                         <img class="nen-foot__cicon" src="{{ asset('site/home/assets/row/row-globe.png') }}" alt="" />
                         <a href="{{ $landing->footer_collaboration_url ?? 'https://nen-global.org/contacts' }}"
-                            target="_blank" rel="noopener">nen-global.org/contacts</a>
+                            target="_blank" rel="noopener">{{ __('landing.footer.link_contacts') }}</a>
                     </li>
                 </ul>
             </div>
         </div>
 
         <div class="nen-foot__cta">
-            <h2 class="nen-foot__cta-title"><span>Apply</span> For Future</h2>
+            <h2 class="nen-foot__cta-title"><span>{{ __('landing.footer.apply') }}</span> {{ __('landing.footer.for_future') }}</h2>
         </div>
 
         <div class="nen-foot__bottom">
             <p class="nen-foot__copy">
-                {{ $landing->footer_copyright ?? '© ' . date('Y') . ' NEN | National Education Network. All Rights Reserved.' }}
+                {{ landing_get($landing, 'footer_copyright') ?? __('landing.footer.copyright', ['year' => date('Y')]) }}
             </p>
             {{-- <div class="nen-foot__bottom-links">
                 <a href="#">Privacy Policy</a>
@@ -2342,7 +2598,7 @@
                     langMenu.classList.toggle('open');
                 });
             }
-            langMenu && langMenu.querySelectorAll('.translate-trigger').forEach(function(a) {
+            langMenu && langMenu.querySelectorAll('[data-lang]').forEach(function(a) {
                 a.addEventListener('click', function() {
                     if (langLabel) langLabel.textContent = a.dataset.label || 'EN';
                     langMenu.classList.remove('open');
@@ -2582,4 +2838,97 @@
             })();
         })();
     </script>
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" crossorigin=""></script>
+    @if(!empty($collectionPointsJson))
+    <script>
+        (function() {
+            const mapEl = document.getElementById('nenCollectionMap');
+            if (!mapEl || typeof L === 'undefined') return;
+
+            const locations = @json($collectionPointsJson);
+            const slugs = Object.keys(locations);
+            if (!slugs.length) return;
+
+            const copiedLabel = @json(__('landing.collection_points.copied'));
+            const map = L.map('nenCollectionMap', { scrollWheelZoom: false });
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: '&copy; OpenStreetMap'
+            }).addTo(map);
+
+            const markers = {};
+            slugs.forEach(function(slug) {
+                const loc = locations[slug];
+                const icon = L.divIcon({
+                    html: '<i class="fa fa-map-marker" style="color:#017785;font-size:28px;text-shadow:0 1px 3px rgba(0,0,0,.25);"></i>',
+                    className: 'nen-collection-marker',
+                    iconSize: [28, 28],
+                    iconAnchor: [14, 28],
+                    popupAnchor: [0, -28]
+                });
+                markers[slug] = L.marker(loc.coords, { icon: icon }).addTo(map);
+            });
+
+            function focusLocation(slug) {
+                const loc = locations[slug];
+                if (!loc) return;
+
+                document.querySelectorAll('.nen-collection-map__tab').forEach(function(tab) {
+                    const active = tab.dataset.slug === slug;
+                    tab.classList.toggle('is-active', active);
+                    tab.setAttribute('aria-selected', active ? 'true' : 'false');
+                });
+                document.querySelectorAll('.nen-collection-map__details').forEach(function(panel) {
+                    panel.classList.toggle('is-active', panel.dataset.slug === slug);
+                });
+
+                map.setView(loc.coords, 14, { animate: true });
+                if (markers[slug]) {
+                    markers[slug].openPopup();
+                }
+            }
+
+            slugs.forEach(function(slug) {
+                const loc = locations[slug];
+                const popup = (loc.name ? '<strong>' + loc.name + '</strong><br>' : '')
+                    + (loc.address ? loc.address + '<br>' : '')
+                    + (loc.schedule ? loc.schedule : '');
+                markers[slug].bindPopup(popup);
+            });
+
+            document.querySelectorAll('.nen-collection-map__tab').forEach(function(tab) {
+                tab.addEventListener('click', function() {
+                    focusLocation(tab.dataset.slug);
+                });
+            });
+
+            document.querySelectorAll('.nen-collection-map__btn--share').forEach(function(btn) {
+                btn.addEventListener('click', async function() {
+                    const url = btn.dataset.shareUrl;
+                    const title = btn.dataset.shareTitle || document.title;
+                    if (!url) return;
+
+                    if (navigator.share) {
+                        try {
+                            await navigator.share({ title: title, url: url });
+                            return;
+                        } catch (e) { /* fall through to copy */ }
+                    }
+
+                    try {
+                        await navigator.clipboard.writeText(url);
+                        const original = btn.textContent;
+                        btn.textContent = copiedLabel;
+                        setTimeout(function() { btn.textContent = original; }, 2000);
+                    } catch (e) {
+                        window.open(url, '_blank', 'noopener');
+                    }
+                });
+            });
+
+            focusLocation(slugs[0]);
+            setTimeout(function() { map.invalidateSize(); }, 120);
+        })();
+    </script>
+    @endif
 @endpush

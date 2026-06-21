@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ $htmlLang ?? app()->getLocale() }}" dir="{{ $htmlDir ?? (app()->getLocale() === 'ar' ? 'rtl' : 'ltr') }}">
 
 <head>
     <meta charset="utf-8">
@@ -60,7 +60,7 @@
 
 </head>
 
-<body class="index-page @yield('body_class')">
+<body class="index-page @yield('body_class'){{ ($isRtl ?? is_rtl()) ? ' nen-landing-rtl' : '' }}">
 
 {{-- Google Translate mounts here so the widget exists before /translate_a/element.js callback runs (loaded in footer after jQuery) --}}
 <div id="google_translate_element" style="display:none" aria-hidden="true"></div>

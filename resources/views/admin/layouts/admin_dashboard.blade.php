@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="{{ $htmlLang ?? app()->getLocale() }}" dir="{{ $htmlDir ?? (app()->getLocale() === 'ar' ? 'rtl' : 'ltr') }}">
 
 <head>
     <meta charset="utf-8">
@@ -18,7 +18,21 @@
     <link rel="stylesheet"
           href="{{ asset('/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/dist/css/adminlte.min_en.css') }}">
+    <link rel="stylesheet" href="{{ asset('/assets/dist/css/adminlte.min.css') }}">
+    @if(($isRtl ?? is_rtl()))
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+            body, .main-sidebar, .content-wrapper, .form-control { font-family: 'Cairo', sans-serif; }
+            .main-sidebar { right: 0; left: auto; }
+            .content-wrapper, .main-footer { margin-right: 250px; margin-left: 0 !important; }
+            @media (max-width: 991.98px) {
+                .content-wrapper, .main-footer { margin-right: 0; }
+            }
+        </style>
+    @else
+        <link rel="stylesheet" href="{{ asset('/assets/dist/css/adminlte.min_en.css') }}">
+    @endif
     <link rel="stylesheet" href="{{ asset('/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/plugins/daterangepicker/daterangepicker.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/plugins/summernote/summernote-bs4.min.css') }}">

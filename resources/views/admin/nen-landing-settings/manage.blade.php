@@ -46,10 +46,10 @@
                         {{-- ==================== HERO ==================== --}}
                         <h5 class="mt-3">Hero</h5><hr>
                         <div class="row">
-                            <div class="col-md-6"><div class="form-group"><label>Product Title</label><input class="form-control" name="hero_product_title" value="{{ $row->hero_product_title }}"></div></div>
-                            <div class="col-md-6"><div class="form-group"><label>Subtitle</label><input class="form-control" name="hero_subtitle" value="{{ $row->hero_subtitle }}"></div></div>
+                            <x-localized-field name="hero_product_title" label="Product Title" :value="$row->hero_product_title" :value-ar="$row->hero_product_title_ar ?? ''" />
+                            <x-localized-field name="hero_subtitle" label="Subtitle" :value="$row->hero_subtitle" :value-ar="$row->hero_subtitle_ar ?? ''" />
                             <div class="col-md-6"><div class="form-group"><label>Hero Image (fallback)</label><x-file-upload class="form-control" data-folder="nen-landing" name="hero_image-file" /></div></div>
-                            <div class="col-md-3"><div class="form-group"><label>Button Text</label><input class="form-control" name="hero_btn_text" value="{{ $row->hero_btn_text }}"></div></div>
+                            <x-localized-field name="hero_btn_text" label="Button Text" :value="$row->hero_btn_text" :value-ar="$row->hero_btn_text_ar ?? ''" />
                             <div class="col-md-3"><div class="form-group"><label>Button URL</label><input class="form-control" name="hero_btn_url" value="{{ $row->hero_btn_url }}"></div></div>
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -61,7 +61,7 @@
                                     @endif
                                 </div>
                             </div>
-                            <div class="col-md-3"><div class="form-group"><label>Official Partner Label</label><input class="form-control" name="hero_official_label" value="{{ $row->hero_official_label }}" placeholder="Official Partner"></div></div>
+                            <x-localized-field name="hero_official_label" label="Official Partner Label" :value="$row->hero_official_label" :value-ar="$row->hero_official_label_ar ?? ''" placeholder="Official Partner" />
                             <div class="col-md-3 d-flex align-items-end"><p class="text-muted small mb-3"><a href="{{ route('admin.nen-landing-items.index', 'partners') }}">→ Manage partner logos &amp; names</a></p></div>
                             <div class="col-md-12">
                                 <div class="form-group">
@@ -82,15 +82,17 @@
                         {{-- ==================== ABOUT ==================== --}}
                         <h5 class="mt-3">About NEN</h5><hr>
                         <div class="row">
-                            <div class="col-md-4"><div class="form-group"><label>Label</label><input class="form-control" name="about_label" value="{{ $row->about_label }}"></div></div>
-                            <div class="col-md-8"><div class="form-group"><label>Title</label><input class="form-control" name="about_title" value="{{ $row->about_title }}"></div></div>
-                            <div class="col-md-12"><div class="form-group"><label>Description</label><textarea class="form-control" name="about_description" rows="4">{{ $row->about_description }}</textarea></div></div>
+                            <x-localized-field name="about_label" label="Label" :value="$row->about_label" :value-ar="$row->about_label_ar ?? ''" />
+                            <x-localized-field name="about_title" label="Title" :value="$row->about_title" :value-ar="$row->about_title_ar ?? ''" />
+                            <div class="col-md-12">
+                                <x-localized-field name="about_description" label="Description" type="textarea" :rows="4" :value="$row->about_description" :value-ar="$row->about_description_ar ?? ''" />
+                            </div>
                             <div class="col-md-3"><div class="form-group"><label>Metric 1 Value</label><input class="form-control" name="about_metric1_value" value="{{ $row->about_metric1_value }}"></div></div>
-                            <div class="col-md-3"><div class="form-group"><label>Metric 1 Label</label><input class="form-control" name="about_metric1_label" value="{{ $row->about_metric1_label }}"></div></div>
+                            <x-localized-field name="about_metric1_label" label="Metric 1 Label" :value="$row->about_metric1_label" :value-ar="$row->about_metric1_label_ar ?? ''" />
                             <div class="col-md-3"><div class="form-group"><label>Metric 2 Value</label><input class="form-control" name="about_metric2_value" value="{{ $row->about_metric2_value }}"></div></div>
-                            <div class="col-md-3"><div class="form-group"><label>Metric 2 Label</label><input class="form-control" name="about_metric2_label" value="{{ $row->about_metric2_label }}"></div></div>
+                            <x-localized-field name="about_metric2_label" label="Metric 2 Label" :value="$row->about_metric2_label" :value-ar="$row->about_metric2_label_ar ?? ''" />
                             <div class="col-md-3"><div class="form-group"><label>Badge Value</label><input class="form-control" name="about_stat_value" value="{{ $row->about_stat_value }}"></div></div>
-                            <div class="col-md-3"><div class="form-group"><label>Badge Label</label><input class="form-control" name="about_stat_label" value="{{ $row->about_stat_label }}"></div></div>
+                            <x-localized-field name="about_stat_label" label="Badge Label" :value="$row->about_stat_label" :value-ar="$row->about_stat_label_ar ?? ''" />
                             <div class="col-md-4"><div class="form-group"><label>Collage Image (Top)</label><x-file-upload class="form-control" data-folder="nen-landing" name="about_image_main-file" /></div></div>
                             <div class="col-md-4"><div class="form-group"><label>Collage Image (Bottom)</label><x-file-upload class="form-control" data-folder="nen-landing" name="about_image_secondary-file" /></div></div>
                             <div class="col-md-4"><div class="form-group"><label>Collage Image (Side)</label><x-file-upload class="form-control" data-folder="nen-landing" name="about_image_side-file" /></div></div>
@@ -99,8 +101,8 @@
                         {{-- ==================== FEATURES (WHY UZBEKISTAN) ==================== --}}
                         <h5 class="mt-3">Why Uzbekistan (Feature Cards)</h5><hr>
                         <div class="row">
-                            <div class="col-md-6"><div class="form-group"><label>Section Title</label><input class="form-control" name="features_title" value="{{ $row->features_title }}"></div></div>
-                            <div class="col-md-6"><div class="form-group"><label>Section Subtitle</label><input class="form-control" name="features_subtitle" value="{{ $row->features_subtitle }}"></div></div>
+                            <x-localized-field name="features_title" label="Section Title" :value="$row->features_title" :value-ar="$row->features_title_ar ?? ''" />
+                            <x-localized-field name="features_subtitle" label="Section Subtitle" :value="$row->features_subtitle" :value-ar="$row->features_subtitle_ar ?? ''" />
                         </div>
                         <p class="text-muted small"><a href="{{ route('admin.nen-landing-items.index', 'feature-cards') }}">→ Manage Feature Cards</a></p>
 
@@ -184,9 +186,15 @@
                         {{-- ==================== FOOTER / HEADER / NAV ==================== --}}
                         <h5 class="mt-3">Footer, Header &amp; Navigation</h5><hr>
                         <div class="row">
-                            @foreach(['footer_phone','footer_copyright','footer_collaboration_text','footer_collaboration_url','header_register_text','header_register_url','nav_about_url','nav_events_url','nav_partners_url','nav_contact_url'] as $field)
+                            <div class="col-md-12">
+                                <x-localized-field name="footer_tagline" label="Footer Tagline" :value="$row->footer_tagline ?? ''" :value-ar="$row->footer_tagline_ar ?? ''" />
+                            </div>
+                            @foreach(['footer_phone','footer_collaboration_url','header_register_url','nav_about_url','nav_events_url','nav_partners_url','nav_contact_url'] as $field)
                                 <div class="col-md-6"><div class="form-group"><label>{{ str_replace('_',' ', ucfirst($field)) }}</label><input class="form-control" name="{{ $field }}" value="{{ $row->$field }}"></div></div>
                             @endforeach
+                            <x-localized-field name="footer_copyright" label="Footer Copyright" :value="$row->footer_copyright" :value-ar="$row->footer_copyright_ar ?? ''" />
+                            <x-localized-field name="footer_collaboration_text" label="Footer Collaboration Text" :value="$row->footer_collaboration_text" :value-ar="$row->footer_collaboration_text_ar ?? ''" />
+                            <x-localized-field name="header_register_text" label="Header Register Text" :value="$row->header_register_text" :value-ar="$row->header_register_text_ar ?? ''" />
                         </div>
 
                     </form>

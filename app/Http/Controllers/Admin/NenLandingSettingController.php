@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Event;
 use App\Models\NenLandingSetting;
 use App\Traits\CommonTrait;
+use App\Traits\LocalizesValidationRules;
 use Illuminate\Http\Request;
 
 class NenLandingSettingController extends Controller
 {
-    use CommonTrait;
+    use CommonTrait, LocalizesValidationRules;
 
     public function edit()
     {
@@ -28,7 +29,7 @@ class NenLandingSettingController extends Controller
 
     public function update(Request $request)
     {
-        $data = $request->validate([
+        $rules = [
             // Hero
             'hero_product_title'    => 'nullable|string|max:255',
             'hero_subtitle'         => 'nullable|string|max:500',
@@ -76,6 +77,7 @@ class NenLandingSettingController extends Controller
             'footer_copyright'          => 'nullable|string|max:500',
             'footer_collaboration_text' => 'nullable|string|max:500',
             'footer_collaboration_url'  => 'nullable|string|max:500',
+            'footer_tagline'            => 'nullable|string|max:500',
 
             // Header / Nav
             'header_register_text' => 'nullable|string|max:100',
@@ -123,7 +125,24 @@ class NenLandingSettingController extends Controller
             'trusted_agencies_title'    => 'nullable|string|max:255',
             'trusted_agencies_subtitle' => 'nullable|string|max:500',
             'university_logos_title'    => 'nullable|string|max:255',
-        ]);
+        ];
+
+        $data = $request->validate($this->localizeRules($rules, [
+            'hero_product_title', 'hero_subtitle', 'hero_btn_text', 'hero_official_label',
+            'about_label', 'about_title', 'about_description', 'about_stat_label',
+            'about_metric1_label', 'about_metric2_label',
+            'highlights_title', 'highlights_subtitle', 'archive_title', 'archive_subtitle', 'archive_btn_text',
+            'partners_title', 'faq_title', 'media_title', 'contact_title', 'contact_description',
+            'footer_copyright', 'footer_collaboration_text', 'footer_tagline',
+            'header_register_text',
+            'features_title', 'features_subtitle',
+            'how_it_works_title', 'how_it_works_subtitle', 'how_it_works_btn_text',
+            'milestones_title', 'milestones_subtitle', 'milestones_description', 'milestones_cta_text',
+            'agencies_title', 'agencies_subtitle',
+            'documents_title', 'documents_subtitle',
+            'trusted_agencies_title', 'trusted_agencies_subtitle',
+            'university_logos_title',
+        ]));
 
         $row = NenLandingSetting::getInstance();
 

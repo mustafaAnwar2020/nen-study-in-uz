@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use App\Traits\ModelsCommonTrait;
+use App\Traits\HasLocalizedAttributes;
 use Illuminate\Database\Eloquent\Model;
 
 class NenLandingDocument extends Model
 {
-    use ModelsCommonTrait;
+    use ModelsCommonTrait, HasLocalizedAttributes;
 
     protected $guarded = [];
 

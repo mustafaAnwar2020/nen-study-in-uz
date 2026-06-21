@@ -17,7 +17,10 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TestDataSeeder::class,
             FigmaEventLandingSeeder::class,
+            NenLandingPageSeeder::class,
             NenLandingSeeder::class,
+            NenLandingArabicSeeder::class,
+            EgyptCollectionPointsSeeder::class,
         ]);
     }
 }

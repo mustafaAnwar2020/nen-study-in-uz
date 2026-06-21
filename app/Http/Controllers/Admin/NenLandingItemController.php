@@ -14,11 +14,12 @@ use App\Models\NenLandingMediaItem;
 use App\Models\NenLandingPartnerItem;
 use App\Models\NenLandingUniversityLogo;
 use App\Traits\CommonTrait;
+use App\Traits\LocalizesValidationRules;
 use Illuminate\Http\Request;
 
 class NenLandingItemController extends Controller
 {
-    use CommonTrait;
+    use CommonTrait, LocalizesValidationRules;
 
     protected array $resources = [
         'hero-slides' => [
@@ -219,7 +220,7 @@ class NenLandingItemController extends Controller
             $rules += ['image' => 'nullable|string', 'caption' => 'nullable|string|max:255'];
         }
 
-        $data = $request->validate($rules);
+        $data = $request->validate($this->localizeRules($rules, $this->translatableFields($resource)));
         $data['is_active']   = $request->boolean('is_active');
         $data['sort_order']  = (int) ($request->sort_order ?? 0);
 
@@ -255,5 +256,24 @@ class NenLandingItemController extends Controller
         $row->delete();
         return redirect()->route('admin.nen-landing-items.index', $resource)
             ->with('success', __('messages.deleted'));
+    }
+
+    /** @return list<string> */
+    protected function translatableFields(string $resource): array
+    {
+        return match ($resource) {
+            'hero-slides'          => ['title', 'subtitle', 'btn_text'],
+            'partners'             => ['name', 'description'],
+            'events'               => ['title', 'description'],
+            'faqs'                 => ['question', 'answer'],
+            'media'                => ['caption'],
+            'feature-cards'        => ['stat_label', 'title', 'description'],
+            'how-it-works'         => ['title', 'description'],
+            'translation-agencies' => ['name', 'service_description', 'location'],
+            'trusted-agencies'     => ['name', 'service_description', 'location'],
+            'documents'            => ['title', 'description'],
+            'university-logos'     => ['name'],
+            default                => [],
+        };
     }
 }
