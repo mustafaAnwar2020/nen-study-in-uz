@@ -83,14 +83,35 @@
             z-index: 1001;
         }
 
-        /* Keep nav + language menu above the hero image (img1 is z-index: 9 in home.css) */
-        body.nen-landing-body #hero .row-top4 {
-            z-index: 11 !important;
+        /* Hero stacking: decorative circles (back) → image → text → nav (front) */
+        body.nen-landing-body #hero .row-top4,
+        body.nen-landing-body #hero .row5,
+        body.nen-landing-body #hero .row9,
+        body.nen-landing-body #hero .row10,
+        body.nen-landing-body #hero .row-bottom3 {
+            z-index: 2 !important;
             overflow: visible;
         }
 
-        body.nen-landing-body #hero .row2 {
+        body.nen-landing-body #hero .row-a {
+            position: relative;
+            z-index: 1 !important;
+            pointer-events: none;
+        }
+
+        body.nen-landing-body #hero .img1 {
+            z-index: 10 !important;
+        }
+
+        body.nen-landing-body #hero .col1 {
             z-index: 11 !important;
+        }
+
+        body.nen-landing-body #hero .nen-hero-nav {
+            position: absolute !important;
+            z-index: 20 !important;
+            top: 24px !important;
+            left: 160px !important;
             overflow: visible;
         }
 
@@ -998,15 +1019,19 @@
             gap: 20px;
             border-radius: 20px;
         }
-        body.nen-landing-body .col-top1 > .row-top4 { order: 1; }
+        body.nen-landing-body .col-top1 > .row-top4 { order: 0; display: none !important; }
+        body.nen-landing-body .col-top1 > .nen-hero-nav { order: 1; }
         body.nen-landing-body .col-top1 > .row5 { order: 2; }
+        body.nen-landing-body .col-top1 > .row9,
+        body.nen-landing-body .col-top1 > .row10 { order: 0; display: none !important; }
         body.nen-landing-body .col-top1 > .img1 { order: 3; }
         body.nen-landing-body .col-top1 > .row-bottom3 { order: 4; }
 
-        body.nen-landing-body .img1 {
+        body.nen-landing-body #hero .img1 {
             position: static !important;
             top: auto !important;
             left: auto !important;
+            z-index: auto !important;
             width: 100% !important;
             max-width: 100% !important;
             margin: 0 !important;
@@ -1014,14 +1039,16 @@
         }
 
         /* Nav: compact white pill + hamburger (matches desktop bar, saves space) */
-        body.nen-landing-body .row-top4 {
+        body.nen-landing-body #hero .row-top4 {
             position: static !important;
             padding-top: 0 !important;
         }
-        body.nen-landing-body .row2 {
+        body.nen-landing-body #hero .row2,
+        body.nen-landing-body #hero .nen-hero-nav {
             position: static !important;
             top: auto !important;
             left: auto !important;
+            z-index: auto !important;
             width: 100%;
             display: grid !important;
             grid-template-columns: auto 1fr auto;
@@ -1032,6 +1059,15 @@
             background: #fff !important;
             padding: 10px 14px !important;
             border-radius: 100px;
+        }
+        body.nen-landing-body #hero .row5,
+        body.nen-landing-body #hero .row9,
+        body.nen-landing-body #hero .row10,
+        body.nen-landing-body #hero .row-bottom3 {
+            z-index: auto !important;
+        }
+        body.nen-landing-body #hero .col1 {
+            z-index: auto !important;
         }
         body.nen-landing-body .row2 > .nen {
             grid-column: 1;
@@ -1628,64 +1664,64 @@
                     @endfor
                 </div>
 
-                {{-- Floating Navigation Bar --}}
-                <div class="row2">
-                    <img src="{{ asset($settings['media']->logo) }}" class="nen" alt="NEN" />
-
-                    <button class="nen-nav-toggle" id="nenNavToggle" type="button" aria-expanded="false"
-                        aria-controls="nenNavLinks" aria-label="Toggle menu">
-                        <span class="nen-nav-toggle__bar"></span>
-                        <span class="nen-nav-toggle__bar"></span>
-                        <span class="nen-nav-toggle__bar"></span>
-                    </button>
-
-                    <div class="row3 nen-nav-links" id="nenNavLinks">
-                        <div class="col-left1">
-                            <a href="#hero" class="text-home">{{ __('landing.nav.home') }}</a>
-                            <div class="circle-black-bottom"></div>
-                        </div>
-                        <a href="{{ $landing->nav_about_url ?? '#about' }}" class="text-about-program">{{ __('landing.nav.about_program') }}</a>
-                        <a href="{{ $landing->nav_events_url ?? '#why-uzbekistan' }}"
-                            class="text-why-uzbekistan-question">{{ __('landing.nav.why_uzbekistan') }}</a>
-                        <a href="{{ $landing->nav_partners_url ?? '#how-it-works' }}" class="text-about-nen">{{ __('landing.nav.about_nen') }}</a>
-                        <a href="{{ $landing->nav_contact_url ?? '#faq' }}" class="text-right">{{ __('landing.nav.faq') }}</a>
-                    </div>
-
-                    <div class="row-right2">
-                        {{-- Language Switcher --}}
-                        <div class="nen-lang-dropdown">
-                            <button class="nen-lang-dropdown__toggle" id="nenLangBtn" type="button">
-                                <img src="{{ asset('site/home/assets/globe.png') }}" class="globe" alt="Language" />
-                                <span id="nenCurrentLang">{{ app()->getLocale() === 'ar' ? 'AR' : 'EN' }}</span>
-                            </button>
-                            <div class="nen-lang-dropdown__menu" id="nenLangMenu">
-                                <a class="nen-lang-dropdown__item {{ app()->getLocale() === 'en' ? 'is-active' : '' }}"
-                                    href="{{ route('site.locale.switch', 'en') }}" data-lang="en" data-label="EN">
-                                    <span class="flag-icon flag-icon-us"></span> {{ __('landing.language.english') }}
-                                </a>
-                                <a class="nen-lang-dropdown__item {{ app()->getLocale() === 'ar' ? 'is-active' : '' }}"
-                                    href="{{ route('site.locale.switch', 'ar') }}" data-lang="ar" data-label="AR">
-                                    <span class="flag-icon flag-icon-sa"></span> {{ __('landing.language.arabic') }}
-                                </a>
-                            </div>
-                        </div>
-
-                        {{-- Apply / Register Button --}}
-                        @if ($landing->header_register_url)
-                            <a href="{{ $landing->header_register_url }}" class="card5">
-                                <img src="{{ asset('site/home/assets/card-img.png') }}" class="card-img2" />
-                                <p class="card-text-left1">{{ landing_get($landing, 'header_register_text') ?? __('landing.nav.apply_now') }}</p>
-                                <img src="{{ asset('site/home/assets/card-lucide-arrow.png') }}"
-                                    class="card-lucide-arrow1" />
-                            </a>
-                        @endif
-                    </div>
-                </div>
-
                 <div class="row-a row4">
                     @for ($i = 1; $i <= 12; $i++)
                         <div class="row-circle row-circle{{ $i }}"></div>
                     @endfor
+                </div>
+            </div>
+
+            {{-- Floating Navigation Bar (sibling of decor rows so z-index stays above hero image) --}}
+            <div class="row2 nen-hero-nav">
+                <img src="{{ asset($settings['media']->logo) }}" class="nen" alt="NEN" />
+
+                <button class="nen-nav-toggle" id="nenNavToggle" type="button" aria-expanded="false"
+                    aria-controls="nenNavLinks" aria-label="Toggle menu">
+                    <span class="nen-nav-toggle__bar"></span>
+                    <span class="nen-nav-toggle__bar"></span>
+                    <span class="nen-nav-toggle__bar"></span>
+                </button>
+
+                <div class="row3 nen-nav-links" id="nenNavLinks">
+                    <div class="col-left1">
+                        <a href="#hero" class="text-home">{{ __('landing.nav.home') }}</a>
+                        <div class="circle-black-bottom"></div>
+                    </div>
+                    <a href="{{ $landing->nav_about_url ?? '#about' }}" class="text-about-program">{{ __('landing.nav.about_program') }}</a>
+                    <a href="{{ $landing->nav_events_url ?? '#why-uzbekistan' }}"
+                        class="text-why-uzbekistan-question">{{ __('landing.nav.why_uzbekistan') }}</a>
+                    <a href="{{ $landing->nav_partners_url ?? '#how-it-works' }}" class="text-about-nen">{{ __('landing.nav.about_nen') }}</a>
+                    <a href="{{ $landing->nav_contact_url ?? '#faq' }}" class="text-right">{{ __('landing.nav.faq') }}</a>
+                </div>
+
+                <div class="row-right2">
+                    {{-- Language Switcher --}}
+                    <div class="nen-lang-dropdown">
+                        <button class="nen-lang-dropdown__toggle" id="nenLangBtn" type="button">
+                            <img src="{{ asset('site/home/assets/globe.png') }}" class="globe" alt="Language" />
+                            <span id="nenCurrentLang">{{ app()->getLocale() === 'ar' ? 'AR' : 'EN' }}</span>
+                        </button>
+                        <div class="nen-lang-dropdown__menu" id="nenLangMenu">
+                            <a class="nen-lang-dropdown__item {{ app()->getLocale() === 'en' ? 'is-active' : '' }}"
+                                href="{{ route('site.locale.switch', 'en') }}" data-lang="en" data-label="EN">
+                                <span class="flag-icon flag-icon-us"></span> {{ __('landing.language.english') }}
+                            </a>
+                            <a class="nen-lang-dropdown__item {{ app()->getLocale() === 'ar' ? 'is-active' : '' }}"
+                                href="{{ route('site.locale.switch', 'ar') }}" data-lang="ar" data-label="AR">
+                                <span class="flag-icon flag-icon-sa"></span> {{ __('landing.language.arabic') }}
+                            </a>
+                        </div>
+                    </div>
+
+                    {{-- Apply / Register Button --}}
+                    @if ($landing->header_register_url)
+                        <a href="{{ $landing->header_register_url }}" class="card5">
+                            <img src="{{ asset('site/home/assets/card-img.png') }}" class="card-img2" />
+                            <p class="card-text-left1">{{ landing_get($landing, 'header_register_text') ?? __('landing.nav.apply_now') }}</p>
+                            <img src="{{ asset('site/home/assets/card-lucide-arrow.png') }}"
+                                class="card-lucide-arrow1" />
+                        </a>
+                    @endif
                 </div>
             </div>
 
