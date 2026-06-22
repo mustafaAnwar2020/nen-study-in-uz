@@ -18,17 +18,11 @@
     <link rel="stylesheet"
           href="{{ asset('/assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/dist/css/adminlte.min.css') }}">
     @if(($isRtl ?? is_rtl()))
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.rtl.min.css" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('/assets/dist/css/adminlte.min_ar.css') }}">
         <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
         <style>
             body, .main-sidebar, .content-wrapper, .form-control { font-family: 'Cairo', sans-serif; }
-            .main-sidebar { right: 0; left: auto; }
-            .content-wrapper, .main-footer { margin-right: 250px; margin-left: 0 !important; }
-            @media (max-width: 991.98px) {
-                .content-wrapper, .main-footer { margin-right: 0; }
-            }
         </style>
     @else
         <link rel="stylesheet" href="{{ asset('/assets/dist/css/adminlte.min_en.css') }}">
@@ -38,7 +32,7 @@
     <link rel="stylesheet" href="{{ asset('/assets/plugins/summernote/summernote-bs4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('/assets/admin_styles.css') }}?v=1">
+    <link rel="stylesheet" href="{{ asset('/assets/admin_styles.css') }}?v=2">
     <style>
         /*media print*/
         @media print {

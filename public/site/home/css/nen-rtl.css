@@ -31,14 +31,26 @@ html[dir="rtl"] body.nen-landing-body #documents .card-b .card-text2 {
     text-align: right;
 }
 
-html[dir="rtl"] body.nen-landing-body .nen-foot__chat {
-    margin-left: 0;
-    margin-right: auto;
-}
 
 html[dir="rtl"] body.nen-landing-body .row12 .col-right1 {
     margin-left: 0;
     margin-right: auto;
+}
+
+html[dir="rtl"] body.nen-landing-body #hero .nen-hero-nav .nen {
+    width: auto;
+    max-width: 130px;
+    height: 48px;
+    object-fit: contain;
+    object-position: right center;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__logo {
+    width: auto;
+    max-width: 130px;
+    height: 48px;
+    object-fit: contain;
+    object-position: right center;
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-scroll-wrap .row15,
@@ -58,16 +70,18 @@ html[dir="rtl"] body.nen-landing-body .card-lucide-arrow2 {
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-foot__cta {
-    overflow: visible;
+    overflow-x: hidden;
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-foot__cta-title {
     text-transform: none;
     letter-spacing: 0;
     line-height: 1.12;
-    white-space: normal;
     font-size: clamp(40px, 11vw, 120px);
-    overflow: visible;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    word-spacing: 0.04em;
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-lang-dropdown__menu {
@@ -75,9 +89,39 @@ html[dir="rtl"] body.nen-landing-body .nen-lang-dropdown__menu {
     left: 0;
 }
 
-html[dir="rtl"] body.nen-landing-body .nen-step__front::after {
+html[dir="rtl"] body.nen-landing-body .nen-step__card,
+html[dir="rtl"] body.nen-landing-body .nen-step__head,
+html[dir="rtl"] body.nen-landing-body .nen-step__desc {
+    text-align: right;
+    align-items: flex-start;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-step__accent {
+    left: auto;
+    right: 0;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-step__chev {
     right: auto;
-    left: 18px;
+    left: 20px;
+}
+
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .row-text2,
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-text4,
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-text1 {
+    text-align: right;
+}
+
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card6,
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-a,
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-container1,
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-container3 {
+    text-align: right;
+    align-items: flex-start;
+}
+
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .container-frame-right {
+    align-items: flex-start;
 }
 
 @media (max-width: 768px) {

@@ -15,20 +15,43 @@ class Location extends Model
 
     public const TYPE_AUTHORIZED = 'Authorized Offices';
 
-    /** Slugs for Egypt ETS collection points shown on the landing map. */
+    /** @deprecated Use all active geocoded locations for the landing map. */
     public const COLLECTION_POINT_SLUGS = [
         'global-ibs-nasr-city',
         'nen-6-october',
         'dar-al-tanmya-mansoura',
     ];
 
+    public function countryLabel(): string
+    {
+        $code = strtolower((string) $this->country_code);
+        $key = 'landing.collection_points.countries.' . $code;
+        $translated = __($key);
+
+        if ($translated !== $key) {
+            return $translated;
+        }
+
+        return config('countries.' . $code) ?? strtoupper($code);
+    }
+
     public static function collectionPoints()
     {
+        $countryOrder = ['eg', 'om', 'ae', 'sa', 'az', 'uz', 'kg'];
+
         return static::query()
             ->active()
-            ->whereIn('slug', self::COLLECTION_POINT_SLUGS)
+            ->whereNotNull('latitude')
+            ->whereNotNull('longitude')
+            ->where('latitude', '!=', '')
+            ->where('longitude', '!=', '')
             ->get()
-            ->sortBy(fn ($location) => array_search($location->slug, self::COLLECTION_POINT_SLUGS, true))
+            ->sortBy(function ($location) use ($countryOrder) {
+                $code = strtolower((string) $location->country_code);
+                $countryIdx = array_search($code, $countryOrder, true);
+
+                return ($countryIdx !== false ? $countryIdx : 999) * 1000 + $location->id;
+            })
             ->values();
     }
 

@@ -28,9 +28,9 @@ class NenLandingArabicSeeder extends Seeder
     private function seedSettingsArabic(): void
     {
         NenLandingSetting::getInstance()->update([
-            'hero_product_title_ar'  => 'أوزبكستان.',
+            'hero_product_title_ar'  => 'أوزباكستان.',
             'hero_subtitle_ar'       => 'انضم إلى شبكة التعليم المثالية حيث يلتقي الطلاب وأفضل الجامعات والبرامج العالمية! استعد لبدء نجاحك الأكاديمي.',
-            'hero_btn_text_ar'       => 'اعثر على نقطة التجميع',
+            'hero_btn_text_ar'       => 'مراكز القبول',
             'hero_official_label_ar' => 'شريك رسمي',
             'about_label_ar'         => 'عن البرنامج',
             'about_title_ar'         => 'عن الدراسة في أوزبكستان؟',
@@ -41,13 +41,13 @@ class NenLandingArabicSeeder extends Seeder
             'header_register_text_ar' => 'قدّم الآن',
             'features_title_ar'            => 'لماذا الدراسة في أوزبكستان؟',
             'features_subtitle_ar'         => 'اكتشف مزايا التعليم العالمي في أوزبكستان',
-            'how_it_works_title_ar'        => 'كيف يعمل',
-            'how_it_works_subtitle_ar'     => 'خطوات بسيطة من التقديم إلى الوصول. قبول سريع، مستقبل معتمد.',
-            'how_it_works_btn_text_ar'     => 'قدّم طلب تأشيرة طالب',
-            'milestones_title_ar'          => 'البوابة العالمية للتعلم — شبكة التعليم الوطنية',
-            'milestones_subtitle_ar'       => 'شبكة تعليم دولية تقدم أفضل الخدمات في شراكات الجامعات واستقطاب الطلاب والمشاريع الأكاديمية المعتمدة عالمياً.',
-            'milestones_description_ar'    => 'مهمتنا جعل التعليم الدولي أكثر سهولة. انضم إلى مجتمع أكاديمي عالمي مزدهر مع برامج جامعية موثّقة وقبول مباشر وإرشاد من مرشدين ذوي خبرة.',
-            'milestones_cta_text_ar'       => 'اعثر على نقطة التجميع',
+            'how_it_works_title_ar'        => 'رحلتك الدراسية تبدأ هنا',
+            'how_it_works_subtitle_ar'     => 'من التسجيل إلى الحصول على التأشيرة، نرافقك خطوة بخطوة نحو الدراسة في أوزبكستان.',
+            'how_it_works_btn_text_ar'     => 'قدّم الآن',
+            'milestones_title_ar'          => 'عن NEN',
+            'milestones_subtitle_ar'       => '',
+            'milestones_description_ar'    => '',
+            'milestones_cta_text_ar'       => 'مراكز القبول',
             'agencies_title_ar'            => 'وكالات الترجمة المعتمدة',
             'agencies_subtitle_ar'         => 'ترجم مستنداتك الرسمية بسرعة وأمان عبر شبكة مكاتب الترجمة المعتمدة والموثوقة.',
             'documents_title_ar'           => 'مستندات التقديم المطلوبة',
@@ -56,8 +56,8 @@ class NenLandingArabicSeeder extends Seeder
             'trusted_agencies_subtitle_ar' => 'تواصل مع مستشارين معتمدين لتبسيط قبولك الجامعي.',
             'faq_title_ar'                 => 'الأسئلة المتكررة',
             'university_logos_title_ar'    => 'شركاء النجاح',
-            'footer_tagline_ar'            => 'شبكة التعليم الوطنية — بوابتك الرسمية للدراسة في جامعات عالمية المستوى في أوزبكستان.',
-            'footer_copyright_ar'          => '© ' . date('Y') . ' NEN | شبكة التعليم الوطنية. جميع الحقوق محفوظة.',
+            'footer_tagline_ar'            => 'الشبكة الأهلية للتعليم (NEN)، الشريك الرسمي لوزارة التعليم العالي ومبادرة "الدراسة في أوزبكستان" في الشرق الأوسط، تربط الطلاب بجامعات معترف بها دوليًا وتوفر لهم فرصًا تعليمية متميزة في مختلف أنحاء أوزبكستان.',
+            'footer_copyright_ar'          => 'Copyright © ' . date('Y') . ' NEN | National Education Network',
         ]);
     }
 
@@ -79,64 +79,64 @@ class NenLandingArabicSeeder extends Seeder
     private function seedFeatureCardsArabic(): void
     {
         $map = [
-            'Quality Education' => [
+            0 => [
                 'stat_label_ar'  => 'جامعات',
                 'title_ar'       => 'تعليم عالي الجودة',
-                'description_ar' => 'جامعات معترف بها دولياً مع حرم جامعي حديث وبرامج باللغة الإنجليزية.',
+                'description_ar' => 'جامعات معترف بها دوليًا، توفر بيئة تعليمية حديثة وبرامج أكاديمية متنوعة باللغة الإنجليزية.',
             ],
-            'Affordable Costs' => [
+            1 => [
                 'stat_label_ar'  => 'توفير في التكاليف',
-                'title_ar'       => 'تكاليف معقولة',
-                'description_ar' => 'يمكن للطلاب توفير ما يصل إلى 50٪ من الرسوم الدراسية ونفقات المعيشة مقارنة ببلدان أخرى.',
+                'title_ar'       => 'تكاليف دراسية ومعيشية ميسرة',
+                'description_ar' => 'يمكن للطلاب توفير ما يصل إلى 50٪ من تكاليف الدراسة والمعيشة مقارنة بالعديد من الوجهات التعليمية الأخرى.',
             ],
-            'Safe & Welcoming' => [
+            2 => [
+                'stat_label_ar'  => 'جنسيات',
+                'title_ar'       => 'بيئة دولية متنوعة',
+                'description_ar' => 'مجتمع طلابي دولي متنامٍ يضم طلابًا من مختلف الجنسيات، مع تزايد عدد البرامج المقدمة باللغة الإنجليزية.',
+            ],
+            3 => [
                 'stat_label_ar'  => 'مؤشر الأمان',
-                'title_ar'       => 'آمنة ومرحّبة',
-                'description_ar' => 'بلد آمن ومرحّب بتراث ثقافي غني للطلاب الدوليين.',
-            ],
-            'International Environment' => [
-                'stat_label_ar'  => 'دول',
-                'title_ar'       => 'بيئة دولية',
-                'description_ar' => 'مجتمع طلابي دولي مرحّب وعدد متزايد من البرامج باللغة الإنجليزية.',
+                'title_ar'       => 'بيئة آمنة ومضيافة',
+                'description_ar' => 'دولة آمنة ومرحبة بالطلاب الدوليين، تجمع بين جودة الحياة والتراث الثقافي الغني والتجربة التعليمية المتميزة.',
             ],
         ];
 
-        foreach ($map as $title => $ar) {
-            NenLandingFeatureCard::query()->where('title', $title)->update($ar);
+        foreach ($map as $sortOrder => $ar) {
+            NenLandingFeatureCard::query()->where('sort_order', $sortOrder)->update($ar);
         }
     }
 
     private function seedHowItWorksArabic(): void
     {
         $map = [
-            'Register Online' => [
-                'title_ar'       => 'التسجيل عبر الإنترنت',
+            1 => [
+                'title_ar'       => 'التسجيل',
                 'description_ar' => 'أنشئ حسابك على بوابة الدراسة في أوزبكستان.',
             ],
-            'Choose University' => [
-                'title_ar'       => 'اختر الجامعة',
-                'description_ar' => 'استكشف الجامعات والبرامج على البوابة واختر حتى 5 جامعات وبرامج.',
+            2 => [
+                'title_ar'       => 'اختيار التخصص والجامعة',
+                'description_ar' => 'اختر الجامعة والتخصص المناسبين لأهدافك الأكاديمية.',
             ],
-            'Prepare Documents' => [
-                'title_ar'       => 'جهّز المستندات',
-                'description_ar' => 'جهّز وأرسل المستندات المطلوبة عبر نقاط تجميع NEN.',
+            3 => [
+                'title_ar'       => 'تقديم المستندات',
+                'description_ar' => 'قم بتجهيز وتسليم المستندات المطلوبة من خلال مراكز القبول المعتمدة.',
             ],
-            'Visit a Collection Point' => [
-                'title_ar'       => 'زيارة نقطة التجميع',
-                'description_ar' => 'تتحقق NEN من مستنداتك وتنسق مع الجهات المعنية.',
+            4 => [
+                'title_ar'       => 'التحقق من المستندات',
+                'description_ar' => 'نتولى مراجعة المستندات والتحقق منها والتنسيق مع الجهات المختصة.',
             ],
-            'Verify' => [
-                'title_ar'       => 'التحقق',
-                'description_ar' => 'استلم تحديثات القبول ودعم التقديم.',
+            5 => [
+                'title_ar'       => 'إجراءات القبول',
+                'description_ar' => 'تابع حالة طلبك واستلم تحديثات القبول والدعم اللازم خلال العملية.',
             ],
-            'Admission Follow-Up' => [
-                'title_ar'       => 'متابعة القبول',
-                'description_ar' => 'أكمل طلب التأشيرة واستعد لرحلة دراستك.',
+            6 => [
+                'title_ar'       => 'الحصول على التأشيرة',
+                'description_ar' => 'استكمل إجراءات التأشيرة واستعد لبدء رحلتك الدراسية في أوزبكستان.',
             ],
         ];
 
-        foreach ($map as $title => $ar) {
-            NenLandingHowItWorksStep::query()->where('title', $title)->update($ar);
+        foreach ($map as $stepNumber => $ar) {
+            NenLandingHowItWorksStep::query()->where('step_number', $stepNumber)->update($ar);
         }
     }
 

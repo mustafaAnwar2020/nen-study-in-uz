@@ -205,6 +205,24 @@ class SiteController extends Controller
             ->get();
 
         $collectionPoints = Location::collectionPoints();
+        $collectionPointsByCountry = $collectionPoints->groupBy(
+            fn ($location) => strtolower((string) $location->country_code)
+        );
+        $countryOrder = ['eg', 'om', 'ae', 'sa', 'az', 'uz', 'kg'];
+        $collectionCountries = $collectionPointsByCountry
+            ->map(function ($points, $code) {
+                return [
+                    'code'  => $code,
+                    'label' => $points->first()->countryLabel(),
+                    'slugs' => $points->pluck('slug')->values()->all(),
+                ];
+            })
+            ->sortBy(function ($country) use ($countryOrder) {
+                $idx = array_search($country['code'], $countryOrder, true);
+
+                return $idx !== false ? $idx : 999;
+            })
+            ->values();
         $collectionPointsJson = $collectionPoints->mapWithKeys(function ($location) {
             return [
                 $location->slug => [
@@ -217,7 +235,7 @@ class SiteController extends Controller
                     'schedule'    => $location->schedule,
                     'coords'      => [(float) $location->latitude, (float) $location->longitude],
                     'mapUrl'      => $location->mapsShareUrl(),
-                    'cityLabel'   => __('landing.collection_points.cities.' . $location->slug),
+                    'countryCode' => strtolower((string) $location->country_code),
                 ],
             ];
         })->toArray();

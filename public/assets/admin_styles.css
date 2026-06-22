@@ -3,6 +3,18 @@ table.dataTable {
     margin-bottom: unset !important;
 }
 
+.user-panel .image img {
+    width: 2.1rem;
+    height: 2.1rem;
+    max-width: 2.1rem;
+    object-fit: cover;
+}
+
+.brand-link img {
+    max-width: 80px;
+    height: auto;
+}
+
 body, h1, h2, h4 {
     font-family: 'Tajawal', serif !important;
 }

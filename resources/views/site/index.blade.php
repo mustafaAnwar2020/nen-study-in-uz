@@ -34,7 +34,9 @@
             text-align: center;
             background-color: var(--screen-basics-bg-web);
             padding-top: 24px;
-            overflow: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
+            max-width: 100%;
             margin: 0;
             /* Neutralise main.min.css CSS variable overrides that bleed into home.css.
                main.min.css sets --heading-color:#384f4b (NEN teal), --heading-font:Roboto,
@@ -83,40 +85,152 @@
             z-index: 1001;
         }
 
-        /* Hero stacking: decorative circles (back) → image → text → nav (front) */
+        /* Hero: clean grid layout (replaces broken absolute canvas) */
+        body.nen-landing-body #hero.col-top1 {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 592px);
+            grid-template-areas:
+                "nav nav"
+                "content image"
+                "partners partners";
+            gap: 28px 40px;
+            padding: 20px 24px 24px;
+            min-height: 0;
+            overflow: hidden;
+        }
+
         body.nen-landing-body #hero .row-top4,
-        body.nen-landing-body #hero .row5,
-        body.nen-landing-body #hero .row9,
-        body.nen-landing-body #hero .row10,
-        body.nen-landing-body #hero .row-bottom3 {
-            z-index: 2 !important;
-            overflow: visible;
-        }
-
+        body.nen-landing-body #hero > .row-a,
         body.nen-landing-body #hero .row-a {
-            position: relative;
-            z-index: 1 !important;
-            pointer-events: none;
-        }
-
-        body.nen-landing-body #hero .img1 {
-            z-index: 10 !important;
-        }
-
-        body.nen-landing-body #hero .col1 {
-            z-index: 11 !important;
+            display: none !important;
         }
 
         body.nen-landing-body #hero .nen-hero-nav {
-            position: absolute !important;
-            z-index: 20 !important;
-            top: 24px !important;
-            left: 160px !important;
-            overflow: visible;
+            grid-area: nav;
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            z-index: 5 !important;
+            justify-self: center;
+            width: auto !important;
+            max-width: 100%;
+        }
+        body.nen-landing-body #hero .nen-hero-nav .text-home {
+            margin-top: 0;
+        }
+        body.nen-landing-body #hero .nen-hero-nav a.card5:hover,
+        body.nen-landing-body #hero .nen-hero-nav a.card5:hover .card-text-left1 {
+            color: #fff;
+        }
+        body.nen-landing-body #hero .nen-hero-nav a.card5:hover {
+            background-color: #017785;
+            box-shadow: inset 0 0 1px 0 rgba(235, 235, 235, 0.5), 0 6px 16px rgba(1, 119, 133, 0.35);
+        }
+        body.nen-landing-body #hero .nen-hero-nav .row3 a:hover {
+            color: #017785;
+        }
+        body.nen-landing-body #hero .row2.nen-hero-nav {
+            gap: clamp(12px, 2vw, 28px);
+            padding: 10px 12px 10px 14px;
+            max-width: calc(100% - 24px);
+        }
+        body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links {
+            gap: clamp(8px, 1vw, 14px);
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links a {
+            font-size: clamp(11px, 1vw, 14px);
+            white-space: nowrap;
+        }
+        body.nen-landing-body .nen-agencies-group {
+            display: flex;
+            flex-direction: column;
+            gap: 80px;
+            width: 100%;
+        }
+
+        body.nen-landing-body #hero .row5 {
+            grid-area: content;
+            position: relative !important;
+            z-index: 2 !important;
+            margin: 0 !important;
+            padding: 8px 0 0 !important;
+            align-self: center;
+        }
+
+        body.nen-landing-body #hero .col1 {
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            z-index: 2 !important;
+            width: 100% !important;
+            max-width: none !important;
+            padding: 0 !important;
+        }
+
+        body.nen-landing-body #hero .img1 {
+            grid-area: image;
+            position: relative !important;
+            top: auto !important;
+            left: auto !important;
+            z-index: 1 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            align-self: center;
+        }
+
+        body.nen-landing-body #hero .row-bottom3 {
+            grid-area: partners;
+            position: relative !important;
+            z-index: 2 !important;
+            padding: 18px 0 0 !important;
+            margin: 0 !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.07);
+        }
+
+        body.nen-landing-body #hero .nen-hero-title {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 4px;
+            white-space: normal !important;
+            line-height: 1.02 !important;
+            letter-spacing: -2px !important;
+            color: inherit !important;
+            font-size: inherit !important;
+        }
+
+        body.nen-landing-body #hero .nen-hero-title__study,
+        body.nen-landing-body #hero .nen-hero-title__country {
+            display: block;
+            font-size: clamp(44px, 5.2vw, 72px) !important;
+            font-weight: 700;
+            line-height: 1.02;
+        }
+
+        body.nen-landing-body #hero .nen-hero-title__study {
+            color: var(--text-title);
+        }
+
+        body.nen-landing-body #hero .nen-hero-title__country {
+            color: var(--brand-brand-main);
         }
 
         body.nen-landing-body #hero .row-right2 {
             overflow: visible;
+        }
+
+        @media (min-width: 769px) and (max-width: 1100px) {
+            body.nen-landing-body #hero.col-top1 {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "nav"
+                    "content"
+                    "image"
+                    "partners";
+                gap: 20px;
+            }
         }
 
         .nen-lang-dropdown__menu.open {
@@ -182,7 +296,7 @@
         }
 
         /* Prevent hero title from wrapping — matches home.html visual (desktop only) */
-        body.nen-landing-body .subtitle1 {
+        body.nen-landing-body .subtitle1:not(.nen-hero-title) {
             white-space: nowrap;
             font-size: clamp(38px, 4.5vw, 65px) !important;
         }
@@ -237,11 +351,6 @@
 
         .faq-answer.open {
             display: block;
-        }
-
-        /* FAQ: desktop shows card19 panel; mobile uses accordion for all items */
-        body.nen-landing-body .nen-faq-mobile-only {
-            display: none !important;
         }
 
         /* ── Agency horizontal scroll carousel ──
@@ -539,7 +648,7 @@
         }
     }
 
-    /* ── How It Works: numbered "journey" flip cards ── */
+    /* ── How It Works: numbered journey cards with drawer reveal ── */
     body.nen-landing-body .nen-steps {
         display: flex;
         flex-direction: column;
@@ -553,11 +662,9 @@
     body.nen-landing-body .nen-step {
         flex: 1 1 0;
         min-width: 0;
-        perspective: 1600px;
         outline: none;
         cursor: pointer;
     }
-    /* Entrance (staggered) — only active once JS marks the group ready. */
     body.nen-landing-body .nen-steps.nen-anim-ready .nen-step {
         opacity: 0;
         transform: translateY(24px);
@@ -568,76 +675,90 @@
         opacity: 1;
         transform: none;
     }
-    body.nen-landing-body .nen-step__inner {
+    body.nen-landing-body .nen-step__card {
         position: relative;
-        width: 100%;
-        min-height: 300px;
-        height: 100%;
-        transform-style: preserve-3d;
-        transition: transform 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
-    }
-    body.nen-landing-body .nen-step:hover .nen-step__inner,
-    body.nen-landing-body .nen-step:focus-visible .nen-step__inner,
-    body.nen-landing-body .nen-step.is-flipped .nen-step__inner {
-        transform: rotateY(180deg);
-    }
-    body.nen-landing-body .nen-step__face {
-        position: absolute;
-        inset: 0;
-        -webkit-backface-visibility: hidden;
-        backface-visibility: hidden;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
-        padding: 28px 30px;
+        min-height: 300px;
+        height: 100%;
+        padding: 28px 30px 56px;
         border-radius: 16px;
+        background: #fff;
+        border: 1px solid #e6e6e6;
         overflow: hidden;
+        transition: border-color 0.35s ease, box-shadow 0.35s ease, transform 0.35s ease;
     }
-    body.nen-landing-body .nen-step__front {
-        gap: 20px;
-        background: #fff;
-        border: 1px solid #e6e6e6;
-    }
-    /* Flip-hint glyph in the corner of the front face. */
-    body.nen-landing-body .nen-step__front::after {
-        content: "\21BB";
+    body.nen-landing-body .nen-step__accent {
         position: absolute;
-        right: 18px;
-        bottom: 16px;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 16px;
-        color: #6b7a76;
-        background: #f1f3f2;
-        border-radius: 50%;
-        transition: background 0.25s ease, color 0.25s ease;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 0;
+        background: linear-gradient(180deg, #243b37 0%, #017785 100%);
+        border-radius: 0 0 4px 4px;
+        transition: height 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
     }
-    body.nen-landing-body .nen-step:hover .nen-step__front::after {
-        background: #243b37;
-        color: #fff;
+    body.nen-landing-body .nen-step.is-open .nen-step__card,
+    body.nen-landing-body .nen-step:focus-visible .nen-step__card {
+        border-color: #017785;
+        box-shadow: 0 16px 36px rgba(1, 119, 133, 0.18);
+        transform: translateY(-4px);
     }
-    body.nen-landing-body .nen-step__back {
-        transform: rotateY(180deg);
-        gap: 12px;
-        color: #1c1c1c;
-        background: #fff;
-        border: 1px solid #e6e6e6;
-        justify-content: flex-start;
+    body.nen-landing-body .nen-step.is-open .nen-step__accent,
+    body.nen-landing-body .nen-step:focus-visible .nen-step__accent {
+        height: 100%;
+    }
+    @media (hover: hover) {
+        body.nen-landing-body .nen-step:hover .nen-step__card {
+            border-color: #017785;
+            box-shadow: 0 16px 36px rgba(1, 119, 133, 0.18);
+            transform: translateY(-4px);
+        }
+        body.nen-landing-body .nen-step:hover .nen-step__accent {
+            height: 100%;
+        }
     }
     body.nen-landing-body .nen-step__num {
-        margin: 0;
+        margin: 0 0 18px;
         font-size: 52px;
         font-weight: 800;
         line-height: 1;
         letter-spacing: -1px;
         color: #e7eae9;
+        transition: color 0.35s ease, transform 0.35s ease;
     }
-    body.nen-landing-body .nen-step__num--back {
-        color: #e7eae9;
+    body.nen-landing-body .nen-step.is-open .nen-step__num,
+    body.nen-landing-body .nen-step:focus-visible .nen-step__num {
+        color: #d4e8ea;
+        transform: scale(1.04);
+    }
+    @media (hover: hover) {
+        body.nen-landing-body .nen-step:hover .nen-step__num {
+            color: #d4e8ea;
+            transform: scale(1.04);
+        }
+    }
+    body.nen-landing-body .nen-step__head {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+        position: relative;
+        z-index: 2;
+        transition: transform 0.4s ease, opacity 0.35s ease;
+    }
+    body.nen-landing-body .nen-step.is-open .nen-step__head,
+    body.nen-landing-body .nen-step:focus-visible .nen-step__head {
+        transform: translateY(-6px);
+        opacity: 0.92;
+    }
+    @media (hover: hover) {
+        body.nen-landing-body .nen-step:hover .nen-step__head {
+            transform: translateY(-6px);
+            opacity: 0.92;
+        }
     }
     body.nen-landing-body .nen-step__icon {
         width: 52px;
@@ -648,14 +769,21 @@
         background: #f1f3f2;
         border-radius: 12px;
         flex-shrink: 0;
+        transition: background 0.35s ease;
+    }
+    body.nen-landing-body .nen-step.is-open .nen-step__icon,
+    body.nen-landing-body .nen-step:focus-visible .nen-step__icon {
+        background: rgba(1, 119, 133, 0.12);
+    }
+    @media (hover: hover) {
+        body.nen-landing-body .nen-step:hover .nen-step__icon {
+            background: rgba(1, 119, 133, 0.12);
+        }
     }
     body.nen-landing-body .nen-step__icon img {
         width: 26px;
         height: 26px;
         object-fit: contain;
-    }
-    body.nen-landing-body .nen-step__icon--back {
-        background: #f1f3f2;
     }
     body.nen-landing-body .nen-step__title {
         margin: 0;
@@ -664,15 +792,112 @@
         line-height: 1.25;
         color: #1c1c1c;
     }
-    body.nen-landing-body .nen-step__title--back {
-        color: #1c1c1c;
-        font-size: 20px;
+    body.nen-landing-body .nen-step__hint {
+        margin: 10px 0 0;
+        font-size: 13px;
+        line-height: 1.4;
+        color: #6b7a76;
+        position: relative;
+        z-index: 2;
+        transition: opacity 0.3s ease;
+    }
+    body.nen-landing-body .nen-step.is-open .nen-step__hint,
+    body.nen-landing-body .nen-step:focus-visible .nen-step__hint {
+        opacity: 0;
+    }
+    @media (hover: hover) {
+        body.nen-landing-body .nen-step:hover .nen-step__hint {
+            opacity: 0;
+        }
+    }
+    body.nen-landing-body .nen-step__drawer {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+        display: flex;
+        align-items: flex-end;
+        padding: 0 30px;
+        max-height: 0;
+        background: linear-gradient(145deg, #243b37 0%, #017785 100%);
+        transition: max-height 0.5s cubic-bezier(0.22, 0.61, 0.36, 1), padding 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+    body.nen-landing-body .nen-step.is-open .nen-step__drawer,
+    body.nen-landing-body .nen-step:focus-visible .nen-step__drawer {
+        max-height: 58%;
+        padding: 28px 30px 30px;
+    }
+    @media (hover: hover) {
+        body.nen-landing-body .nen-step:hover .nen-step__drawer {
+            max-height: 58%;
+            padding: 28px 30px 30px;
+        }
     }
     body.nen-landing-body .nen-step__desc {
         margin: 0;
         font-size: 15px;
-        line-height: 1.5;
+        line-height: 1.6;
+        color: rgba(255, 255, 255, 0.94);
+        opacity: 0;
+        transform: translateY(16px);
+        transition: opacity 0.35s ease 0.08s, transform 0.4s ease 0.08s;
+    }
+    body.nen-landing-body .nen-step.is-open .nen-step__desc,
+    body.nen-landing-body .nen-step:focus-visible .nen-step__desc {
+        opacity: 1;
+        transform: none;
+    }
+    @media (hover: hover) {
+        body.nen-landing-body .nen-step:hover .nen-step__desc {
+            opacity: 1;
+            transform: none;
+        }
+    }
+    body.nen-landing-body .nen-step__chev {
+        position: absolute;
+        right: 20px;
+        bottom: 18px;
+        z-index: 3;
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: #f1f3f2;
         color: #6b7a76;
+        transition: transform 0.35s ease, background 0.35s ease, color 0.35s ease;
+    }
+    body.nen-landing-body .nen-step__chev::before {
+        content: "";
+        position: absolute;
+        top: 11px;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        margin-left: -4px;
+        border-right: 2px solid currentColor;
+        border-bottom: 2px solid currentColor;
+        transform: rotate(45deg);
+        transition: transform 0.35s ease;
+    }
+    body.nen-landing-body .nen-step.is-open .nen-step__chev,
+    body.nen-landing-body .nen-step:focus-visible .nen-step__chev {
+        background: #243b37;
+        color: #fff;
+    }
+    body.nen-landing-body .nen-step.is-open .nen-step__chev::before,
+    body.nen-landing-body .nen-step:focus-visible .nen-step__chev::before {
+        transform: rotate(-135deg);
+        top: 13px;
+    }
+    @media (hover: hover) {
+        body.nen-landing-body .nen-step:hover .nen-step__chev {
+            background: #243b37;
+            color: #fff;
+        }
+        body.nen-landing-body .nen-step:hover .nen-step__chev::before {
+            transform: rotate(-135deg);
+            top: 13px;
+        }
     }
     @media (max-width: 820px) {
         body.nen-landing-body .nen-steps-row {
@@ -685,25 +910,134 @@
             transform: none !important;
             transition: none !important;
         }
-        body.nen-landing-body .nen-step__inner {
+        body.nen-landing-body .nen-step__card,
+        body.nen-landing-body .nen-step__drawer,
+        body.nen-landing-body .nen-step__desc,
+        body.nen-landing-body .nen-step__accent,
+        body.nen-landing-body .nen-step__chev {
             transition: none !important;
         }
     }
-    /* CTA buttons: equal height (stretch to the tallest) with centered labels. */
+    /* CTA buttons: equal height, single-line labels */
     body.nen-landing-body #about .row-bottom4 {
         align-items: stretch;
+        flex-wrap: wrap;
     }
     body.nen-landing-body #about .row-bottom4 .frame-b {
-        display: flex;
+        display: inline-flex;
         align-items: center;
+        justify-content: center;
+        width: auto;
+        min-width: 175px;
+        white-space: nowrap;
+    }
+    body.nen-landing-body #about .row-bottom4 .frame-b p {
+        margin: 0;
+        white-space: nowrap;
+    }
+    /* CTA pills: override main.css red link hover */
+    body.nen-landing-body a.frame-a:hover,
+    body.nen-landing-body a.frame-a:hover p,
+    body.nen-landing-body a.frame-b.frame-left:hover,
+    body.nen-landing-body a.frame-b.frame-left:hover p {
+        color: #fff;
+    }
+    body.nen-landing-body a.frame-a:hover,
+    body.nen-landing-body a.frame-b.frame-left:hover {
+        background-color: #017785;
+        box-shadow: inset 0 0 7px 0 #ebebeb, 0 12px 28px -11px rgba(1, 119, 133, 0.35);
+    }
+    body.nen-landing-body a.frame-b.frame-right1:hover,
+    body.nen-landing-body a.frame-b.frame-right1:hover p {
+        color: #017785;
+    }
+    body.nen-landing-body a.frame-b.frame-right1:hover {
+        background-color: #d4ecef;
     }
 
-    /* ── Hero partner strip: spread logos left, push official partner to far right ── */
-    body.nen-landing-body .row12 {
-        max-width: none;
-        width: calc(100% - 50px);
-        left: 25px;
+    /* ── Why Uzbekistan: compact 2×2 grid aligned to image height (desktop) ── */
+    @media (min-width: 769px) {
+        body.nen-landing-body #why-uzbekistan .container {
+            align-items: stretch;
+            gap: 16px;
+            min-height: 552px;
+            max-height: 580px;
+        }
+        body.nen-landing-body #why-uzbekistan .container-container1 {
+            width: auto !important;
+            flex: 1 1 0;
+            min-width: 0;
+            max-width: 58%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 16px;
+            overflow: visible;
+        }
+        body.nen-landing-body #why-uzbekistan .container-row-top,
+        body.nen-landing-body #why-uzbekistan .container-container2,
+        body.nen-landing-body #why-uzbekistan .container-row {
+            display: contents;
+        }
+        body.nen-landing-body #why-uzbekistan .card6,
+        body.nen-landing-body #why-uzbekistan .card-a {
+            min-height: 0 !important;
+            height: 100%;
+            gap: 16px;
+            padding: 22px 24px !important;
+            justify-content: flex-start;
+        }
+        body.nen-landing-body #why-uzbekistan .card-container3,
+        body.nen-landing-body #why-uzbekistan .card-container1 {
+            padding-top: 6px !important;
+            gap: 8px;
+            max-width: none;
+            width: 100%;
+        }
+        body.nen-landing-body #why-uzbekistan .card-subtitle2,
+        body.nen-landing-body #why-uzbekistan .card-container2 h2 {
+            font-size: 36px;
+            line-height: 1;
+        }
+        body.nen-landing-body #why-uzbekistan .card-text4,
+        body.nen-landing-body #why-uzbekistan .card-text1 {
+            font-size: 13px;
+            line-height: 1.38;
+        }
+        body.nen-landing-body #why-uzbekistan .row-top5,
+        body.nen-landing-body #why-uzbekistan .card7 .row-top1,
+        body.nen-landing-body #why-uzbekistan .card8 .row-top1,
+        body.nen-landing-body #why-uzbekistan .card9 .row-top1 {
+            margin: 0;
+            width: 100%;
+        }
+        body.nen-landing-body #why-uzbekistan .container-frame-right {
+            flex: 0 0 calc(42% - 8px);
+            width: calc(42% - 8px) !important;
+            max-width: none;
+            margin-bottom: 0;
+            padding: 22px 24px !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-end;
+            align-self: stretch;
+            min-height: 0;
+            background: linear-gradient(172deg, rgba(255, 255, 255, 0) 31%, rgba(255, 255, 255, 0.88) 107%) bottom left / auto auto no-repeat,
+                url('{{ asset('site/home/assets/container-frame.png') }}') center / cover no-repeat;
+        }
+    }
+
+    /* ── Hero partner strip ── */
+    body.nen-landing-body #hero .row12 {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        width: 100% !important;
+        max-width: none !important;
+        display: flex;
         align-items: center;
+        justify-content: space-between;
         gap: 24px;
     }
     body.nen-landing-body .nen-hero-partners {
@@ -711,6 +1045,7 @@
         align-items: center;
         gap: 18px;
         flex-wrap: wrap;
+        flex: 1 1 auto;
     }
     body.nen-landing-body .nen-hero-partner {
         display: flex;
@@ -719,22 +1054,28 @@
         text-decoration: none;
     }
     body.nen-landing-body .nen-hero-partner .row-img1 {
-        width: 52px;
+        width: 55px;
         height: auto;
         object-fit: contain;
-    }
-    body.nen-landing-body .nen-hero-divider {
-        height: 50px;
-        border-left: 0.5px solid #9e9e9e;
-    }
-    body.nen-landing-body .row12 .col-right1 {
-        margin-left: auto;
         flex-shrink: 0;
     }
-    @container body (width < 768px) {
-        body.nen-landing-body .row12 .col-right1 {
-            margin-left: 0;
-        }
+    body.nen-landing-body .nen-hero-divider {
+        height: 67px;
+        border-left: 0.5px solid #9e9e9e;
+    }
+    body.nen-landing-body #hero .row12 .col-right1 {
+        margin-left: auto;
+        flex-shrink: 0;
+        width: auto;
+        max-width: none;
+        align-items: flex-end;
+    }
+    body.nen-landing-body #hero .row12 .img2 {
+        width: 188px;
+        max-width: min(188px, 38vw);
+        height: auto;
+        object-fit: contain;
+        flex-shrink: 0;
     }
 
     /* ── Footer (redesigned) ── */
@@ -744,6 +1085,8 @@
         text-align: left;
         letter-spacing: normal;
         border-top: 1px solid #ececec;
+        max-width: 100%;
+        overflow-x: hidden;
     }
     body.nen-landing-body .nen-foot__top {
         display: grid;
@@ -753,6 +1096,10 @@
         margin: 0 auto;
         padding: 64px 40px 56px;
     }
+    body.nen-landing-body .nen-foot__brand,
+    body.nen-landing-body .nen-foot__col {
+        min-width: 0;
+    }
     body.nen-landing-body .nen-foot__logo {
         width: 96px;
         height: auto;
@@ -760,7 +1107,7 @@
     }
     body.nen-landing-body .nen-foot__tagline {
         margin: 0 0 22px;
-        max-width: 330px;
+        max-width: 420px;
         font-size: 15px;
         line-height: 1.65;
         color: #6b7a76;
@@ -788,8 +1135,38 @@
     }
     body.nen-landing-body .nen-foot__social:hover {
         transform: translateY(-3px);
-        border-color: #017785;
-        box-shadow: 0 10px 20px rgba(1, 119, 133, 0.18);
+    }
+    body.nen-landing-body .nen-foot__social--facebook:hover {
+        background: #1877f2;
+        border-color: #1877f2;
+        box-shadow: 0 10px 20px rgba(24, 119, 242, 0.35);
+    }
+    body.nen-landing-body .nen-foot__social--instagram:hover {
+        background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        border-color: #dc2743;
+        box-shadow: 0 10px 20px rgba(220, 39, 67, 0.35);
+    }
+    body.nen-landing-body .nen-foot__social--whatsapp:hover {
+        background: #25d366;
+        border-color: #25d366;
+        box-shadow: 0 10px 20px rgba(37, 211, 102, 0.35);
+    }
+    body.nen-landing-body .nen-foot__social--linkedin:hover {
+        background: #0a66c2;
+        border-color: #0a66c2;
+        box-shadow: 0 10px 20px rgba(10, 102, 194, 0.35);
+    }
+    body.nen-landing-body .nen-foot__social--youtube:hover {
+        background: #ff0000;
+        border-color: #ff0000;
+        box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+    }
+    body.nen-landing-body .nen-foot__social--facebook:hover img,
+    body.nen-landing-body .nen-foot__social--instagram:hover img,
+    body.nen-landing-body .nen-foot__social--whatsapp:hover img,
+    body.nen-landing-body .nen-foot__social--linkedin:hover img,
+    body.nen-landing-body .nen-foot__social--youtube:hover img {
+        filter: brightness(0) invert(1);
     }
     body.nen-landing-body .nen-foot__heading {
         margin: 0 0 20px;
@@ -828,6 +1205,8 @@
     body.nen-landing-body .nen-foot__contact a {
         color: #5b5b5b;
         transition: color 0.2s ease;
+        min-width: 0;
+        overflow-wrap: anywhere;
     }
     body.nen-landing-body .nen-foot__contact a:hover {
         color: #017785;
@@ -858,10 +1237,15 @@
     body.nen-landing-body .nen-foot__lang-text {
         letter-spacing: 0.3px;
     }
+    body.nen-landing-body .nen-foot__contact--phone {
+        flex-wrap: wrap;
+        gap: 8px;
+        max-width: 100%;
+    }
     body.nen-landing-body .nen-foot__chat {
         display: inline-flex;
         gap: 6px;
-        margin-left: auto;
+        flex-shrink: 0;
     }
     body.nen-landing-body .nen-foot__chat a {
         width: 28px;
@@ -871,11 +1255,28 @@
         justify-content: center;
         border-radius: 50%;
         background: #f1f3f2;
-        transition: transform 0.2s ease, background 0.2s ease;
+        transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     }
     body.nen-landing-body .nen-foot__chat a:hover {
         transform: scale(1.12);
-        background: #e6f1f3;
+    }
+    body.nen-landing-body .nen-foot__chat a.nen-foot__chat-link--whatsapp:hover {
+        background: #25d366;
+        box-shadow: 0 6px 14px rgba(37, 211, 102, 0.35);
+    }
+    body.nen-landing-body .nen-foot__chat a.nen-foot__chat-link--telegram {
+        background: #e8f4fc;
+    }
+    body.nen-landing-body .nen-foot__chat a.nen-foot__chat-link--telegram img {
+        filter: brightness(0) saturate(100%) invert(48%) sepia(79%) saturate(2476%) hue-rotate(176deg) brightness(96%) contrast(92%);
+    }
+    body.nen-landing-body .nen-foot__chat a.nen-foot__chat-link--telegram:hover {
+        background: #24a1de;
+        box-shadow: 0 6px 14px rgba(36, 161, 222, 0.35);
+    }
+    body.nen-landing-body .nen-foot__chat a.nen-foot__chat-link--whatsapp:hover img,
+    body.nen-landing-body .nen-foot__chat a.nen-foot__chat-link--telegram:hover img {
+        filter: brightness(0) invert(1);
     }
     body.nen-landing-body .nen-foot__chat img {
         width: 16px;
@@ -888,25 +1289,26 @@
         background: #fff;
         text-align: center;
         padding: 28px 24px 8px;
-        overflow: visible;
+        overflow-x: hidden;
+        max-width: 100%;
     }
     body.nen-landing-body .nen-foot__cta-title {
-        margin: 0;
+        margin: 0 auto;
         color: #111;
         font-weight: 800;
-        text-transform: capitalize;
+        text-transform: none;
         font-size: clamp(58px, 15vw, 190px);
         line-height: 1;
         letter-spacing: -0.045em;
-        white-space: nowrap;
+        max-width: 100%;
+        overflow-wrap: break-word;
+        word-break: break-word;
     }
     html[dir="rtl"] body.nen-landing-body .nen-foot__cta-title {
         text-transform: none;
         letter-spacing: 0;
         line-height: 1.12;
-        white-space: normal;
         font-size: clamp(40px, 11vw, 120px);
-        overflow: visible;
         word-spacing: 0.04em;
     }
     body.nen-landing-body .nen-foot__cta-title span {
@@ -1018,6 +1420,10 @@
             padding: 16px 14px 24px;
             gap: 20px;
             border-radius: 20px;
+        }
+        body.nen-landing-body #hero.col-top1 {
+            display: flex;
+            flex-direction: column;
         }
         body.nen-landing-body .col-top1 > .row-top4 { order: 0; display: none !important; }
         body.nen-landing-body .col-top1 > .nen-hero-nav { order: 1; }
@@ -1136,15 +1542,6 @@
         body.nen-landing-body .row3.nen-nav-links a:active {
             background: #f5f5f5;
         }
-        body.nen-landing-body .col-left1 {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        body.nen-landing-body .col-left1 .circle-black-bottom {
-            position: static;
-            margin-top: 4px;
-        }
 
         /* Hero text */
         body.nen-landing-body .row5 {
@@ -1165,7 +1562,7 @@
         body.nen-landing-body .col2 {
             text-align: left;
         }
-        body.nen-landing-body .subtitle1 {
+        body.nen-landing-body .subtitle1:not(.nen-hero-title) {
             white-space: normal !important;
             font-size: clamp(32px, 8.5vw, 48px) !important;
             letter-spacing: -1px !important;
@@ -1182,6 +1579,7 @@
         body.nen-landing-body .row-bottom3 {
             position: static !important;
             padding: 0 !important;
+            border-top: none !important;
         }
         body.nen-landing-body .row12 {
             position: static !important;
@@ -1189,14 +1587,26 @@
             left: auto !important;
             width: 100% !important;
             flex-direction: column !important;
-            align-items: center !important;
+            align-items: flex-start !important;
             gap: 16px !important;
         }
-        body.nen-landing-body .row12 .col-right1 {
-            margin-left: 0 !important;
-        }
         body.nen-landing-body .nen-hero-partners {
-            justify-content: center;
+            justify-content: flex-start;
+        }
+        body.nen-landing-body #hero .row12 .col-right1 {
+            margin-left: 0;
+            align-items: flex-start;
+        }
+        body.nen-landing-body #hero .row12 .img2 {
+            width: min(188px, 72vw);
+        }
+        body.nen-landing-body #hero .nen-hero-title {
+            align-items: flex-start;
+            text-align: left;
+        }
+        body.nen-landing-body #hero .nen-hero-title__study,
+        body.nen-landing-body #hero .nen-hero-title__country {
+            font-size: clamp(36px, 9vw, 52px) !important;
         }
 
         /* ── About Program ── */
@@ -1358,18 +1768,6 @@
         }
 
         /* ── FAQ ── */
-        body.nen-landing-body .nen-faq-desktop-only {
-            display: none !important;
-        }
-        body.nen-landing-body button.nen-faq-mobile-only {
-            display: flex !important;
-        }
-        body.nen-landing-body .faq-answer.nen-faq-mobile-only {
-            display: none;
-        }
-        body.nen-landing-body .faq-answer.nen-faq-mobile-only.open {
-            display: block;
-        }
         body.nen-landing-body #faq .col19 {
             padding: 0 16px;
             gap: 28px;
@@ -1497,10 +1895,83 @@
         }
     }
 
-    /* ── Egypt collection points map (milestones right column) ── */
+    /* ── About NEN (milestones left column) ── */
+    body.nen-landing-body .nen-about-nen__intro {
+        margin: 0 0 14px;
+        font-size: 15px;
+        line-height: 1.65;
+        color: #5b5b5b;
+        text-align: left;
+    }
+    html[dir="rtl"] body.nen-landing-body .nen-about-nen__intro {
+        text-align: right;
+    }
+    body.nen-landing-body .nen-about-nen__stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin: 20px 0 24px;
+    }
+    body.nen-landing-body .nen-about-nen__stat {
+        background: #f5f8f9;
+        border-radius: 16px;
+        padding: 16px 18px;
+        text-align: left;
+    }
+    html[dir="rtl"] body.nen-landing-body .nen-about-nen__stat {
+        text-align: right;
+    }
+    body.nen-landing-body .nen-about-nen__stat-value {
+        margin: 0 0 6px;
+        font-size: 28px;
+        font-weight: 800;
+        line-height: 1;
+        color: #111;
+    }
+    body.nen-landing-body .nen-about-nen__stat-title {
+        margin: 0 0 8px;
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.35;
+        color: #017785;
+    }
+    body.nen-landing-body .nen-about-nen__stat-desc {
+        margin: 0;
+        font-size: 13px;
+        line-height: 1.55;
+        color: #5b5b5b;
+    }
+    body.nen-landing-body .nen-about-nen__mission-title {
+        margin: 0 0 10px;
+        font-size: 18px;
+        font-weight: 700;
+        color: #111;
+        text-align: left;
+    }
+    html[dir="rtl"] body.nen-landing-body .nen-about-nen__mission-title {
+        text-align: right;
+    }
+    body.nen-landing-body .nen-about-nen__mission {
+        margin: 0;
+        font-size: 15px;
+        line-height: 1.65;
+        color: #5b5b5b;
+        text-align: left;
+    }
+    html[dir="rtl"] body.nen-landing-body .nen-about-nen__mission {
+        text-align: right;
+    }
+    @media (max-width: 768px) {
+        body.nen-landing-body .nen-about-nen__stats {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* ── Collection points map (milestones right column) ── */
     body.nen-landing-body .tesrimonials-group-right.nen-collection-map {
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         gap: 16px;
         width: 105%;
         max-width: 1020px;
@@ -1511,20 +1982,25 @@
         border-radius: 16px;
         padding: 24px;
         overflow: hidden;
+        text-align: left;
     }
 
     body.nen-landing-body .nen-collection-map__title {
         margin: 0;
+        width: 100%;
         font-size: 20px;
         font-weight: 700;
         letter-spacing: -0.4px;
         color: #111;
+        text-align: left;
     }
 
     body.nen-landing-body .nen-collection-map__tabs {
         display: flex;
         flex-wrap: wrap;
+        justify-content: flex-start;
         gap: 8px;
+        width: 100%;
     }
 
     body.nen-landing-body .nen-collection-map__tab {
@@ -1558,16 +2034,44 @@
     body.nen-landing-body .nen-collection-map__panel {
         position: relative;
         min-height: 180px;
+        width: 100%;
+        text-align: left;
+    }
+
+    body.nen-landing-body .nen-collection-map__country-panel {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        width: 100%;
+        text-align: left;
+    }
+
+    body.nen-landing-body .nen-collection-map__country-panel.is-active {
+        display: flex;
+    }
+
+    body.nen-landing-body .nen-collection-map__office-block {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        width: 100%;
+        text-align: left;
+    }
+
+    body.nen-landing-body .nen-collection-map__office-block + .nen-collection-map__office-block {
+        border-top: 1px solid #dce7ea;
+        padding-top: 16px;
     }
 
     body.nen-landing-body .nen-collection-map__details {
-        display: none;
-        flex-direction: column;
-        gap: 12px;
-    }
-
-    body.nen-landing-body .nen-collection-map__details.is-active {
         display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        width: 100%;
+        text-align: left;
     }
 
     body.nen-landing-body .nen-collection-map__office {
@@ -1575,6 +2079,8 @@
         font-size: 16px;
         font-weight: 700;
         color: #111;
+        text-align: left;
+        width: 100%;
     }
 
     body.nen-landing-body .nen-collection-map__meta {
@@ -1583,10 +2089,13 @@
         padding: 0;
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         gap: 6px;
+        width: 100%;
         font-size: 13px;
         line-height: 1.45;
         color: #444;
+        text-align: left;
     }
 
     body.nen-landing-body .nen-collection-map__meta a {
@@ -1596,8 +2105,10 @@
     body.nen-landing-body .nen-collection-map__actions {
         display: flex;
         flex-wrap: wrap;
+        justify-content: flex-start;
         gap: 10px;
         margin-top: 4px;
+        width: 100%;
     }
 
     body.nen-landing-body .nen-collection-map__btn {
@@ -1632,8 +2143,17 @@
 
     html[dir="rtl"] body.nen-landing-body .nen-collection-map__meta,
     html[dir="rtl"] body.nen-landing-body .nen-collection-map__title,
-    html[dir="rtl"] body.nen-landing-body .nen-collection-map__office {
+    html[dir="rtl"] body.nen-landing-body .nen-collection-map__office,
+    html[dir="rtl"] body.nen-landing-body .nen-collection-map__country-panel,
+    html[dir="rtl"] body.nen-landing-body .nen-collection-map__office-block,
+    html[dir="rtl"] body.nen-landing-body .nen-collection-map__details {
         text-align: right;
+        align-items: flex-start;
+    }
+
+    html[dir="rtl"] body.nen-landing-body .tesrimonials-group-right.nen-collection-map {
+        text-align: right;
+        align-items: flex-start;
     }
 
     @media (max-width: 768px) {
@@ -1651,6 +2171,11 @@
 @endpush
 
 @section('content')
+    @php
+        $nenLogo = ($isRtl ?? is_rtl())
+            ? asset('site/home/assets/nen-ar.png')
+            : asset($settings['media']->logo ?? 'site/home/assets/nen.png');
+    @endphp
 
     {{-- ===================== HERO ===================== --}}
     @if ($landing->show_hero ?? true)
@@ -1673,7 +2198,7 @@
 
             {{-- Floating Navigation Bar (sibling of decor rows so z-index stays above hero image) --}}
             <div class="row2 nen-hero-nav">
-                <img src="{{ asset($settings['media']->logo) }}" class="nen" alt="NEN" />
+                <img src="{{ $nenLogo }}" class="nen" alt="NEN" />
 
                 <button class="nen-nav-toggle" id="nenNavToggle" type="button" aria-expanded="false"
                     aria-controls="nenNavLinks" aria-label="Toggle menu">
@@ -1683,15 +2208,14 @@
                 </button>
 
                 <div class="row3 nen-nav-links" id="nenNavLinks">
-                    <div class="col-left1">
-                        <a href="#hero" class="text-home">{{ __('landing.nav.home') }}</a>
-                        <div class="circle-black-bottom"></div>
-                    </div>
-                    <a href="{{ $landing->nav_about_url ?? '#about' }}" class="text-about-program">{{ __('landing.nav.about_program') }}</a>
-                    <a href="{{ $landing->nav_events_url ?? '#why-uzbekistan' }}"
-                        class="text-why-uzbekistan-question">{{ __('landing.nav.why_uzbekistan') }}</a>
-                    <a href="{{ $landing->nav_partners_url ?? '#how-it-works' }}" class="text-about-nen">{{ __('landing.nav.about_nen') }}</a>
-                    <a href="{{ $landing->nav_contact_url ?? '#faq' }}" class="text-right">{{ __('landing.nav.faq') }}</a>
+                    <a href="#hero" class="text-home">{{ __('landing.nav.home') }}</a>
+                    <a href="#about" class="text-about-program">{{ __('landing.nav.about') }}</a>
+                    <a href="#why-uzbekistan" class="text-why-uzbekistan-question">{{ __('landing.nav.why') }}</a>
+                    <a href="#how-it-works" class="text-about-nen">{{ __('landing.nav.your_path') }}</a>
+                    <a href="#documents" class="text-documents">{{ __('landing.nav.required_documents') }}</a>
+                    <a href="#collection-point" class="text-collection-point">{{ __('landing.nav.collection_point') }}</a>
+                    <a href="#trusted-agencies" class="text-trusted-agencies">{{ __('landing.nav.trusted_agencies') }}</a>
+                    <a href="#faq" class="text-right">{{ __('landing.nav.faq') }}</a>
                 </div>
 
                 <div class="row-right2">
@@ -1743,17 +2267,20 @@
                 </div>
                 <div class="col1">
                     <div class="col2">
-                        <h2 class="subtitle1">
-                            <span class="sub-text-text-title">{{ __('landing.hero.study_in') }}
-                            </span>{{ landing_get($landing, 'hero_product_title') ?? 'Uzbekistan.' }}
+                        @php
+                            $heroCountry = rtrim(landing_get($landing, 'hero_product_title') ?? __('landing.hero.country'), '.');
+                        @endphp
+                        <h2 class="subtitle1 nen-hero-title">
+                            <span class="nen-hero-title__study">{{ __('landing.hero.study_in') }}</span>
+                            <span class="nen-hero-title__country">{{ $heroCountry }}</span>
                         </h2>
                         <p class="text-join-the-ultimate">
-                            {{ landing_get($landing, 'hero_subtitle') ?? 'Join the ultimate educational network where students, top universities, and world-class programs come together!' }}
+                            {{ landing_get($landing, 'hero_subtitle') ?? __('landing.hero.subtitle') }}
                         </p>
                     </div>
 
                     <a href="{{ $landing->hero_btn_url ?? '#collection-point' }}" class="frame-a frame-bottom">
-                        <p>{{ landing_get($landing, 'hero_btn_text') ?? __('landing.hero.find_collection_point') }}</p>
+                        <p>{{ landing_get($landing, 'hero_btn_text') ?? __('landing.hero.admission_centers') }}</p>
                         <img src="{{ asset('site/home/assets/card-img.png') }}" class="frame-img1" />
                     </a>
                 </div>
@@ -1822,7 +2349,8 @@
 
                     <div class="col-right1">
                         <img src="{{ $landing->hero_official_logo ? asset($landing->hero_official_logo) : asset('site/home/assets/img2.png') }}"
-                            class="img2" alt="{{ landing_get($landing, 'hero_official_label') ?? __('landing.hero.official_partner') }}" />
+                            class="img2"
+                            alt="{{ __('landing.hero.study_in_uzbekistan') }}" />
                         <p>{{ landing_get($landing, 'hero_official_label') ?? __('landing.hero.official_partner') }}</p>
                     </div>
                 </div>
@@ -1937,36 +2465,36 @@
 
                         <div class="container-container2">
                             <div class="container-row">
-                                {{-- Card 3 (card8 style) --}}
+                                {{-- Card 3: international --}}
                                 <div class="card-a card8">
                                     <div class="row-c row-top1">
-                                        <p class="row-text2">{{ $card2 ? $card2->localized('title') : __('landing.features.cards.safe_title') }}</p>
+                                        <p class="row-text2">{{ $card2 ? $card2->localized('title') : __('landing.features.cards.international_title') }}</p>
                                         <img src="{{ $card2 && $card2->image ? asset($card2->image) : $cardIcons[2] }}"
                                             class="row-group" alt="" />
                                     </div>
                                     <div class="card-container1">
                                         <div class="card-container2">
-                                            <h2>{{ $card2->stat_value ?? '100%' }}</h2>
+                                            <h2>{{ $card2->stat_value ?? '50+' }}</h2>
                                         </div>
                                         <p class="card-text1">
-                                            {{ ($card2 ? $card2->localized('description') : null) ?? __('landing.features.cards.safe_desc') }}
+                                            {{ ($card2 ? $card2->localized('description') : null) ?? __('landing.features.cards.international_desc') }}
                                         </p>
                                     </div>
                                 </div>
 
-                                {{-- Card 4 (card9 style) --}}
+                                {{-- Card 4: safe & welcoming --}}
                                 <div class="card-a card9">
                                     <div class="row-c row-top1">
-                                        <p class="row-text2">{{ $card3 ? $card3->localized('title') : __('landing.features.cards.international_title') }}</p>
+                                        <p class="row-text2">{{ $card3 ? $card3->localized('title') : __('landing.features.cards.safe_title') }}</p>
                                         <img src="{{ $card3 && $card3->image ? asset($card3->image) : $cardIcons[3] }}"
                                             class="row-group" alt="" />
                                     </div>
                                     <div class="card-container1">
                                         <div class="card-container2">
-                                            <h2>{{ $card3->stat_value ?? '50+' }}</h2>
+                                            <h2>{{ $card3->stat_value ?? '100%' }}</h2>
                                         </div>
                                         <p class="card-text1">
-                                            {{ ($card3 ? $card3->localized('description') : null) ?? __('landing.features.cards.international_desc') }}
+                                            {{ ($card3 ? $card3->localized('description') : null) ?? __('landing.features.cards.safe_desc') }}
                                         </p>
                                     </div>
                                 </div>
@@ -2008,7 +2536,7 @@
 
             @php
                 $steps = $howItWorksSteps ?? collect();
-                $stepsArr = $steps->values();
+                $stepsByNumber = $steps->keyBy('step_number');
                 $stepComponents = [
                     asset('site/home/assets/component/component-presentation.png'),
                     asset('site/home/assets/component/component-university.png'),
@@ -2019,8 +2547,6 @@
                 ];
                 $stepTitles = collect(__('landing.how_it_works.steps'))->pluck('title')->all();
                 $stepDescs = collect(__('landing.how_it_works.steps'))->pluck('desc')->all();
-                $topRowIdxs = [0, 1, 2];
-                $botRowIdxs = [3, 4, 5];
             @endphp
 
             <div class="col8 nen-steps">
@@ -2028,208 +2554,36 @@
                     <div class="nen-steps-row">
                         @foreach ($row as $idx)
                             @php
-                                $step = $stepsArr->get($idx);
+                                $stepNum = $idx + 1;
+                                $step = $stepsByNumber->get($stepNum);
                                 $icon = $step && $step->image ? asset($step->image) : ($stepComponents[$idx] ?? '');
                                 $title = $step ? $step->localized('title') : ($stepTitles[$idx] ?? '');
                                 $desc = $step ? $step->localized('description') : ($stepDescs[$idx] ?? '');
-                                $num = str_pad((string) ($idx + 1), 2, '0', STR_PAD_LEFT);
+                                $num = str_pad((string) $stepNum, 2, '0', STR_PAD_LEFT);
                             @endphp
                             <div class="nen-step" tabindex="0" role="button"
-                                aria-label="{{ $title }} — step {{ $idx + 1 }}"
+                                aria-label="{{ $title }} — step {{ $stepNum }}"
+                                aria-expanded="false"
                                 style="--nen-step-delay: {{ $idx * 90 }}ms">
-                                <div class="nen-step__inner">
-                                    <div class="nen-step__face nen-step__front">
-                                        <span class="nen-step__num">{{ $num }}.</span>
+                                <div class="nen-step__card">
+                                    <span class="nen-step__accent" aria-hidden="true"></span>
+                                    <span class="nen-step__num">{{ $num }}.</span>
+                                    <div class="nen-step__head">
                                         <div class="nen-step__icon">
                                             <img src="{{ $icon }}" alt="{{ $title }}" />
                                         </div>
                                         <h3 class="nen-step__title">{{ $title }}</h3>
+                                        <p class="nen-step__hint">{{ __('landing.how_it_works.reveal_hint') }}</p>
                                     </div>
-                                    <div class="nen-step__face nen-step__back">
-                                        <span class="nen-step__num nen-step__num--back">{{ $num }}.</span>
-                                        <div class="nen-step__icon nen-step__icon--back">
-                                            <img src="{{ $icon }}" alt="" aria-hidden="true" />
-                                        </div>
-                                        <h3 class="nen-step__title nen-step__title--back">{{ $title }}</h3>
+                                    <div class="nen-step__drawer">
                                         <p class="nen-step__desc">{{ $desc }}</p>
                                     </div>
+                                    <span class="nen-step__chev" aria-hidden="true"></span>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                 @endforeach
-            </div>
-        </div>
-    @endif
-
-    {{-- ===================== NEN MILESTONES / TESTIMONIALS ===================== --}}
-    @if ($landing->show_milestones ?? true)
-        <div class="tesrimonials" id="about-nen">
-            <div class="tesrimonials-col-left">
-                <a href="{{ $landing->milestones_cta_url ?? '#collection-point' }}"
-                    class="btn-c tesrimonials-btn hover-bright">
-                    {{ landing_get($landing, 'milestones_cta_text') ?? __('landing.milestones.find_collection_point') }}
-                </a>
-
-                <div class="tesrimonials-col1">
-                    <div class="tesrimonials-col2">
-                        <h2 class="tesrimonials-subtitle-national">
-                            {{ landing_get($landing, 'milestones_title') ?? __('landing.milestones.title') }}</h2>
-                        <p class="text tesrimonials-text-an-international">
-                            {{ landing_get($landing, 'milestones_subtitle') ?? __('landing.milestones.subtitle') }}
-                        </p>
-                    </div>
-
-                    <div class="tesrimonials-col-bottom">
-                        <h2 class="tesrimonials-subtitle-key-milestones">{{ __('landing.milestones.key_milestones') }}</h2>
-
-                        <div class="tesrimonials-row">
-                            <div class="column-b">
-                                <h2 class="column-subtitle2">{{ $landing->about_stat_value ?? '15+' }}</h2>
-                                <p class="column-text">{{ landing_get($landing, 'about_stat_label') ?? __('landing.milestones.years_experience') }}</p>
-                            </div>
-                            <div class="line tesrimonials-line1"></div>
-                            <div class="column-b">
-                                <h2 class="column-subtitle2">{{ $landing->about_metric1_value ?? '100+' }}</h2>
-                                <p class="column-text">{{ landing_get($landing, 'about_metric1_label') ?? __('landing.milestones.global_universities') }}</p>
-                            </div>
-                            <div class="line tesrimonials-line2"></div>
-                            <div class="column-b">
-                                <h2 class="column-subtitle2">{{ $landing->about_metric2_value ?? '29' }}</h2>
-                                <p class="column-text">{{ landing_get($landing, 'about_metric2_label') ?? __('landing.milestones.countries_worldwide') }}</p>
-                            </div>
-                        </div>
-
-                        <p class="text tesrimonials-text-bottom">
-                            {{ landing_get($landing, 'milestones_description') ?? __('landing.milestones.description') }}
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="tesrimonials-group-right nen-collection-map" id="collection-point">
-                <h3 class="nen-collection-map__title">{{ __('landing.collection_points.map_title') }}</h3>
-
-                @if (($collectionPoints ?? collect())->isNotEmpty())
-                    <div class="nen-collection-map__tabs" role="tablist" aria-label="{{ __('landing.collection_points.map_title') }}">
-                        @foreach ($collectionPoints as $i => $point)
-                            <button type="button"
-                                class="nen-collection-map__tab{{ $i === 0 ? ' is-active' : '' }}"
-                                role="tab"
-                                aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
-                                data-slug="{{ $point->slug }}">
-                                {{ __('landing.collection_points.cities.' . $point->slug) }}
-                            </button>
-                        @endforeach
-                    </div>
-
-                    <div id="nenCollectionMap" class="nen-collection-map__canvas" aria-hidden="false"></div>
-
-                    <div class="nen-collection-map__panel">
-                        @foreach ($collectionPoints as $i => $point)
-                            <div class="nen-collection-map__details{{ $i === 0 ? ' is-active' : '' }}"
-                                data-slug="{{ $point->slug }}">
-                                <h4 class="nen-collection-map__office">{{ $point->name }}</h4>
-                                <ul class="nen-collection-map__meta">
-                                    @if ($point->address)
-                                        <li><strong>{{ __('landing.collection_points.address') }}:</strong> {{ $point->address }}</li>
-                                    @endif
-                                    @if ($point->land_line)
-                                        <li><strong>{{ __('landing.collection_points.landline') }}:</strong> <a href="tel:{{ preg_replace('/[^0-9+]/', '', $point->land_line) }}">{{ $point->land_line }}</a></li>
-                                    @endif
-                                    @if ($point->call_center)
-                                        <li><strong>{{ __('landing.collection_points.call_center') }}:</strong> <a href="tel:{{ preg_replace('/[^0-9+]/', '', $point->call_center) }}">{{ $point->call_center }}</a></li>
-                                    @endif
-                                    @if ($point->email)
-                                        <li><strong>{{ __('landing.collection_points.email') }}:</strong> <a href="mailto:{{ $point->email }}">{{ $point->email }}</a></li>
-                                    @endif
-                                    @if ($point->schedule)
-                                        <li><strong>{{ __('landing.collection_points.schedule') }}:</strong> {{ $point->schedule }}</li>
-                                    @endif
-                                </ul>
-                                <div class="nen-collection-map__actions">
-                                    <a href="{{ $point->mapsShareUrl() }}" class="nen-collection-map__btn nen-collection-map__btn--maps"
-                                        target="_blank" rel="noopener">
-                                        {{ __('landing.collection_points.open_maps') }}
-                                    </a>
-                                    <button type="button" class="nen-collection-map__btn nen-collection-map__btn--share"
-                                        data-share-url="{{ $point->mapsShareUrl() }}"
-                                        data-share-title="{{ $point->name }}">
-                                        {{ __('landing.collection_points.share') }}
-                                    </button>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @else
-                    <div class="nen-collection-map__empty">
-                        <img src="{{ asset('site/home/assets/tesrimonials-group2.png') }}" alt="" />
-                    </div>
-                @endif
-            </div>
-        </div>
-    @endif
-
-    {{-- ===================== CERTIFIED TRANSLATION AGENCIES ===================== --}}
-    @if (($landing->show_agencies ?? true) && isset($translationAgencies) && $translationAgencies->count())
-        <div class="col12" id="translation-agencies">
-            <div class="row-d row-top8">
-                <div class="row-col2">
-                    <button class="btn-c row-btn hover-dark">{{ __('landing.agencies.translation_badge') }}</button>
-                    <h2 class="row-subtitle">{{ landing_get($landing, 'agencies_title') ?? __('landing.agencies.translation_title') }}</h2>
-                    <p class="text row-text-bottom">
-                        {{ landing_get($landing, 'agencies_subtitle') ?? __('landing.agencies.translation_subtitle') }}
-                    </p>
-                </div>
-
-                <div class="row-row-right">
-                    <div class="row-circle-black-left circle-black hover-bright" id="transAgencyPrev">
-                        <img src="{{ asset('site/home/assets/row-circle-black/row-lucide-arrow.png') }}"
-                            alt="{{ __('landing.agencies.prev') }}" />
-                        <img src="{{ asset('site/home/assets/row-circle-black/row-img.png') }}" class="row-img2" />
-                    </div>
-                    <div class="row-circle-black-right circle-black hover-bright" id="transAgencyNext">
-                        <img src="{{ asset('site/home/assets/row-circle-black/row-lucide-arrow.png') }}"
-                            alt="{{ __('landing.agencies.next') }}" />
-                        <img src="{{ asset('site/home/assets/row-circle-black/row-img2.png') }}" class="row-img3" />
-                    </div>
-                </div>
-            </div>
-
-            <div class="group-bottom1">
-                <div class="nen-scroll-wrap" id="transAgencyTrack">
-                    <div class="row15" id="transAgencyInner">
-                        @foreach ($translationAgencies as $i => $agency)
-                            <div class="frame-c frame{{ $i + 1 }}">
-                                <img src="{{ $agency->image ? asset($agency->image) : asset('site/home/assets/frame/frame-img' . (($i % 4) + 5) . '.png') }}"
-                                    class="frame-img3 input" alt="{{ $agency->localized('name') }}" />
-                                <div class="frame-col">
-                                    <div class="frame-col-top">
-                                        <p class="frame-text3">{{ $agency->localized('name') }}</p>
-                                        <p class="frame-text4">{{ $agency->localized('service_description') }}</p>
-                                    </div>
-                                    <div class="frame-col-bottom">
-                                        @if ($agency->localized('location'))
-                                            <div class="row-e row-top2">
-                                                <img src="{{ asset('site/home/assets/row/row-location.png') }}"
-                                                    class="row-smart-phone row-location" alt="Location" />
-                                                <p class="row-text3">{{ $agency->localized('location') }}</p>
-                                            </div>
-                                        @endif
-                                        @if ($agency->phone)
-                                            <div class="row-e row-bottom1">
-                                                <img src="{{ asset('site/home/assets/row/row-smart-phone.png') }}"
-                                                    class="row-smart-phone" alt="Phone" />
-                                                <p class="row-text3">{{ $agency->phone }}</p>
-                                            </div>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>{{-- /.nen-scroll-wrap --}}
-                <div class="rect-a rect1"></div>
             </div>
         </div>
     @endif
@@ -2271,9 +2625,126 @@
         </div>
     @endif
 
+    {{-- ===================== COLLECTION POINT / MILESTONES ===================== --}}
+    @if ($landing->show_milestones ?? true)
+        <div class="tesrimonials" id="about-nen">
+            <div class="tesrimonials-col-left nen-about-nen">
+                <a href="{{ $landing->milestones_cta_url ?? '#collection-point' }}"
+                    class="btn-c tesrimonials-btn hover-bright">
+                    {{ landing_get($landing, 'milestones_cta_text') ?? __('landing.milestones.find_collection_point') }}
+                </a>
+
+                <div class="tesrimonials-col1">
+                    <div class="tesrimonials-col2">
+                        <h2 class="tesrimonials-subtitle-national">
+                            {{ landing_get($landing, 'milestones_title') ?? __('landing.milestones.title') }}
+                        </h2>
+                        @foreach (__('landing.milestones.intro') as $paragraph)
+                            <p class="text tesrimonials-text-an-international nen-about-nen__intro">{{ $paragraph }}</p>
+                        @endforeach
+                    </div>
+
+                    <div class="tesrimonials-col-bottom">
+                        <h2 class="tesrimonials-subtitle-key-milestones">{{ __('landing.milestones.key_milestones') }}</h2>
+
+                        <div class="nen-about-nen__stats">
+                            @foreach (__('landing.milestones.stats') as $stat)
+                                <div class="nen-about-nen__stat">
+                                    <h3 class="nen-about-nen__stat-value">{{ $stat['value'] }}</h3>
+                                    <h4 class="nen-about-nen__stat-title">{{ $stat['title'] }}</h4>
+                                    <p class="nen-about-nen__stat-desc">{{ $stat['desc'] }}</p>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <h3 class="nen-about-nen__mission-title">{{ __('landing.milestones.mission_title') }}</h3>
+                        <p class="text tesrimonials-text-bottom nen-about-nen__mission">
+                            {{ __('landing.milestones.mission') }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tesrimonials-group-right nen-collection-map" id="collection-point">
+                <h3 class="nen-collection-map__title">{{ __('landing.collection_points.map_title') }}</h3>
+
+                @if (($collectionCountries ?? collect())->isNotEmpty())
+                    <div class="nen-collection-map__tabs" role="tablist" aria-label="{{ __('landing.collection_points.map_title') }}">
+                        @foreach ($collectionCountries as $i => $country)
+                            <button type="button"
+                                class="nen-collection-map__tab{{ $i === 0 ? ' is-active' : '' }}"
+                                role="tab"
+                                aria-selected="{{ $i === 0 ? 'true' : 'false' }}"
+                                data-country="{{ $country['code'] }}">
+                                {{ $country['label'] }}
+                            </button>
+                        @endforeach
+                    </div>
+
+                    <div id="nenCollectionMap" class="nen-collection-map__canvas" aria-hidden="false"></div>
+
+                    <div class="nen-collection-map__panel">
+                        @foreach ($collectionCountries as $i => $country)
+                            <div class="nen-collection-map__country-panel{{ $i === 0 ? ' is-active' : '' }}"
+                                data-country="{{ $country['code'] }}">
+                                @foreach (($collectionPointsByCountry[$country['code']] ?? collect()) as $point)
+                                    <div class="nen-collection-map__office-block">
+                                        <div class="nen-collection-map__details" data-slug="{{ $point->slug }}">
+                                            <h4 class="nen-collection-map__office">{{ $point->name }}</h4>
+                                            <ul class="nen-collection-map__meta">
+                                                @if ($point->address)
+                                                    <li><strong>{{ __('landing.collection_points.address') }}:</strong> {{ $point->address }}</li>
+                                                @endif
+                                                @if ($point->land_line)
+                                                    <li><strong>{{ __('landing.collection_points.landline') }}:</strong> <a href="tel:{{ preg_replace('/[^0-9+]/', '', $point->land_line) }}">{{ $point->land_line }}</a></li>
+                                                @endif
+                                                @if ($point->call_center)
+                                                    <li><strong>{{ __('landing.collection_points.call_center') }}:</strong> <a href="tel:{{ preg_replace('/[^0-9+]/', '', $point->call_center) }}">{{ $point->call_center }}</a></li>
+                                                @endif
+                                                @if ($point->email)
+                                                    <li><strong>{{ __('landing.collection_points.email') }}:</strong> <a href="mailto:{{ $point->email }}">{{ $point->email }}</a></li>
+                                                @endif
+                                                @if ($point->schedule)
+                                                    <li><strong>{{ __('landing.collection_points.schedule') }}:</strong> {{ $point->schedule }}</li>
+                                                @endif
+                                            </ul>
+                                            <div class="nen-collection-map__actions">
+                                                <a href="{{ $point->mapsShareUrl() }}" class="nen-collection-map__btn nen-collection-map__btn--maps"
+                                                    target="_blank" rel="noopener">
+                                                    {{ __('landing.collection_points.open_maps') }}
+                                                </a>
+                                                <button type="button" class="nen-collection-map__btn nen-collection-map__btn--share"
+                                                    data-share-url="{{ $point->mapsShareUrl() }}"
+                                                    data-share-title="{{ $point->name }}">
+                                                    {{ __('landing.collection_points.share') }}
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+                @else
+                    <div class="nen-collection-map__empty">
+                        <img src="{{ asset('site/home/assets/tesrimonials-group2.png') }}" alt="" />
+                    </div>
+                @endif
+            </div>
+        </div>
+    @endif
+
+    @php
+        $hasStudyAgencies = ($landing->show_trusted_agencies ?? true) && isset($trustedAgencies) && $trustedAgencies->count();
+        $hasTranslationAgencies = ($landing->show_agencies ?? true) && isset($translationAgencies) && $translationAgencies->count();
+    @endphp
+    @if ($hasStudyAgencies || $hasTranslationAgencies)
+        <div id="trusted-agencies" class="nen-agencies-group">
+    @endif
+
     {{-- ===================== TRUSTED STUDY ABROAD AGENCIES ===================== --}}
-    @if (($landing->show_trusted_agencies ?? true) && isset($trustedAgencies) && $trustedAgencies->count())
-        <div class="col16" id="trusted-agencies">
+    @if ($hasStudyAgencies)
+        <div class="col16" id="study-agencies">
             <div class="col17">
                 <div class="row-d row-top9">
                     <div class="row-col2">
@@ -2344,6 +2815,74 @@
         </div>
     @endif
 
+    {{-- ===================== CERTIFIED TRANSLATION AGENCIES ===================== --}}
+    @if ($hasTranslationAgencies)
+        <div class="col12" id="translation-agencies">
+            <div class="row-d row-top8">
+                <div class="row-col2">
+                    <button class="btn-c row-btn hover-dark">{{ __('landing.agencies.translation_badge') }}</button>
+                    <h2 class="row-subtitle">{{ landing_get($landing, 'agencies_title') ?? __('landing.agencies.translation_title') }}</h2>
+                    <p class="text row-text-bottom">
+                        {{ landing_get($landing, 'agencies_subtitle') ?? __('landing.agencies.translation_subtitle') }}
+                    </p>
+                </div>
+
+                <div class="row-row-right">
+                    <div class="row-circle-black-left circle-black hover-bright" id="transAgencyPrev">
+                        <img src="{{ asset('site/home/assets/row-circle-black/row-lucide-arrow.png') }}"
+                            alt="{{ __('landing.agencies.prev') }}" />
+                        <img src="{{ asset('site/home/assets/row-circle-black/row-img.png') }}" class="row-img2" />
+                    </div>
+                    <div class="row-circle-black-right circle-black hover-bright" id="transAgencyNext">
+                        <img src="{{ asset('site/home/assets/row-circle-black/row-lucide-arrow.png') }}"
+                            alt="{{ __('landing.agencies.next') }}" />
+                        <img src="{{ asset('site/home/assets/row-circle-black/row-img2.png') }}" class="row-img3" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="group-bottom1">
+                <div class="nen-scroll-wrap" id="transAgencyTrack">
+                    <div class="row15" id="transAgencyInner">
+                        @foreach ($translationAgencies as $i => $agency)
+                            <div class="frame-c frame{{ $i + 1 }}">
+                                <img src="{{ $agency->image ? asset($agency->image) : asset('site/home/assets/frame/frame-img' . (($i % 4) + 5) . '.png') }}"
+                                    class="frame-img3 input" alt="{{ $agency->localized('name') }}" />
+                                <div class="frame-col">
+                                    <div class="frame-col-top">
+                                        <p class="frame-text3">{{ $agency->localized('name') }}</p>
+                                        <p class="frame-text4">{{ $agency->localized('service_description') }}</p>
+                                    </div>
+                                    <div class="frame-col-bottom">
+                                        @if ($agency->localized('location'))
+                                            <div class="row-e row-top2">
+                                                <img src="{{ asset('site/home/assets/row/row-location.png') }}"
+                                                    class="row-smart-phone row-location" alt="Location" />
+                                                <p class="row-text3">{{ $agency->localized('location') }}</p>
+                                            </div>
+                                        @endif
+                                        @if ($agency->phone)
+                                            <div class="row-e row-bottom1">
+                                                <img src="{{ asset('site/home/assets/row/row-smart-phone.png') }}"
+                                                    class="row-smart-phone" alt="Phone" />
+                                                <p class="row-text3">{{ $agency->phone }}</p>
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>{{-- /.nen-scroll-wrap --}}
+                <div class="rect-a rect1"></div>
+            </div>
+        </div>
+    @endif
+
+    @if ($hasStudyAgencies || $hasTranslationAgencies)
+        </div>
+    @endif
+
     {{-- ===================== FAQ ===================== --}}
     @if ($landing->show_faq ?? true)
         <div class="col18 section" id="faq">
@@ -2359,8 +2898,6 @@
                     $leftCount = (int) ceil($allFaqs->count() / 2);
                     $leftFaqs = $allFaqs->slice(0, $leftCount)->values();
                     $rightFaqs = $allFaqs->slice($leftCount)->values();
-                    $expandedFaq = $rightFaqs->first();
-                    $restRightFaqs = $rightFaqs->skip(1);
                 @endphp
 
                 <div class="row20">
@@ -2378,32 +2915,7 @@
                     </div>
 
                     <div class="col-right2">
-                        @if ($expandedFaq)
-                            {{-- Desktop: always-open panel (matches home.html right column) --}}
-                            <div class="card19 nen-faq-desktop-only">
-                                <div class="card-container4">
-                                    <p class="card-text-paragraph1">{{ $expandedFaq->localized('question') }}</p>
-                                    <img src="{{ asset('site/home/assets/card-minus-sign.png') }}"
-                                        class="card-minus-sign" alt="-" />
-                                </div>
-                                @if ($expandedFaq->localized('answer'))
-                                    <p class="card-text-paragraph2">{{ $expandedFaq->localized('answer') }}</p>
-                                @endif
-                            </div>
-                            {{-- Mobile: same FAQ in the accordion list --}}
-                            <button class="btn-d faq-btn-d hover-zoom nen-faq-mobile-only" data-faq="{{ $expandedFaq->id }}"
-                                type="button">
-                                <p class="btn-label">{{ $expandedFaq->localized('question') }}</p>
-                                <img src="{{ asset('site/home/assets/btn/btn-icon.png') }}"
-                                    class="btn-icon-add btn-icon" alt="+" />
-                            </button>
-                            @if ($expandedFaq->localized('answer'))
-                                <div class="faq-answer nen-faq-mobile-only" data-answer="{{ $expandedFaq->id }}">
-                                    {{ $expandedFaq->localized('answer') }}</div>
-                            @endif
-                        @endif
-
-                        @foreach ($restRightFaqs as $faq)
+                        @foreach ($rightFaqs as $faq)
                             <button class="btn-d faq-btn-d hover-zoom" data-faq="{{ $faq->id }}" type="button">
                                 <p class="btn-label">{{ $faq->localized('question') }}</p>
                                 <img src="{{ asset('site/home/assets/btn/btn-icon.png') }}"
@@ -2507,35 +3019,44 @@
 
     {{-- ===================== FOOTER ===================== --}}
     @php
-        $footerPhone = $landing->footer_phone ?? '+20 10 6160 0400';
         $footerEmail = $landing->contact_email ?? 'admissions@nen-global.org';
-        $waNumber = preg_replace('/[^0-9]/', '', $footerPhone);
+        $footerPhoneLines = [
+            ['lang' => 'EN', 'phone' => $landing->footer_phone ?? '+20 10 6160 0400'],
+            ['lang' => 'AR', 'phone' => $landing->footer_phone ?? '+20 10 6160 0400'],
+            ['lang' => 'RU', 'phone' => __('landing.footer.phone_ru')],
+        ];
+        $waNumber = preg_replace('/[^0-9]/', '', $footerPhoneLines[0]['phone']);
     @endphp
     <footer class="footer nen-foot">
         <div class="nen-foot__top">
             <div class="nen-foot__brand">
-                <img src="{{ asset($settings['media']->logo) }}" class="nen-foot__logo" alt="NEN" />
+                <img src="{{ $nenLogo }}" class="nen-foot__logo" alt="NEN" />
                 <p class="nen-foot__tagline">
                     {{ landing_get($landing, 'footer_tagline') ?? __('landing.footer.tagline') }}
                 </p>
                 <div class="nen-foot__socials">
-                    <a href="{{ $landing->social_facebook ?? '#' }}" class="nen-foot__social" aria-label="Facebook"
+                    <a href="{{ $landing->social_facebook ?? '#' }}"
+                        class="nen-foot__social nen-foot__social--facebook" aria-label="Facebook"
                         target="_blank" rel="noopener">
                         <img src="{{ asset('site/home/assets/circle/circle-facebook.png') }}" alt="" />
                     </a>
-                    <a href="{{ $landing->social_instagram ?? '#' }}" class="nen-foot__social" aria-label="Instagram"
+                    <a href="{{ $landing->social_instagram ?? '#' }}"
+                        class="nen-foot__social nen-foot__social--instagram" aria-label="Instagram"
                         target="_blank" rel="noopener">
                         <img src="{{ asset('site/home/assets/circle/circle-instagram.png') }}" alt="" />
                     </a>
-                    <a href="{{ $landing->social_whatsapp ?? ('https://wa.me/' . $waNumber) }}" class="nen-foot__social"
-                        aria-label="WhatsApp" target="_blank" rel="noopener">
+                    <a href="{{ $landing->social_whatsapp ?? ('https://wa.me/' . $waNumber) }}"
+                        class="nen-foot__social nen-foot__social--whatsapp" aria-label="WhatsApp"
+                        target="_blank" rel="noopener">
                         <img src="{{ asset('site/home/assets/circle/circle-whatsapp.png') }}" alt="" />
                     </a>
-                    <a href="{{ $landing->social_linkedin ?? '#' }}" class="nen-foot__social" aria-label="LinkedIn"
+                    <a href="{{ $landing->social_linkedin ?? '#' }}"
+                        class="nen-foot__social nen-foot__social--linkedin" aria-label="LinkedIn"
                         target="_blank" rel="noopener">
                         <img src="{{ asset('site/home/assets/circle/circle-linkedin.png') }}" alt="" />
                     </a>
-                    <a href="{{ $landing->social_youtube ?? '#' }}" class="nen-foot__social" aria-label="YouTube"
+                    <a href="{{ $landing->social_youtube ?? '#' }}"
+                        class="nen-foot__social nen-foot__social--youtube" aria-label="YouTube"
                         target="_blank" rel="noopener">
                         <img src="{{ asset('site/home/assets/circle/circle-youtube.png') }}" alt="" />
                     </a>
@@ -2559,36 +3080,36 @@
                         <img class="nen-foot__cicon" src="{{ asset('site/home/assets/row/row-mail.png') }}" alt="" />
                         <a href="mailto:{{ $footerEmail }}">{{ $footerEmail }}</a>
                     </li>
-                    @foreach (['EN', 'AR'] as $lang)
+                    @foreach ($footerPhoneLines as $line)
+                        @php
+                            $linePhone = $line['phone'];
+                            $lineWaNumber = preg_replace('/[^0-9]/', '', $linePhone);
+                        @endphp
                         <li class="nen-foot__contact nen-foot__contact--phone">
                             <span class="nen-foot__lang">
                                 <i class="bi bi-headset" aria-hidden="true"></i>
-                                <span class="nen-foot__lang-text">{{ $lang }}</span>
+                                <span class="nen-foot__lang-text">{{ $line['lang'] }}</span>
                             </span>
-                            <a href="tel:{{ preg_replace('/\s+/', '', $footerPhone) }}">{{ $footerPhone }}</a>
+                            <a href="tel:{{ preg_replace('/\s+/', '', $linePhone) }}">{{ $linePhone }}</a>
                             <span class="nen-foot__chat">
-                                <a href="https://wa.me/{{ $waNumber }}" aria-label="WhatsApp" target="_blank"
-                                    rel="noopener">
+                                <a href="https://wa.me/{{ $lineWaNumber }}" class="nen-foot__chat-link--whatsapp"
+                                    aria-label="WhatsApp" target="_blank" rel="noopener">
                                     <img src="{{ asset('site/home/assets/row/row-whatsapp.png') }}" alt="" />
                                 </a>
-                                <a href="#" aria-label="Telegram" target="_blank" rel="noopener">
+                                <a href="#" class="nen-foot__chat-link--telegram" aria-label="Telegram"
+                                    target="_blank" rel="noopener">
                                     <img src="{{ asset('site/home/assets/circle-telegram/circle-telegram-img.png') }}"
                                         alt="" />
                                 </a>
                             </span>
                         </li>
                     @endforeach
-                    <li class="nen-foot__contact">
-                        <img class="nen-foot__cicon" src="{{ asset('site/home/assets/row/row-globe.png') }}" alt="" />
-                        <a href="{{ $landing->footer_collaboration_url ?? 'https://nen-global.org/contacts' }}"
-                            target="_blank" rel="noopener">{{ __('landing.footer.link_contacts') }}</a>
-                    </li>
                 </ul>
             </div>
         </div>
 
         <div class="nen-foot__cta">
-            <h2 class="nen-foot__cta-title"><span>{{ __('landing.footer.apply') }}</span> {{ __('landing.footer.for_future') }}</h2>
+            <h2 class="nen-foot__cta-title">{{ __('landing.footer.cta_lead') }}<span>{{ __('landing.footer.cta_action') }}</span></h2>
         </div>
 
         <div class="nen-foot__bottom">
@@ -2836,7 +3357,7 @@
                 cards.forEach(function (card) { io.observe(card); });
             })();
 
-            /* ── How It Works: flip cards (tap/keyboard) + staggered entrance ── */
+            /* ── How It Works: drawer reveal cards (tap/keyboard) + staggered entrance ── */
             (function () {
                 const group = document.querySelector('.nen-steps');
                 if (!group) return;
@@ -2846,14 +3367,21 @@
                 group.classList.add('nen-anim-ready');
 
                 steps.forEach(function (step) {
-                    /* Tap toggles the flip (hover handles it on pointer devices). */
                     step.addEventListener('click', function () {
-                        step.classList.toggle('is-flipped');
+                        const willOpen = !step.classList.contains('is-open');
+                        steps.forEach(function (other) {
+                            other.classList.remove('is-open');
+                            other.setAttribute('aria-expanded', 'false');
+                        });
+                        if (willOpen) {
+                            step.classList.add('is-open');
+                            step.setAttribute('aria-expanded', 'true');
+                        }
                     });
                     step.addEventListener('keydown', function (e) {
                         if (e.key === 'Enter' || e.key === ' ') {
                             e.preventDefault();
-                            step.classList.toggle('is-flipped');
+                            step.click();
                         }
                     });
                 });
@@ -2882,8 +3410,9 @@
             if (!mapEl || typeof L === 'undefined') return;
 
             const locations = @json($collectionPointsJson);
+            const countries = @json(($collectionCountries ?? collect())->values());
             const slugs = Object.keys(locations);
-            if (!slugs.length) return;
+            if (!slugs.length || !countries.length) return;
 
             const copiedLabel = @json(__('landing.collection_points.copied'));
             const map = L.map('nenCollectionMap', { scrollWheelZoom: false });
@@ -2902,39 +3431,50 @@
                     iconAnchor: [14, 28],
                     popupAnchor: [0, -28]
                 });
-                markers[slug] = L.marker(loc.coords, { icon: icon }).addTo(map);
-            });
-
-            function focusLocation(slug) {
-                const loc = locations[slug];
-                if (!loc) return;
-
-                document.querySelectorAll('.nen-collection-map__tab').forEach(function(tab) {
-                    const active = tab.dataset.slug === slug;
-                    tab.classList.toggle('is-active', active);
-                    tab.setAttribute('aria-selected', active ? 'true' : 'false');
-                });
-                document.querySelectorAll('.nen-collection-map__details').forEach(function(panel) {
-                    panel.classList.toggle('is-active', panel.dataset.slug === slug);
-                });
-
-                map.setView(loc.coords, 14, { animate: true });
-                if (markers[slug]) {
-                    markers[slug].openPopup();
-                }
-            }
-
-            slugs.forEach(function(slug) {
-                const loc = locations[slug];
+                markers[slug] = L.marker(loc.coords, { icon: icon });
                 const popup = (loc.name ? '<strong>' + loc.name + '</strong><br>' : '')
                     + (loc.address ? loc.address + '<br>' : '')
                     + (loc.schedule ? loc.schedule : '');
                 markers[slug].bindPopup(popup);
             });
 
+            function countrySlugs(countryCode) {
+                return slugs.filter(function(slug) {
+                    return locations[slug].countryCode === countryCode;
+                });
+            }
+
+            function focusCountry(countryCode) {
+                const activeSlugs = countrySlugs(countryCode);
+                if (!activeSlugs.length) return;
+
+                document.querySelectorAll('.nen-collection-map__tab').forEach(function(tab) {
+                    const active = tab.dataset.country === countryCode;
+                    tab.classList.toggle('is-active', active);
+                    tab.setAttribute('aria-selected', active ? 'true' : 'false');
+                });
+                document.querySelectorAll('.nen-collection-map__country-panel').forEach(function(panel) {
+                    panel.classList.toggle('is-active', panel.dataset.country === countryCode);
+                });
+
+                slugs.forEach(function(slug) {
+                    if (!markers[slug]) return;
+                    if (activeSlugs.indexOf(slug) === -1) {
+                        map.removeLayer(markers[slug]);
+                    } else if (!map.hasLayer(markers[slug])) {
+                        markers[slug].addTo(map);
+                    }
+                });
+
+                const bounds = L.latLngBounds(activeSlugs.map(function(slug) {
+                    return locations[slug].coords;
+                }));
+                map.fitBounds(bounds, { padding: [30, 30], animate: true, maxZoom: 14 });
+            }
+
             document.querySelectorAll('.nen-collection-map__tab').forEach(function(tab) {
                 tab.addEventListener('click', function() {
-                    focusLocation(tab.dataset.slug);
+                    focusCountry(tab.dataset.country);
                 });
             });
 
@@ -2962,7 +3502,7 @@
                 });
             });
 
-            focusLocation(slugs[0]);
+            focusCountry(countries[0].code);
             setTimeout(function() { map.invalidateSize(); }, 120);
         })();
     </script>
