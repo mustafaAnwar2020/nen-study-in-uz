@@ -76,12 +76,12 @@ html[dir="rtl"] body.nen-landing-body .nen-foot__cta {
 html[dir="rtl"] body.nen-landing-body .nen-foot__cta-title {
     text-transform: none;
     letter-spacing: 0;
-    line-height: 1.12;
-    font-size: clamp(40px, 11vw, 120px);
-    max-width: 100%;
+    line-height: 1.35;
+    font-size: clamp(26px, 3.6vw, 50px);
+    max-width: min(100%, 1100px);
     overflow-wrap: break-word;
     word-break: break-word;
-    word-spacing: 0.04em;
+    word-spacing: 0.02em;
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-lang-dropdown__menu {
@@ -125,6 +125,16 @@ html[dir="rtl"] body.nen-landing-body #why-uzbekistan .container-frame-right {
 }
 
 @media (max-width: 768px) {
+    html[dir="rtl"] body.nen-landing-body #hero .row5,
+    html[dir="rtl"] body.nen-landing-body #hero .col1,
+    html[dir="rtl"] body.nen-landing-body #hero .col2,
+    html[dir="rtl"] body.nen-landing-body #hero .text-join-the-ultimate,
+    html[dir="rtl"] body.nen-landing-body #hero .nen-hero-title {
+        width: 100% !important;
+        max-width: 100% !important;
+        align-self: stretch !important;
+    }
+
     html[dir="rtl"] body.nen-landing-body .col1,
     html[dir="rtl"] body.nen-landing-body .col2,
     html[dir="rtl"] body.nen-landing-body .text-join-the-ultimate {

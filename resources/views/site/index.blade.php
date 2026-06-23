@@ -1288,7 +1288,7 @@
         border-top: 1px solid #ececec;
         background: #fff;
         text-align: center;
-        padding: 28px 24px 8px;
+        padding: 20px 32px 16px;
         overflow-x: hidden;
         max-width: 100%;
     }
@@ -1297,19 +1297,19 @@
         color: #111;
         font-weight: 800;
         text-transform: none;
-        font-size: clamp(58px, 15vw, 190px);
-        line-height: 1;
-        letter-spacing: -0.045em;
-        max-width: 100%;
+        font-size: clamp(28px, 4vw, 56px);
+        line-height: 1.2;
+        letter-spacing: -0.03em;
+        max-width: min(100%, 1100px);
         overflow-wrap: break-word;
         word-break: break-word;
     }
     html[dir="rtl"] body.nen-landing-body .nen-foot__cta-title {
         text-transform: none;
         letter-spacing: 0;
-        line-height: 1.12;
-        font-size: clamp(40px, 11vw, 120px);
-        word-spacing: 0.04em;
+        line-height: 1.35;
+        font-size: clamp(26px, 3.6vw, 50px);
+        word-spacing: 0.02em;
     }
     body.nen-landing-body .nen-foot__cta-title span {
         color: #017785;
@@ -1544,23 +1544,34 @@
         }
 
         /* Hero text */
-        body.nen-landing-body .row5 {
+        body.nen-landing-body #hero .row5 {
             position: static !important;
             display: block !important;
+            align-self: stretch !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0;
             margin-top: 0 !important;
             padding: 0 !important;
         }
-        body.nen-landing-body .col1 {
+        body.nen-landing-body #hero .col1 {
             position: static !important;
             top: auto !important;
             left: auto !important;
             width: 100% !important;
             max-width: 100% !important;
+            min-width: 0;
             align-items: flex-start !important;
-            text-align: left;
+            align-self: stretch !important;
+            text-align: start;
+            gap: 24px;
         }
-        body.nen-landing-body .col2 {
-            text-align: left;
+        body.nen-landing-body #hero .col2 {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0;
+            align-self: stretch !important;
+            text-align: start;
         }
         body.nen-landing-body .subtitle1:not(.nen-hero-title) {
             white-space: normal !important;
@@ -1568,11 +1579,19 @@
             letter-spacing: -1px !important;
             line-height: 1.15 !important;
         }
+        body.nen-landing-body #hero .text-join-the-ultimate,
         body.nen-landing-body .text-join-the-ultimate {
-            text-align: left;
+            width: 100%;
+            max-width: 100%;
+            margin-right: 0 !important;
+            margin-left: 0 !important;
+            text-align: start;
+            line-height: 1.55;
         }
+        body.nen-landing-body #hero .frame-bottom,
         body.nen-landing-body .frame-bottom {
             width: auto !important;
+            max-width: 100%;
         }
 
         /* Partner strip */
@@ -1601,12 +1620,14 @@
             width: min(188px, 72vw);
         }
         body.nen-landing-body #hero .nen-hero-title {
+            width: 100%;
             align-items: flex-start;
-            text-align: left;
+            text-align: start;
         }
         body.nen-landing-body #hero .nen-hero-title__study,
         body.nen-landing-body #hero .nen-hero-title__country {
             font-size: clamp(36px, 9vw, 52px) !important;
+            width: 100%;
         }
 
         /* ── About Program ── */
@@ -1873,7 +1894,7 @@
         body.nen-landing-body .nen-foot__cta {
             order: 1;
             border-top: none;
-            padding: 32px 16px 12px;
+            padding: 24px 16px 12px;
         }
         body.nen-landing-body .nen-foot__top {
             order: 2;
@@ -1884,8 +1905,12 @@
         }
         body.nen-landing-body .nen-foot__cta-title {
             white-space: normal !important;
-            font-size: clamp(36px, 11vw, 52px) !important;
-            line-height: 1.05 !important;
+            font-size: clamp(24px, 7vw, 36px) !important;
+            line-height: 1.25 !important;
+        }
+        html[dir="rtl"] body.nen-landing-body .nen-foot__cta-title {
+            font-size: clamp(22px, 6.5vw, 34px) !important;
+            line-height: 1.35 !important;
         }
     }
 
