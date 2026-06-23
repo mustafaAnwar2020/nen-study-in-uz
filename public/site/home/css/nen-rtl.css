@@ -2,15 +2,27 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap');
 
-html[dir="rtl"] body.nen-landing-body,
-html[dir="rtl"] body.nen-landing-body * {
-    font-family: 'Cairo', 'Manrope', sans-serif;
-}
-
 html[dir="rtl"] body.nen-landing-body {
+    font-family: 'Cairo', 'Manrope', sans-serif;
     text-align: right;
     line-height: 1.65;
     letter-spacing: 0;
+}
+
+html[dir="rtl"] body.nen-landing-body :where(h1, h2, h3, h4, h5, h6, p, a, button, li, span, label, input, textarea, select) {
+    font-family: inherit;
+}
+
+html[dir="rtl"] body.nen-landing-body .fa,
+html[dir="rtl"] body.nen-landing-body .fas,
+html[dir="rtl"] body.nen-landing-body .far,
+html[dir="rtl"] body.nen-landing-body .fab {
+    font-family: FontAwesome !important;
+}
+
+html[dir="rtl"] body.nen-landing-body .bi,
+html[dir="rtl"] body.nen-landing-body [class^="bi-"] {
+    font-family: bootstrap-icons !important;
 }
 
 html[dir="rtl"] body.nen-landing-body .col1,
@@ -37,18 +49,22 @@ html[dir="rtl"] body.nen-landing-body .row12 .col-right1 {
     margin-right: auto;
 }
 
-html[dir="rtl"] body.nen-landing-body #hero .nen-hero-nav .nen {
+html[dir="rtl"] body.nen-landing-body #hero .nen-hero-header {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] body.nen-landing-body #hero .nen-hero-logo {
     width: auto;
-    max-width: 130px;
-    height: 48px;
+    max-width: clamp(160px, 16vw, 220px);
+    height: clamp(56px, 6vw, 76px);
     object-fit: contain;
     object-position: right center;
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-foot__logo {
     width: auto;
-    max-width: 130px;
-    height: 48px;
+    max-width: 200px;
+    height: 64px;
     object-fit: contain;
     object-position: right center;
 }
@@ -91,9 +107,11 @@ html[dir="rtl"] body.nen-landing-body .nen-lang-dropdown__menu {
 
 html[dir="rtl"] body.nen-landing-body .nen-step__card,
 html[dir="rtl"] body.nen-landing-body .nen-step__head,
-html[dir="rtl"] body.nen-landing-body .nen-step__desc {
+html[dir="rtl"] body.nen-landing-body .nen-step__desc,
+html[dir="rtl"] body.nen-landing-body .nen-step__title,
+html[dir="rtl"] body.nen-landing-body .nen-step__hint {
     text-align: right;
-    align-items: flex-start;
+    align-items: flex-end;
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-step__accent {
@@ -110,6 +128,48 @@ html[dir="rtl"] body.nen-landing-body #why-uzbekistan .row-text2,
 html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-text4,
 html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-text1 {
     text-align: right;
+    line-height: 1.75;
+}
+
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-subtitle2 {
+    line-height: 1.2 !important;
+    text-align: right;
+}
+
+html[dir="rtl"] body.nen-landing-body #how-it-works .subtitle-we-re-not-just-about,
+html[dir="rtl"] body.nen-landing-body #how-it-works .col-left2,
+html[dir="rtl"] body.nen-landing-body #how-it-works .col-left2 .text {
+    text-align: right;
+}
+
+html[dir="rtl"] body.nen-landing-body #how-it-works .col-left2 .text {
+    line-height: 1.85;
+}
+
+html[dir="rtl"] body.nen-landing-body #how-it-works .subtitle-we-re-not-just-about {
+    line-height: 1.35 !important;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-step__desc {
+    line-height: 1.75;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-step__hint {
+    line-height: 1.55;
+}
+
+html[dir="rtl"] body.nen-landing-body #faq .faq-btn-d {
+    flex-direction: row-reverse;
+    text-align: right;
+}
+
+html[dir="rtl"] body.nen-landing-body #faq .faq-answer {
+    text-align: right;
+    line-height: 1.85;
+}
+
+html[dir="rtl"] body.nen-landing-body .faq-answer {
+    text-align: right;
 }
 
 html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card6,
@@ -117,7 +177,7 @@ html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-a,
 html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-container1,
 html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-container3 {
     text-align: right;
-    align-items: flex-start;
+    align-items: flex-end;
 }
 
 html[dir="rtl"] body.nen-landing-body #why-uzbekistan .container-frame-right {
@@ -133,6 +193,67 @@ html[dir="rtl"] body.nen-landing-body #why-uzbekistan .container-frame-right {
         width: 100% !important;
         max-width: 100% !important;
         align-self: stretch !important;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #hero .nen-hero-logo {
+        max-width: 150px;
+        height: 56px;
+        object-position: right center;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #hero .nen-lang-dropdown__menu {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+
+    html[dir="rtl"] body.nen-landing-body #how-it-works .row-top6 {
+        align-items: flex-end;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #how-it-works .subtitle-we-re-not-just-about,
+    html[dir="rtl"] body.nen-landing-body #how-it-works .col-left2,
+    html[dir="rtl"] body.nen-landing-body #how-it-works .col-left2 .text {
+        text-align: right;
+        align-items: flex-end;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card6,
+    html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-a,
+    html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-container1,
+    html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-container3 {
+        text-align: right !important;
+        align-items: flex-end !important;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #why-uzbekistan .row-text2 {
+        text-align: right;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #faq .faq-btn-d .btn-label {
+        text-align: right !important;
+        line-height: 1.65;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #faq .faq-answer {
+        text-align: right !important;
+        line-height: 1.85;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #hero .nen-hero-title {
+        gap: 12px;
+        line-height: 1.45 !important;
+        letter-spacing: 0 !important;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #hero .nen-hero-title__study,
+    html[dir="rtl"] body.nen-landing-body #hero .nen-hero-title__country {
+        line-height: 1.45 !important;
+        letter-spacing: 0 !important;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #hero .text-join-the-ultimate {
+        line-height: 1.85;
     }
 
     html[dir="rtl"] body.nen-landing-body .col1,

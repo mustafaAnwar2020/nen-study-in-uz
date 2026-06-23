@@ -57,7 +57,7 @@ class NenLandingArabicSeeder extends Seeder
             'faq_title_ar'                 => 'الأسئلة المتكررة',
             'university_logos_title_ar'    => 'شركاء النجاح',
             'footer_tagline_ar'            => 'الشبكة الأهلية للتعليم (NEN)، الشريك الرسمي لوزارة التعليم العالي ومبادرة "الدراسة في أوزبكستان" في الشرق الأوسط، تربط الطلاب بجامعات معترف بها دوليًا وتوفر لهم فرصًا تعليمية متميزة في مختلف أنحاء أوزبكستان.',
-            'footer_copyright_ar'          => 'Copyright © ' . date('Y') . ' NEN | National Education Network',
+            'footer_copyright_ar'          => 'جميع حقوق النشر محفوظة لدى "الشبكة الأهلية للتعليم" © ' . date('Y'),
         ]);
     }
 

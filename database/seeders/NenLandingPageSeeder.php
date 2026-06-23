@@ -154,7 +154,7 @@ class NenLandingPageSeeder extends Seeder
                 'step_number' => 4,
                 'title'       => 'Document Verification',
                 'description' => 'We review and verify your documents and coordinate with the relevant authorities.',
-                'image'       => $this->base . '/component/component-map-pinpoint.png',
+                'image'       => null,
             ],
             [
                 'step_number' => 5,

@@ -105,13 +105,32 @@
             display: none !important;
         }
 
-        body.nen-landing-body #hero .nen-hero-nav {
+        body.nen-landing-body #hero .nen-hero-header {
             grid-area: nav;
+            display: flex;
+            align-items: center;
+            gap: clamp(20px, 3vw, 40px);
+            width: 100%;
+            max-width: 100%;
+            justify-self: stretch;
+            min-width: 0;
+        }
+        body.nen-landing-body #hero .nen-hero-logo {
+            width: auto;
+            max-width: clamp(130px, 14vw, 180px);
+            height: clamp(56px, 6vw, 76px);
+            object-fit: contain;
+            object-position: left center;
+            flex-shrink: 0;
+        }
+        body.nen-landing-body #hero .nen-hero-nav {
+            flex: 1;
+            min-width: 0;
             position: relative !important;
             top: auto !important;
             left: auto !important;
             z-index: 5 !important;
-            justify-self: center;
+            justify-self: auto;
             width: auto !important;
             max-width: 100%;
         }
@@ -130,18 +149,78 @@
             color: #017785;
         }
         body.nen-landing-body #hero .row2.nen-hero-nav {
-            gap: clamp(12px, 2vw, 28px);
-            padding: 10px 12px 10px 14px;
-            max-width: calc(100% - 24px);
+            gap: clamp(16px, 2vw, 28px);
+            padding: 12px 18px 12px 20px;
+            max-width: none;
+            width: 100%;
+            justify-content: space-between;
+            flex-direction: row !important;
+            align-items: center !important;
+            flex-wrap: nowrap;
         }
         body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links {
-            gap: clamp(8px, 1vw, 14px);
-            flex-wrap: wrap;
-            justify-content: center;
+            gap: clamp(10px, 1.1vw, 18px);
+            flex-wrap: nowrap;
+            justify-content: flex-start;
+            flex: 1 1 auto;
+            min-width: 0;
+            padding-right: 0;
         }
         body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links a {
-            font-size: clamp(11px, 1vw, 14px);
+            font-size: clamp(12px, 0.92vw, 15px);
+            letter-spacing: -0.02em;
             white-space: nowrap;
+            flex-shrink: 0;
+        }
+        body.nen-landing-body #hero .row-right2 {
+            overflow: visible;
+            gap: clamp(12px, 1.2vw, 18px) !important;
+            flex-shrink: 0;
+        }
+        body.nen-landing-body #hero .nen-hero-nav .card5 {
+            padding: 12px 14px;
+            gap: 8px;
+            min-width: 0;
+            width: auto;
+            max-width: none;
+            flex-shrink: 0;
+        }
+        body.nen-landing-body #hero .nen-hero-nav .card-text-left1 {
+            font-size: clamp(13px, 0.95vw, 15px);
+        }
+        body.nen-landing-body #hero .nen-hero-nav .card-lucide-arrow1 {
+            width: 18px;
+        }
+
+        /* home.css @container row-top4 stacks .row2 vertically — keep hero nav horizontal */
+        @container row-top4 (width < 1028px) {
+            body.nen-landing-body #hero .row2.nen-hero-nav {
+                flex-direction: row !important;
+                align-items: center !important;
+                gap: clamp(12px, 2vw, 20px) !important;
+                padding: 12px 16px !important;
+            }
+            body.nen-landing-body #hero .row2.nen-hero-nav > * {
+                margin-left: unset !important;
+                margin-top: unset !important;
+                text-align: unset !important;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            body.nen-landing-body #hero .nen-hero-logo {
+                max-width: 120px;
+                height: 52px;
+            }
+            body.nen-landing-body #hero .nen-hero-header {
+                gap: 16px;
+            }
+            body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links a {
+                font-size: 12px;
+            }
+            body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links {
+                gap: 8px;
+            }
         }
         body.nen-landing-body .nen-agencies-group {
             display: flex;
@@ -217,8 +296,10 @@
             color: var(--brand-brand-main);
         }
 
-        body.nen-landing-body #hero .row-right2 {
-            overflow: visible;
+        body.nen-landing-body #hero .nen-lang-dropdown__toggle {
+            font-size: clamp(14px, 1vw, 16px);
+            gap: 6px;
+            flex-shrink: 0;
         }
 
         @media (min-width: 769px) and (max-width: 1100px) {
@@ -305,6 +386,30 @@
         body.nen-landing-body .column-subtitle1 {
             line-height: 1.12 !important;
         }
+        body.nen-landing-body .subtitle-we-re-not-just-about {
+            line-height: 1.12 !important;
+        }
+
+        /* Readable Arabic / multi-line body copy */
+        body.nen-landing-body .card-text1,
+        body.nen-landing-body .card-text4,
+        body.nen-landing-body .text,
+        body.nen-landing-body .faq-answer {
+            line-height: 1.65;
+        }
+        body.nen-landing-body .card-subtitle2 {
+            line-height: 1.15 !important;
+        }
+        body.nen-landing-body .row-c,
+        body.nen-landing-body .row-text2 {
+            line-height: 1.35;
+        }
+        body.nen-landing-body .row-text2 {
+            text-align: start;
+        }
+        body.nen-landing-body .faq-answer {
+            text-align: start;
+        }
 
         /* Mobile nav toggle (hidden on desktop) */
         body.nen-landing-body .nen-nav-toggle {
@@ -312,11 +417,68 @@
         }
 
         /* ── FAQ section ── */
-        /* Top-align the two columns (home.css uses center, which floats a shorter
-           column to the middle and looks broken; flex-start keeps them aligned and
-           avoids jumps when an accordion answer expands). */
-        body.nen-landing-body #faq .row20 {
-            align-items: flex-start !important;
+        body.nen-landing-body #faq .row20.nen-faq-grid {
+            display: flex !important;
+            flex-direction: column;
+            gap: 24px;
+            align-items: stretch !important;
+            align-self: stretch;
+            width: 100%;
+        }
+
+        body.nen-landing-body #faq .nen-faq-row {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 24px;
+            align-items: start;
+            width: 100%;
+        }
+
+        body.nen-landing-body #faq .nen-faq-item {
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            height: auto;
+            overflow: visible;
+        }
+
+        body.nen-landing-body #faq .nen-faq-item .faq-btn-d {
+            flex: 0 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            min-height: 96px;
+            padding: 22px 28px;
+            text-align: start;
+            background: #fff;
+        }
+
+        body.nen-landing-body #faq .nen-faq-item .faq-answer {
+            flex: 0 0 auto;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        body.nen-landing-body #faq .faq-btn-d .btn-label {
+            flex: 1;
+            min-width: 0;
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        body.nen-landing-body #faq .faq-btn-d .btn-icon-add {
+            flex-shrink: 0;
+            align-self: center;
+        }
+
+        @container col19 (width < 900px) {
+            body.nen-landing-body #faq .nen-faq-row {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
         }
 
         body.nen-landing-body #faq .faq-btn-d {
@@ -324,8 +486,11 @@
             transition: background-color 0.2s ease, transform 0.2s ease;
         }
 
-        .faq-btn-d.active {
+        body.nen-landing-body #faq .faq-btn-d.active {
             background-color: var(--neutrals-neutrals-2);
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-color: transparent;
         }
 
         /* Rotate the + icon to an x when its item is open */
@@ -338,18 +503,23 @@
             transition: transform 0.2s ease;
         }
 
-        .faq-answer {
+        body.nen-landing-body .faq-answer {
             display: none;
-            text-align: left;
-            padding: 4px 34px 20px;
-            margin-top: -12px;
+            text-align: start;
+            padding: 18px 28px 22px;
+            margin: 0;
             font-size: 14.83px;
-            line-height: 1.6;
+            line-height: 1.7;
             font-weight: 400;
             color: #3e3c36;
+            border: 0.2px solid #8e8e8e;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            background: var(--neutrals-neutrals-2, #f5f5f5);
+            overflow: visible;
         }
 
-        .faq-answer.open {
+        body.nen-landing-body .faq-answer.open {
             display: block;
         }
 
@@ -761,15 +931,16 @@
         }
     }
     body.nen-landing-body .nen-step__icon {
-        width: 52px;
-        height: 52px;
+        width: 72px;
+        height: 72px;
         display: flex;
         align-items: center;
         justify-content: center;
         background: #f1f3f2;
-        border-radius: 12px;
+        border-radius: 16px;
         flex-shrink: 0;
-        transition: background 0.35s ease;
+        color: #017785;
+        transition: background 0.35s ease, color 0.35s ease;
     }
     body.nen-landing-body .nen-step.is-open .nen-step__icon,
     body.nen-landing-body .nen-step:focus-visible .nen-step__icon {
@@ -780,10 +951,12 @@
             background: rgba(1, 119, 133, 0.12);
         }
     }
-    body.nen-landing-body .nen-step__icon img {
-        width: 26px;
-        height: 26px;
+    body.nen-landing-body .nen-step__icon img,
+    body.nen-landing-body .nen-step__icon .nen-step__svg {
+        width: 44px;
+        height: 44px;
         object-fit: contain;
+        flex-shrink: 0;
     }
     body.nen-landing-body .nen-step__title {
         margin: 0;
@@ -902,6 +1075,16 @@
     @media (max-width: 820px) {
         body.nen-landing-body .nen-steps-row {
             flex-direction: column;
+        }
+        body.nen-landing-body .nen-step__icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 14px;
+        }
+        body.nen-landing-body .nen-step__icon img,
+        body.nen-landing-body .nen-step__icon .nen-step__svg {
+            width: 40px;
+            height: 40px;
         }
     }
     @media (prefers-reduced-motion: reduce) {
@@ -1101,8 +1284,11 @@
         min-width: 0;
     }
     body.nen-landing-body .nen-foot__logo {
-        width: 96px;
-        height: auto;
+        width: auto;
+        max-width: 140px;
+        height: 64px;
+        object-fit: contain;
+        object-position: left center;
         margin-bottom: 18px;
     }
     body.nen-landing-body .nen-foot__tagline {
@@ -1406,6 +1592,15 @@
             max-width: 100%;
             height: auto;
         }
+        /* Leaflet tiles/markers break when global img rules apply (mobile map stays blank) */
+        body.nen-landing-body .leaflet-container img.leaflet-tile,
+        body.nen-landing-body .leaflet-container img.leaflet-marker-icon,
+        body.nen-landing-body .leaflet-container img.leaflet-marker-shadow,
+        body.nen-landing-body .leaflet-container img.leaflet-image-layer {
+            max-width: none !important;
+            width: auto;
+            height: auto;
+        }
 
         /* Decorative dot rows break the mobile layout — hide them */
         body.nen-landing-body #hero .row-a {
@@ -1417,8 +1612,8 @@
             display: flex;
             flex-direction: column;
             max-width: 100%;
-            padding: 16px 14px 24px;
-            gap: 20px;
+            padding: 12px 14px 20px;
+            gap: 16px;
             border-radius: 20px;
         }
         body.nen-landing-body #hero.col-top1 {
@@ -1426,7 +1621,7 @@
             flex-direction: column;
         }
         body.nen-landing-body .col-top1 > .row-top4 { order: 0; display: none !important; }
-        body.nen-landing-body .col-top1 > .nen-hero-nav { order: 1; }
+        body.nen-landing-body .col-top1 > .nen-hero-header { order: 1; }
         body.nen-landing-body .col-top1 > .row5 { order: 2; }
         body.nen-landing-body .col-top1 > .row9,
         body.nen-landing-body .col-top1 > .row10 { order: 0; display: none !important; }
@@ -1440,31 +1635,45 @@
             z-index: auto !important;
             width: 100% !important;
             max-width: 100% !important;
+            max-height: 220px;
+            object-fit: cover;
+            object-position: center top;
             margin: 0 !important;
             border-radius: 16px;
         }
 
-        /* Nav: compact white pill + hamburger (matches desktop bar, saves space) */
+        /* Nav: logo outside pill + compact bar + hamburger */
+        body.nen-landing-body #hero .nen-hero-header {
+            align-items: center;
+            gap: 12px;
+        }
+        body.nen-landing-body #hero .nen-hero-logo {
+            max-width: 120px;
+            height: 52px;
+        }
         body.nen-landing-body #hero .row-top4 {
             position: static !important;
             padding-top: 0 !important;
         }
         body.nen-landing-body #hero .row2,
         body.nen-landing-body #hero .nen-hero-nav {
-            position: static !important;
+            position: relative !important;
             top: auto !important;
             left: auto !important;
-            z-index: auto !important;
-            width: 100%;
+            z-index: 30 !important;
+            flex: 1;
+            min-width: 0;
+            width: auto !important;
             display: grid !important;
-            grid-template-columns: auto 1fr auto;
+            grid-template-columns: minmax(0, 1fr) auto;
             grid-template-rows: auto auto;
             align-items: center;
             gap: 0 10px;
             box-shadow: -4px 4px 20px rgba(0, 0, 0, 0.08) !important;
             background: #fff !important;
-            padding: 10px 14px !important;
-            border-radius: 100px;
+            padding: 10px 12px !important;
+            border-radius: 24px;
+            overflow: visible;
         }
         body.nen-landing-body #hero .row5,
         body.nen-landing-body #hero .row9,
@@ -1475,18 +1684,12 @@
         body.nen-landing-body #hero .col1 {
             z-index: auto !important;
         }
-        body.nen-landing-body .row2 > .nen {
-            grid-column: 1;
-            grid-row: 1;
-            width: 72px;
-            height: auto;
-        }
         body.nen-landing-body .nen-nav-toggle {
             display: flex;
             flex-direction: column;
             justify-content: center;
             gap: 5px;
-            grid-column: 3;
+            grid-column: 2;
             grid-row: 1;
             width: 36px;
             height: 36px;
@@ -1514,10 +1717,42 @@
             transform: translateY(-7px) rotate(-45deg);
         }
         body.nen-landing-body .row-right2 {
-            grid-column: 2;
+            grid-column: 1;
             grid-row: 1;
             justify-content: flex-end;
             gap: 10px !important;
+            min-width: 0;
+            overflow: visible;
+        }
+        body.nen-landing-body #hero .nen-lang-dropdown {
+            position: relative;
+            z-index: 40;
+            flex-shrink: 0;
+        }
+        body.nen-landing-body #hero .nen-lang-dropdown__menu {
+            left: 50%;
+            right: auto;
+            transform: translateX(-50%);
+            min-width: 148px;
+        }
+        body.nen-landing-body #hero .nen-lang-dropdown__toggle {
+            font-size: 14px;
+            gap: 4px;
+        }
+        body.nen-landing-body #hero .nen-hero-nav .card5 {
+            width: auto;
+            min-width: 0;
+            max-width: 118px;
+            padding: 8px 10px;
+            gap: 6px;
+        }
+        body.nen-landing-body #hero .nen-hero-nav .card-text-left1 {
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        body.nen-landing-body #hero .nen-hero-nav .card-lucide-arrow1 {
+            width: 14px;
+            height: auto;
         }
         body.nen-landing-body .row3.nen-nav-links {
             display: none;
@@ -1564,7 +1799,7 @@
             align-items: flex-start !important;
             align-self: stretch !important;
             text-align: start;
-            gap: 24px;
+            gap: 18px;
         }
         body.nen-landing-body #hero .col2 {
             width: 100% !important;
@@ -1572,6 +1807,7 @@
             min-width: 0;
             align-self: stretch !important;
             text-align: start;
+            gap: 16px;
         }
         body.nen-landing-body .subtitle1:not(.nen-hero-title) {
             white-space: normal !important;
@@ -1586,7 +1822,8 @@
             margin-right: 0 !important;
             margin-left: 0 !important;
             text-align: start;
-            line-height: 1.55;
+            font-size: 15px;
+            line-height: 1.7;
         }
         body.nen-landing-body #hero .frame-bottom,
         body.nen-landing-body .frame-bottom {
@@ -1623,11 +1860,52 @@
             width: 100%;
             align-items: flex-start;
             text-align: start;
+            gap: 10px;
+            line-height: 1.3 !important;
+            letter-spacing: -1px !important;
         }
         body.nen-landing-body #hero .nen-hero-title__study,
         body.nen-landing-body #hero .nen-hero-title__country {
-            font-size: clamp(36px, 9vw, 52px) !important;
+            font-size: clamp(30px, 8.2vw, 44px) !important;
+            line-height: 1.3 !important;
             width: 100%;
+        }
+
+        /* How It Works — mobile header */
+        body.nen-landing-body #how-it-works {
+            padding: 0 16px;
+            gap: 28px;
+        }
+        body.nen-landing-body #how-it-works .row-top6 {
+            flex-direction: column;
+            align-items: center;
+            gap: 18px;
+            width: 100%;
+        }
+        body.nen-landing-body #how-it-works .col-left2 {
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            gap: 14px;
+        }
+        body.nen-landing-body #how-it-works .subtitle-we-re-not-just-about {
+            font-size: clamp(26px, 7.5vw, 38px) !important;
+            line-height: 1.3 !important;
+            letter-spacing: -0.5px !important;
+            white-space: normal !important;
+            text-align: center;
+            color: #111;
+        }
+        body.nen-landing-body #how-it-works .col-left2 .text {
+            font-size: 15px;
+            line-height: 1.7;
+            text-align: center;
+            max-width: 100%;
+            margin: 0;
+        }
+        body.nen-landing-body #how-it-works .frame-right2 {
+            width: auto;
+            max-width: 100%;
         }
 
         /* ── About Program ── */
@@ -1713,7 +1991,7 @@
         body.nen-landing-body #why-uzbekistan .card6,
         body.nen-landing-body #why-uzbekistan .card-a {
             align-items: flex-start !important;
-            text-align: left !important;
+            text-align: start !important;
             padding: 24px 20px !important;
             min-height: auto;
         }
@@ -1724,7 +2002,7 @@
         body.nen-landing-body #why-uzbekistan .card-container1,
         body.nen-landing-body #why-uzbekistan .card-container3 {
             align-items: flex-start !important;
-            text-align: left !important;
+            text-align: start !important;
             width: 100%;
         }
         body.nen-landing-body #why-uzbekistan .container-frame-right {
@@ -1735,6 +2013,12 @@
             border-radius: 16px;
             min-height: 280px;
         }
+        body.nen-landing-body #why-uzbekistan .card-text1,
+        body.nen-landing-body #why-uzbekistan .card-text4 {
+            line-height: 1.75 !important;
+            max-width: 100%;
+        }
+
         body.nen-landing-body #why-uzbekistan .card10 {
             margin-left: 0;
         }
@@ -1753,7 +2037,7 @@
             gap: 12px !important;
         }
         body.nen-landing-body #documents .row-f > * {
-            text-align: left !important;
+            text-align: start !important;
         }
         body.nen-landing-body #documents .card-b {
             flex: none !important;
@@ -1769,7 +2053,7 @@
             box-sizing: border-box;
         }
         body.nen-landing-body #documents .card-b > * {
-            text-align: left !important;
+            text-align: start !important;
         }
         body.nen-landing-body #documents .card-b .card-img {
             width: 64px !important;
@@ -1793,15 +2077,23 @@
             padding: 0 16px;
             gap: 28px;
         }
-        body.nen-landing-body #faq .row20 {
-            flex-direction: column !important;
-            align-items: stretch !important;
+        body.nen-landing-body #faq .row20.nen-faq-grid {
             gap: 12px !important;
         }
-        body.nen-landing-body #faq .col-left3,
-        body.nen-landing-body #faq .col-right2 {
+        body.nen-landing-body #faq .nen-faq-row {
+            grid-template-columns: 1fr !important;
             gap: 12px !important;
-            width: 100% !important;
+        }
+        body.nen-landing-body #faq .nen-faq-item .faq-btn-d {
+            width: 100%;
+            box-sizing: border-box;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            min-height: 0;
+            padding: 18px 16px !important;
+            text-align: start;
+            background: #fff;
         }
         body.nen-landing-body #faq .faq-btn-d {
             width: 100%;
@@ -1810,16 +2102,16 @@
             justify-content: space-between;
             gap: 14px;
             padding: 18px 16px !important;
-            text-align: left;
+            text-align: start;
             background: #fff;
         }
         body.nen-landing-body #faq .faq-btn-d .btn-label {
             flex: 1;
             min-width: 0;
             margin: 0;
-            text-align: left;
+            text-align: start;
             font-size: 15px;
-            line-height: 1.45;
+            line-height: 1.6;
         }
         body.nen-landing-body #faq .faq-btn-d .btn-icon-add {
             flex-shrink: 0;
@@ -1832,13 +2124,17 @@
             border-color: #8e8e8e;
         }
         body.nen-landing-body #faq .faq-answer {
-            padding: 0 16px 18px;
-            margin-top: -1px;
+            padding: 16px 16px 18px;
+            margin: 0;
             font-size: 14px;
+            line-height: 1.75;
+            text-align: start;
+            color: #3e3c36;
             border: 0.2px solid #8e8e8e;
             border-top: 0;
             border-radius: 0 0 16px 16px;
-            background: var(--neutrals-neutrals-2);
+            background: var(--neutrals-neutrals-2, #f5f5f5);
+            overflow: visible;
         }
         body.nen-landing-body #faq .column-subtitle3 {
             font-size: clamp(24px, 6.5vw, 32px) !important;
@@ -1920,7 +2216,92 @@
         }
     }
 
+    body.nen-landing-body .tesrimonials.nen-about-section {
+        flex-direction: column;
+        align-items: stretch;
+        gap: clamp(36px, 5vw, 56px);
+    }
+    body.nen-landing-body .nen-about-section__top {
+        display: flex;
+        align-items: flex-start;
+        gap: clamp(32px, 6vw, 114px);
+        width: 100%;
+    }
+    body.nen-landing-body .nen-about-section__top .tesrimonials-col-left {
+        width: auto;
+        flex: 1 1 0;
+        min-width: 0;
+        max-width: 920px;
+    }
+    body.nen-landing-body .nen-about-section__top .tesrimonials-col2 {
+        max-width: 558px;
+    }
+
+    html[dir="rtl"] body.nen-landing-body .nen-about-nen,
+    html[dir="rtl"] body.nen-landing-body .nen-about-section__top .tesrimonials-col-left {
+        text-align: right;
+        align-items: flex-start;
+    }
+
+    html[dir="rtl"] body.nen-landing-body .nen-about-nen .tesrimonials-col2,
+    html[dir="rtl"] body.nen-landing-body .nen-about-nen .tesrimonials-subtitle-national,
+    html[dir="rtl"] body.nen-landing-body .nen-about-nen .tesrimonials-text-an-international {
+        text-align: right;
+        align-self: stretch;
+        width: 100%;
+    }
+
+    html[dir="rtl"] body.nen-landing-body .nen-about-nen .tesrimonials-btn {
+        width: auto;
+        max-width: 100%;
+        align-self: flex-start;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    html[dir="rtl"] body.nen-landing-body .nen-about-nen .tesrimonials-text-an-international {
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    html[dir="rtl"] body.nen-landing-body .nen-about-section__bottom {
+        margin-right: 0;
+        margin-left: auto;
+        text-align: right;
+        align-items: flex-start;
+    }
+
+    html[dir="rtl"] body.nen-landing-body .nen-about-section__bottom .tesrimonials-subtitle-key-milestones {
+        text-align: right;
+        width: 100%;
+    }
+    body.nen-landing-body .nen-about-section__bottom {
+        width: 100%;
+        max-width: 558px;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        line-height: normal;
+    }
+
     /* ── About NEN (milestones left column) ── */
+    body.nen-landing-body .nen-about-nen .tesrimonials-btn {
+        width: fit-content;
+        max-width: 100%;
+        align-self: flex-start;
+        color: #000 !important;
+        text-decoration: none;
+        font-weight: 600;
+        background-color: var(--screen-basics-bg-web);
+    }
+
+    body.nen-landing-body .nen-about-nen .tesrimonials-btn:hover,
+    body.nen-landing-body .nen-about-nen .tesrimonials-btn:focus,
+    body.nen-landing-body .nen-about-nen .tesrimonials-btn:active {
+        color: #000 !important;
+        text-decoration: none;
+        filter: brightness(0.85);
+    }
     body.nen-landing-body .nen-about-nen__intro {
         margin: 0 0 14px;
         font-size: 15px;
@@ -1997,17 +2378,63 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
-        width: 105%;
+        gap: 14px;
+        width: 100% !important;
         max-width: 1020px;
-        height: auto;
-        min-height: 653px;
-        flex-grow: 1;
+        height: auto !important;
+        min-height: auto;
+        flex: 0 0 auto;
+        align-self: stretch;
         background: #f5f8f9 !important;
         border-radius: 16px;
-        padding: 24px;
-        overflow: hidden;
+        padding: 20px 22px;
+        overflow: visible !important;
         text-align: left;
+    }
+
+    body.nen-landing-body .nen-collection-map__tabs,
+    body.nen-landing-body .nen-collection-map__map-wrap,
+    body.nen-landing-body .nen-collection-map__panel {
+        flex-shrink: 0;
+        width: 100%;
+    }
+
+    body.nen-landing-body .nen-collection-map__map-wrap {
+        width: 100%;
+        height: clamp(220px, 32vw, 280px);
+        min-height: 220px;
+        flex: 0 0 auto;
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #dce7ea;
+        background: #e8eef0;
+        z-index: 1;
+    }
+
+    body.nen-landing-body .nen-collection-map__canvas,
+    body.nen-landing-body #nenCollectionMap.leaflet-container {
+        position: absolute !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 100% !important;
+        flex-shrink: 0;
+        display: block;
+        border: 0;
+        border-radius: 0;
+        background: #e8eef0;
+        z-index: 1;
+    }
+
+    body.nen-landing-body #nenCollectionMap.leaflet-container {
+        font: inherit;
+    }
+
+    /* reset.css sets img { max-width:100% } — breaks Leaflet tiles on all viewports */
+    body.nen-landing-body .leaflet-container img {
+        max-width: none !important;
+        max-height: none !important;
     }
 
     body.nen-landing-body .nen-collection-map__title {
@@ -2047,18 +2474,97 @@
         color: #fff;
     }
 
-    body.nen-landing-body .nen-collection-map__canvas {
+    body.nen-landing-body .nen-collection-map__location-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 8px;
         width: 100%;
-        height: 280px;
-        border-radius: 12px;
-        overflow: hidden;
-        border: 1px solid #dce7ea;
-        z-index: 1;
+    }
+
+    body.nen-landing-body .nen-collection-map__location-btn {
+        border: 1px solid #d8e3e6;
+        background: #fff;
+        color: #333;
+        font-size: 13px;
+        font-weight: 600;
+        padding: 7px 12px;
+        border-radius: 999px;
+        cursor: pointer;
+        transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        max-width: 100%;
+        text-align: start;
+    }
+
+    body.nen-landing-body .nen-collection-map__location-btn.is-active,
+    body.nen-landing-body .nen-collection-map__location-btn:hover {
+        background: #e6f3f5;
+        border-color: #017785;
+        color: #017785;
+    }
+
+    body.nen-landing-body #nenCollectionMap .leaflet-pane,
+    body.nen-landing-body #nenCollectionMap .leaflet-map-pane,
+    body.nen-landing-body #nenCollectionMap .leaflet-tile-pane {
+        width: 100%;
+        height: 100%;
+    }
+
+    body.nen-landing-body #nenCollectionMap .leaflet-marker-pane,
+    body.nen-landing-body #nenCollectionMap .leaflet-shadow-pane {
+        z-index: 650 !important;
+        pointer-events: auto !important;
+    }
+
+    body.nen-landing-body #nenCollectionMap .leaflet-interactive {
+        cursor: pointer;
+    }
+
+    body.nen-landing-body .leaflet-container img.leaflet-tile,
+    body.nen-landing-body .leaflet-container img.leaflet-marker-icon,
+    body.nen-landing-body .leaflet-container img.leaflet-marker-shadow,
+    body.nen-landing-body .leaflet-container img.leaflet-image-layer {
+        max-width: none !important;
+        max-height: none !important;
+    }
+
+    body.nen-landing-body .leaflet-marker-icon.nen-collection-marker {
+        background: transparent !important;
+        border: none !important;
+        pointer-events: auto !important;
+        cursor: pointer;
+    }
+
+    body.nen-landing-body .leaflet-marker-icon.nen-collection-marker.is-selected {
+        filter: drop-shadow(0 0 4px rgba(1, 119, 133, 0.55));
+        z-index: 1000 !important;
+    }
+
+    body.nen-landing-body .nen-collection-marker__hit {
+        display: block;
+        width: 36px;
+        height: 48px;
+        margin: -3px -3px 0;
+        pointer-events: auto;
+    }
+
+    body.nen-landing-body .nen-collection-marker svg {
+        display: block;
+        filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25));
     }
 
     body.nen-landing-body .nen-collection-map__panel {
         position: relative;
-        min-height: 180px;
+        min-height: 120px;
+        width: 100%;
+        text-align: left;
+    }
+
+    body.nen-landing-body .nen-collection-map__details-live {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
         width: 100%;
         text-align: left;
     }
@@ -2067,7 +2573,7 @@
         display: none;
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
+        gap: 12px;
         width: 100%;
         text-align: left;
     }
@@ -2077,17 +2583,21 @@
     }
 
     body.nen-landing-body .nen-collection-map__office-block {
-        display: flex;
+        display: none;
         flex-direction: column;
         align-items: flex-start;
-        gap: 12px;
+        gap: 10px;
         width: 100%;
         text-align: left;
     }
 
+    body.nen-landing-body .nen-collection-map__office-block.is-active {
+        display: flex;
+    }
+
     body.nen-landing-body .nen-collection-map__office-block + .nen-collection-map__office-block {
-        border-top: 1px solid #dce7ea;
-        padding-top: 16px;
+        border-top: none;
+        padding-top: 0;
     }
 
     body.nen-landing-body .nen-collection-map__details {
@@ -2171,9 +2681,15 @@
     html[dir="rtl"] body.nen-landing-body .nen-collection-map__office,
     html[dir="rtl"] body.nen-landing-body .nen-collection-map__country-panel,
     html[dir="rtl"] body.nen-landing-body .nen-collection-map__office-block,
-    html[dir="rtl"] body.nen-landing-body .nen-collection-map__details {
+    html[dir="rtl"] body.nen-landing-body .nen-collection-map__details,
+    html[dir="rtl"] body.nen-landing-body .nen-collection-map__details-live {
         text-align: right;
         align-items: flex-start;
+    }
+
+    html[dir="rtl"] body.nen-landing-body .nen-collection-map__location-list,
+    html[dir="rtl"] body.nen-landing-body .nen-collection-map__location-btn {
+        text-align: right;
     }
 
     html[dir="rtl"] body.nen-landing-body .tesrimonials-group-right.nen-collection-map {
@@ -2181,15 +2697,58 @@
         align-items: flex-start;
     }
 
-    @media (max-width: 768px) {
-        body.nen-landing-body .nen-collection-map {
+    @container body (width < 821px) {
+        body.nen-landing-body .nen-about-section__top {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 40px;
+        }
+        body.nen-landing-body .nen-about-section__top .nen-collection-map {
             width: 100%;
-            min-height: 0;
+            max-width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        body.nen-landing-body .tesrimonials.nen-about-section {
+            padding: 32px 16px;
+            gap: 36px;
+            align-items: stretch;
+        }
+        body.nen-landing-body .nen-about-section__top {
+            flex-direction: column;
+            gap: 28px;
+        }
+        html[dir="rtl"] body.nen-landing-body .nen-about-nen,
+        html[dir="rtl"] body.nen-landing-body .nen-about-section__top .tesrimonials-col-left {
+            text-align: right !important;
+            align-items: flex-start !important;
+        }
+        html[dir="rtl"] body.nen-landing-body .nen-about-section__bottom {
+            align-items: flex-start !important;
+            text-align: right !important;
+        }
+        body.nen-landing-body .nen-about-section__bottom {
+            max-width: 100%;
+            width: 100%;
+        }
+        body.nen-landing-body .nen-collection-map {
+            width: 100% !important;
+            max-width: 100%;
+            min-height: auto;
             padding: 18px;
+            overflow: visible !important;
         }
 
-        body.nen-landing-body .nen-collection-map__canvas {
-            height: 240px;
+        body.nen-landing-body .nen-collection-map__map-wrap {
+            height: 260px;
+            min-height: 260px;
+        }
+
+        body.nen-landing-body .nen-collection-map__canvas,
+        body.nen-landing-body #nenCollectionMap.leaflet-container {
+            height: 100% !important;
+            min-height: 100% !important;
         }
     }
 </style>
@@ -2222,9 +2781,10 @@
             </div>
 
             {{-- Floating Navigation Bar (sibling of decor rows so z-index stays above hero image) --}}
-            <div class="row2 nen-hero-nav">
-                <img src="{{ $nenLogo }}" class="nen" alt="NEN" />
+            <div class="nen-hero-header">
+                <img src="{{ $nenLogo }}" class="nen nen-hero-logo" alt="NEN" />
 
+                <div class="row2 nen-hero-nav">
                 <button class="nen-nav-toggle" id="nenNavToggle" type="button" aria-expanded="false"
                     aria-controls="nenNavLinks" aria-label="Toggle menu">
                     <span class="nen-nav-toggle__bar"></span>
@@ -2272,6 +2832,7 @@
                         </a>
                     @endif
                 </div>
+            </div>
             </div>
 
             <div class="row5">
@@ -2562,14 +3123,6 @@
             @php
                 $steps = $howItWorksSteps ?? collect();
                 $stepsByNumber = $steps->keyBy('step_number');
-                $stepComponents = [
-                    asset('site/home/assets/component/component-presentation.png'),
-                    asset('site/home/assets/component/component-university.png'),
-                    asset('site/home/assets/component/component-files.png'),
-                    asset('site/home/assets/component/component-map-pinpoint.png'),
-                    asset('site/home/assets/component/component-checkmark.png'),
-                    asset('site/home/assets/component/component-folder-view.png'),
-                ];
                 $stepTitles = collect(__('landing.how_it_works.steps'))->pluck('title')->all();
                 $stepDescs = collect(__('landing.how_it_works.steps'))->pluck('desc')->all();
             @endphp
@@ -2581,7 +3134,6 @@
                             @php
                                 $stepNum = $idx + 1;
                                 $step = $stepsByNumber->get($stepNum);
-                                $icon = $step && $step->image ? asset($step->image) : ($stepComponents[$idx] ?? '');
                                 $title = $step ? $step->localized('title') : ($stepTitles[$idx] ?? '');
                                 $desc = $step ? $step->localized('description') : ($stepDescs[$idx] ?? '');
                                 $num = str_pad((string) $stepNum, 2, '0', STR_PAD_LEFT);
@@ -2594,8 +3146,8 @@
                                     <span class="nen-step__accent" aria-hidden="true"></span>
                                     <span class="nen-step__num">{{ $num }}.</span>
                                     <div class="nen-step__head">
-                                        <div class="nen-step__icon">
-                                            <img src="{{ $icon }}" alt="{{ $title }}" />
+                                        <div class="nen-step__icon" aria-hidden="true">
+                                            @include('site.partials.how-it-works-step-icon', ['step' => $stepNum])
                                         </div>
                                         <h3 class="nen-step__title">{{ $title }}</h3>
                                         <p class="nen-step__hint">{{ __('landing.how_it_works.reveal_hint') }}</p>
@@ -2652,14 +3204,14 @@
 
     {{-- ===================== COLLECTION POINT / MILESTONES ===================== --}}
     @if ($landing->show_milestones ?? true)
-        <div class="tesrimonials" id="about-nen">
-            <div class="tesrimonials-col-left nen-about-nen">
-                <a href="{{ $landing->milestones_cta_url ?? '#collection-point' }}"
-                    class="btn-c tesrimonials-btn hover-bright">
-                    {{ landing_get($landing, 'milestones_cta_text') ?? __('landing.milestones.find_collection_point') }}
-                </a>
+        <div class="tesrimonials nen-about-section" id="about-nen">
+            <div class="nen-about-section__top">
+                <div class="tesrimonials-col-left nen-about-nen">
+                    <a href="{{ $landing->milestones_cta_url ?? '#collection-point' }}"
+                        class="btn-c tesrimonials-btn hover-dark">
+                        {{ landing_get($landing, 'milestones_cta_text') ?? __('landing.milestones.find_collection_point') }}
+                    </a>
 
-                <div class="tesrimonials-col1">
                     <div class="tesrimonials-col2">
                         <h2 class="tesrimonials-subtitle-national">
                             {{ landing_get($landing, 'milestones_title') ?? __('landing.milestones.title') }}
@@ -2668,29 +3220,9 @@
                             <p class="text tesrimonials-text-an-international nen-about-nen__intro">{{ $paragraph }}</p>
                         @endforeach
                     </div>
-
-                    <div class="tesrimonials-col-bottom">
-                        <h2 class="tesrimonials-subtitle-key-milestones">{{ __('landing.milestones.key_milestones') }}</h2>
-
-                        <div class="nen-about-nen__stats">
-                            @foreach (__('landing.milestones.stats') as $stat)
-                                <div class="nen-about-nen__stat">
-                                    <h3 class="nen-about-nen__stat-value">{{ $stat['value'] }}</h3>
-                                    <h4 class="nen-about-nen__stat-title">{{ $stat['title'] }}</h4>
-                                    <p class="nen-about-nen__stat-desc">{{ $stat['desc'] }}</p>
-                                </div>
-                            @endforeach
-                        </div>
-
-                        <h3 class="nen-about-nen__mission-title">{{ __('landing.milestones.mission_title') }}</h3>
-                        <p class="text tesrimonials-text-bottom nen-about-nen__mission">
-                            {{ __('landing.milestones.mission') }}
-                        </p>
-                    </div>
                 </div>
-            </div>
 
-            <div class="tesrimonials-group-right nen-collection-map" id="collection-point">
+                <div class="tesrimonials-group-right nen-collection-map" id="collection-point">
                 <h3 class="nen-collection-map__title">{{ __('landing.collection_points.map_title') }}</h3>
 
                 @if (($collectionCountries ?? collect())->isNotEmpty())
@@ -2706,47 +3238,25 @@
                         @endforeach
                     </div>
 
-                    <div id="nenCollectionMap" class="nen-collection-map__canvas" aria-hidden="false"></div>
+                    <div class="nen-collection-map__map-wrap" style="height:260px;min-height:260px">
+                        <div id="nenCollectionMap" class="nen-collection-map__canvas" aria-hidden="false"></div>
+                    </div>
 
                     <div class="nen-collection-map__panel">
                         @foreach ($collectionCountries as $i => $country)
                             <div class="nen-collection-map__country-panel{{ $i === 0 ? ' is-active' : '' }}"
                                 data-country="{{ $country['code'] }}">
-                                @foreach (($collectionPointsByCountry[$country['code']] ?? collect()) as $point)
-                                    <div class="nen-collection-map__office-block">
-                                        <div class="nen-collection-map__details" data-slug="{{ $point->slug }}">
-                                            <h4 class="nen-collection-map__office">{{ $point->name }}</h4>
-                                            <ul class="nen-collection-map__meta">
-                                                @if ($point->address)
-                                                    <li><strong>{{ __('landing.collection_points.address') }}:</strong> {{ $point->address }}</li>
-                                                @endif
-                                                @if ($point->land_line)
-                                                    <li><strong>{{ __('landing.collection_points.landline') }}:</strong> <a href="tel:{{ preg_replace('/[^0-9+]/', '', $point->land_line) }}">{{ $point->land_line }}</a></li>
-                                                @endif
-                                                @if ($point->call_center)
-                                                    <li><strong>{{ __('landing.collection_points.call_center') }}:</strong> <a href="tel:{{ preg_replace('/[^0-9+]/', '', $point->call_center) }}">{{ $point->call_center }}</a></li>
-                                                @endif
-                                                @if ($point->email)
-                                                    <li><strong>{{ __('landing.collection_points.email') }}:</strong> <a href="mailto:{{ $point->email }}">{{ $point->email }}</a></li>
-                                                @endif
-                                                @if ($point->schedule)
-                                                    <li><strong>{{ __('landing.collection_points.schedule') }}:</strong> {{ $point->schedule }}</li>
-                                                @endif
-                                            </ul>
-                                            <div class="nen-collection-map__actions">
-                                                <a href="{{ $point->mapsShareUrl() }}" class="nen-collection-map__btn nen-collection-map__btn--maps"
-                                                    target="_blank" rel="noopener">
-                                                    {{ __('landing.collection_points.open_maps') }}
-                                                </a>
-                                                <button type="button" class="nen-collection-map__btn nen-collection-map__btn--share"
-                                                    data-share-url="{{ $point->mapsShareUrl() }}"
-                                                    data-share-title="{{ $point->name }}">
-                                                    {{ __('landing.collection_points.share') }}
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endforeach
+                                {{-- <div class="nen-collection-map__location-list" role="list">
+                                    @foreach (($collectionPointsByCountry[$country['code']] ?? collect()) as $point)
+                                        <button type="button"
+                                            class="nen-collection-map__location-btn{{ $loop->first && $i === 0 ? ' is-active' : '' }}"
+                                            data-slug="{{ $point->slug }}"
+                                            role="listitem">
+                                            {{ $point->name }}
+                                        </button>
+                                    @endforeach
+                                </div> --}}
+                                <div class="nen-collection-map__details-live" data-country="{{ $country['code'] }}" aria-live="polite"></div>
                             </div>
                         @endforeach
                     </div>
@@ -2755,6 +3265,26 @@
                         <img src="{{ asset('site/home/assets/tesrimonials-group2.png') }}" alt="" />
                     </div>
                 @endif
+                </div>
+            </div>
+
+            <div class="nen-about-section__bottom tesrimonials-col-bottom">
+                <h2 class="tesrimonials-subtitle-key-milestones">{{ __('landing.milestones.key_milestones') }}</h2>
+
+                <div class="nen-about-nen__stats">
+                    @foreach (__('landing.milestones.stats') as $stat)
+                        <div class="nen-about-nen__stat">
+                            <h3 class="nen-about-nen__stat-value">{{ $stat['value'] }}</h3>
+                            <h4 class="nen-about-nen__stat-title">{{ $stat['title'] }}</h4>
+                            <p class="nen-about-nen__stat-desc">{{ $stat['desc'] }}</p>
+                        </div>
+                    @endforeach
+                </div>
+
+                <h3 class="nen-about-nen__mission-title">{{ __('landing.milestones.mission_title') }}</h3>
+                <p class="text tesrimonials-text-bottom nen-about-nen__mission">
+                    {{ __('landing.milestones.mission') }}
+                </p>
             </div>
         </div>
     @endif
@@ -2920,37 +3450,25 @@
 
                 @php
                     $allFaqs = ($faqs ?? collect())->values();
-                    $leftCount = (int) ceil($allFaqs->count() / 2);
-                    $leftFaqs = $allFaqs->slice(0, $leftCount)->values();
-                    $rightFaqs = $allFaqs->slice($leftCount)->values();
                 @endphp
 
-                <div class="row20">
-                    <div class="col-left3">
-                        @foreach ($leftFaqs as $faq)
-                            <button class="btn-d faq-btn-d hover-zoom" data-faq="{{ $faq->id }}" type="button">
-                                <p class="btn-label">{{ $faq->localized('question') }}</p>
-                                <img src="{{ asset('site/home/assets/btn/btn-icon.png') }}"
-                                    class="btn-icon-add btn-icon" alt="+" />
-                            </button>
-                            @if ($faq->localized('answer'))
-                                <div class="faq-answer" data-answer="{{ $faq->id }}">{{ $faq->localized('answer') }}</div>
-                            @endif
-                        @endforeach
-                    </div>
-
-                    <div class="col-right2">
-                        @foreach ($rightFaqs as $faq)
-                            <button class="btn-d faq-btn-d hover-zoom" data-faq="{{ $faq->id }}" type="button">
-                                <p class="btn-label">{{ $faq->localized('question') }}</p>
-                                <img src="{{ asset('site/home/assets/btn/btn-icon.png') }}"
-                                    class="btn-icon-add btn-icon" alt="+" />
-                            </button>
-                            @if ($faq->localized('answer'))
-                                <div class="faq-answer" data-answer="{{ $faq->id }}">{{ $faq->localized('answer') }}</div>
-                            @endif
-                        @endforeach
-                    </div>
+                <div class="row20 nen-faq-grid">
+                    @foreach ($allFaqs->chunk(2) as $rowFaqs)
+                        <div class="nen-faq-row">
+                            @foreach ($rowFaqs as $faq)
+                                <div class="nen-faq-item">
+                                    <button class="btn-d faq-btn-d hover-zoom" data-faq="{{ $faq->id }}" type="button">
+                                        <p class="btn-label">{{ $faq->localized('question') }}</p>
+                                        <img src="{{ asset('site/home/assets/btn/btn-icon.png') }}"
+                                            class="btn-icon-add btn-icon" alt="+" />
+                                    </button>
+                                    @if ($faq->localized('answer'))
+                                        <div class="faq-answer" data-answer="{{ $faq->id }}">{{ $faq->localized('answer') }}</div>
+                                    @endif
+                                </div>
+                            @endforeach
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -3134,7 +3652,7 @@
         </div>
 
         <div class="nen-foot__cta">
-            <h2 class="nen-foot__cta-title">{{ __('landing.footer.cta_lead') }}<span>{{ __('landing.footer.cta_action') }}</span></h2>
+            <h2 class="nen-foot__cta-title">{{ __('landing.footer.cta_lead') }}<br><span>{{ __('landing.footer.cta_action') }}</span></h2>
         </div>
 
         <div class="nen-foot__bottom">
@@ -3432,36 +3950,169 @@
     <script>
         (function() {
             const mapEl = document.getElementById('nenCollectionMap');
-            if (!mapEl || typeof L === 'undefined') return;
+            const mapWrap = mapEl ? mapEl.closest('.nen-collection-map__map-wrap') : null;
+            const mapPanel = document.querySelector('.nen-collection-map__panel');
+            if (!mapEl || !mapWrap || !mapPanel || typeof L === 'undefined') return;
 
             const locations = @json($collectionPointsJson);
             const countries = @json(($collectionCountries ?? collect())->values());
+            const detailLabels = {
+                address: @json(__('landing.collection_points.address')),
+                landline: @json(__('landing.collection_points.landline')),
+                callCenter: @json(__('landing.collection_points.call_center')),
+                email: @json(__('landing.collection_points.email')),
+                schedule: @json(__('landing.collection_points.schedule')),
+                openMaps: @json(__('landing.collection_points.open_maps')),
+                share: @json(__('landing.collection_points.share')),
+            };
             const slugs = Object.keys(locations);
             if (!slugs.length || !countries.length) return;
 
             const copiedLabel = @json(__('landing.collection_points.copied'));
-            const map = L.map('nenCollectionMap', { scrollWheelZoom: false });
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: '&copy; OpenStreetMap'
-            }).addTo(map);
-
+            let map = null;
+            let activeSlug = null;
+            let mapSized = false;
+            let resizeTimer = null;
             const markers = {};
-            slugs.forEach(function(slug) {
-                const loc = locations[slug];
-                const icon = L.divIcon({
-                    html: '<i class="fa fa-map-marker" style="color:#017785;font-size:28px;text-shadow:0 1px 3px rgba(0,0,0,.25);"></i>',
-                    className: 'nen-collection-marker',
-                    iconSize: [28, 28],
-                    iconAnchor: [14, 28],
-                    popupAnchor: [0, -28]
+
+            const pinSvgDefault = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 36" width="30" height="45" aria-hidden="true" focusable="false"><path fill="#017785" d="M12 0C5.373 0 0 5.373 0 12c0 8.25 12 24 12 24s12-15.75 12-24C24 5.373 18.627 0 12 0zm0 16.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>';
+            const pinSvgSelected = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 36" width="30" height="45" aria-hidden="true" focusable="false"><path fill="#0a5c66" d="M12 0C5.373 0 0 5.373 0 12c0 8.25 12 24 12 24s12-15.75 12-24C24 5.373 18.627 0 12 0zm0 16.5a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z"/></svg>';
+
+            function escapeHtml(value) {
+                return String(value || '')
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;');
+            }
+
+            function phoneHref(value) {
+                return 'tel:' + String(value || '').replace(/[^0-9+]/g, '');
+            }
+
+            function makePinIcon(selected) {
+                return L.divIcon({
+                    html: '<span class="nen-collection-marker__hit">' + (selected ? pinSvgSelected : pinSvgDefault) + '</span>',
+                    className: 'nen-collection-marker' + (selected ? ' is-selected' : ''),
+                    iconSize: [36, 48],
+                    iconAnchor: [18, 48],
+                    popupAnchor: [0, -42]
                 });
-                markers[slug] = L.marker(loc.coords, { icon: icon });
-                const popup = (loc.name ? '<strong>' + loc.name + '</strong><br>' : '')
-                    + (loc.address ? loc.address + '<br>' : '')
-                    + (loc.schedule ? loc.schedule : '');
-                markers[slug].bindPopup(popup);
-            });
+            }
+
+            function detailsHostForSlug(slug) {
+                const loc = locations[slug];
+                if (!loc) return null;
+                const panel = document.querySelector('.nen-collection-map__country-panel[data-country="' + loc.countryCode + '"]');
+                return panel ? panel.querySelector('.nen-collection-map__details-live') : null;
+            }
+
+            function buildDetailsHtml(loc) {
+                let meta = '';
+                if (loc.address) {
+                    meta += '<li><strong>' + escapeHtml(detailLabels.address) + ':</strong> ' + escapeHtml(loc.address) + '</li>';
+                }
+                if (loc.landLine) {
+                    meta += '<li><strong>' + escapeHtml(detailLabels.landline) + ':</strong> <a href="' + phoneHref(loc.landLine) + '">' + escapeHtml(loc.landLine) + '</a></li>';
+                }
+                if (loc.callCenter) {
+                    meta += '<li><strong>' + escapeHtml(detailLabels.callCenter) + ':</strong> <a href="' + phoneHref(loc.callCenter) + '">' + escapeHtml(loc.callCenter) + '</a></li>';
+                }
+                if (loc.email) {
+                    meta += '<li><strong>' + escapeHtml(detailLabels.email) + ':</strong> <a href="mailto:' + escapeHtml(loc.email) + '">' + escapeHtml(loc.email) + '</a></li>';
+                }
+                if (loc.schedule) {
+                    meta += '<li><strong>' + escapeHtml(detailLabels.schedule) + ':</strong> ' + escapeHtml(loc.schedule) + '</li>';
+                }
+
+                return ''
+                    + '<div class="nen-collection-map__details" data-slug="' + escapeHtml(loc.slug) + '">'
+                    + '<h4 class="nen-collection-map__office">' + escapeHtml(loc.name) + '</h4>'
+                    + '<ul class="nen-collection-map__meta">' + meta + '</ul>'
+                    + '<div class="nen-collection-map__actions">'
+                    + '<a href="' + escapeHtml(loc.mapUrl) + '" class="nen-collection-map__btn nen-collection-map__btn--maps" target="_blank" rel="noopener">'
+                    + escapeHtml(detailLabels.openMaps)
+                    + '</a>'
+                    + '<button type="button" class="nen-collection-map__btn nen-collection-map__btn--share"'
+                    + ' data-share-url="' + escapeHtml(loc.mapUrl) + '"'
+                    + ' data-share-title="' + escapeHtml(loc.name) + '">'
+                    + escapeHtml(detailLabels.share)
+                    + '</button>'
+                    + '</div>'
+                    + '</div>';
+            }
+
+            function highlightMarker(slug) {
+                slugs.forEach(function(entrySlug) {
+                    const marker = markers[entrySlug];
+                    if (!marker) return;
+                    marker.setIcon(makePinIcon(entrySlug === slug));
+                });
+            }
+
+            function highlightLocationBtn(slug) {
+                document.querySelectorAll('.nen-collection-map__location-btn').forEach(function(btn) {
+                    btn.classList.toggle('is-active', btn.dataset.slug === slug);
+                });
+            }
+
+            function activateLocation(slug) {
+                showLocation(slug);
+            }
+
+            function showLocation(slug) {
+                const loc = locations[slug];
+                const host = detailsHostForSlug(slug);
+                if (!loc || !host) return;
+
+                activeSlug = slug;
+                host.innerHTML = buildDetailsHtml(loc);
+                highlightMarker(slug);
+                highlightLocationBtn(slug);
+            }
+
+            function activeCountryCode() {
+                const activeTab = document.querySelector('.nen-collection-map__tab.is-active');
+                return activeTab ? activeTab.dataset.country : null;
+            }
+
+            function nearestSlugFromLatLng(latlng, maxPx) {
+                const countryCode = activeCountryCode();
+                if (!countryCode || !map) return null;
+
+                let closest = null;
+                let closestDist = Infinity;
+                const clickPoint = map.latLngToContainerPoint(latlng);
+
+                slugs.forEach(function(slug) {
+                    const loc = locations[slug];
+                    if (loc.countryCode !== countryCode || !markers[slug] || !map.hasLayer(markers[slug])) {
+                        return;
+                    }
+
+                    const markerPoint = map.latLngToContainerPoint(loc.coords);
+                    const dist = clickPoint.distanceTo(markerPoint);
+                    if (dist < closestDist) {
+                        closestDist = dist;
+                        closest = slug;
+                    }
+                });
+
+                return closestDist <= (maxPx || 52) ? closest : null;
+            }
+
+            function fitActiveCountryBounds() {
+                const countryCode = activeCountryCode();
+                if (!countryCode || !map) return;
+
+                const activeSlugs = countrySlugs(countryCode);
+                if (!activeSlugs.length) return;
+
+                const bounds = L.latLngBounds(activeSlugs.map(function(slug) {
+                    return locations[slug].coords;
+                }));
+                map.fitBounds(bounds, { padding: [30, 30], animate: false, maxZoom: 14 });
+            }
 
             function countrySlugs(countryCode) {
                 return slugs.filter(function(slug) {
@@ -3469,7 +4120,8 @@
                 });
             }
 
-            function focusCountry(countryCode) {
+            function focusCountry(countryCode, preserveSelection) {
+                if (!map) return;
                 const activeSlugs = countrySlugs(countryCode);
                 if (!activeSlugs.length) return;
 
@@ -3494,41 +4146,132 @@
                 const bounds = L.latLngBounds(activeSlugs.map(function(slug) {
                     return locations[slug].coords;
                 }));
-                map.fitBounds(bounds, { padding: [30, 30], animate: true, maxZoom: 14 });
+                map.fitBounds(bounds, { padding: [30, 30], animate: false, maxZoom: 14 });
+
+                const nextSlug = preserveSelection && activeSlug && activeSlugs.indexOf(activeSlug) !== -1
+                    ? activeSlug
+                    : activeSlugs[0];
+                showLocation(nextSlug);
             }
 
-            document.querySelectorAll('.nen-collection-map__tab').forEach(function(tab) {
-                tab.addEventListener('click', function() {
-                    focusCountry(tab.dataset.country);
-                });
-            });
+            function refreshMapSize() {
+                if (!map) return;
+                map.invalidateSize(true);
+                fitActiveCountryBounds();
+            }
 
-            document.querySelectorAll('.nen-collection-map__btn--share').forEach(function(btn) {
-                btn.addEventListener('click', async function() {
-                    const url = btn.dataset.shareUrl;
-                    const title = btn.dataset.shareTitle || document.title;
-                    if (!url) return;
+            async function handleShareClick(btn) {
+                const url = btn.dataset.shareUrl;
+                const title = btn.dataset.shareTitle || document.title;
+                if (!url) return;
 
-                    if (navigator.share) {
-                        try {
-                            await navigator.share({ title: title, url: url });
-                            return;
-                        } catch (e) { /* fall through to copy */ }
-                    }
-
+                if (navigator.share) {
                     try {
-                        await navigator.clipboard.writeText(url);
-                        const original = btn.textContent;
-                        btn.textContent = copiedLabel;
-                        setTimeout(function() { btn.textContent = original; }, 2000);
-                    } catch (e) {
-                        window.open(url, '_blank', 'noopener');
+                        await navigator.share({ title: title, url: url });
+                        return;
+                    } catch (e) { /* fall through to copy */ }
+                }
+
+                try {
+                    await navigator.clipboard.writeText(url);
+                    const original = btn.textContent;
+                    btn.textContent = copiedLabel;
+                    setTimeout(function() { btn.textContent = original; }, 2000);
+                } catch (e) {
+                    window.open(url, '_blank', 'noopener');
+                }
+            }
+
+            function bootMap() {
+                if (map) return;
+
+                map = L.map('nenCollectionMap', { scrollWheelZoom: false, tap: true });
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 18,
+                    attribution: '&copy; OpenStreetMap'
+                }).addTo(map);
+
+                slugs.forEach(function(slug) {
+                    const loc = locations[slug];
+                    markers[slug] = L.marker(loc.coords, {
+                        icon: makePinIcon(false),
+                        interactive: true,
+                        keyboard: true,
+                        title: loc.name,
+                        riseOnHover: true,
+                        riseOffset: 1000
+                    });
+                    markers[slug].on('click', function(e) {
+                        L.DomEvent.stopPropagation(e);
+                        activateLocation(slug);
+                    });
+                });
+
+                map.on('click', function(e) {
+                    const slug = nearestSlugFromLatLng(e.latlng, 52);
+                    if (slug) {
+                        activateLocation(slug);
                     }
                 });
+
+                document.querySelectorAll('.nen-collection-map__tab').forEach(function(tab) {
+                    tab.addEventListener('click', function() {
+                        focusCountry(tab.dataset.country, false);
+                    });
+                });
+
+                document.querySelectorAll('.nen-collection-map__location-btn').forEach(function(btn) {
+                    btn.addEventListener('click', function() {
+                        activateLocation(btn.dataset.slug);
+                    });
+                });
+
+                mapPanel.addEventListener('click', function(e) {
+                    const btn = e.target.closest('.nen-collection-map__btn--share');
+                    if (btn) {
+                        e.preventDefault();
+                        handleShareClick(btn);
+                    }
+                });
+
+                focusCountry(countries[0].code, false);
+            }
+
+            function startMap() {
+                bootMap();
+                if (!mapSized) {
+                    refreshMapSize();
+                    mapSized = true;
+                    setTimeout(refreshMapSize, 200);
+                    setTimeout(refreshMapSize, 700);
+                }
+            }
+
+            window.addEventListener('load', startMap);
+            window.addEventListener('resize', function() {
+                if (!map) return;
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(refreshMapSize, 150);
+            });
+            window.addEventListener('orientationchange', function() {
+                if (!map) return;
+                setTimeout(refreshMapSize, 400);
             });
 
-            focusCountry(countries[0].code);
-            setTimeout(function() { map.invalidateSize(); }, 120);
+            if ('IntersectionObserver' in window) {
+                let mapVisible = false;
+                const mapObserver = new IntersectionObserver(function(entries) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting && !mapVisible) {
+                            mapVisible = true;
+                            startMap();
+                        }
+                    });
+                }, { threshold: 0.05 });
+                mapObserver.observe(mapWrap);
+            } else {
+                startMap();
+            }
         })();
     </script>
     @endif
