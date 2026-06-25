@@ -5,7 +5,7 @@ namespace App\Traits;
 trait LocalizesValidationRules
 {
     /**
-     * Append nullable _ar validation rules for string/text fields.
+     * Append nullable localized validation rules for string/text fields.
      *
      * @param  array<string, string>  $rules
      * @param  list<string>|null  $only  Limit to these field names; null = all string rules
@@ -14,6 +14,7 @@ trait LocalizesValidationRules
     protected function localizeRules(array $rules, ?array $only = null): array
     {
         $localized = $rules;
+        $suffixes = array_values(config('locales.db_suffix', ['ar' => '_ar']));
 
         foreach ($rules as $field => $rule) {
             if ($only !== null && ! in_array($field, $only, true)) {
@@ -24,12 +25,14 @@ trait LocalizesValidationRules
                 continue;
             }
 
-            $arRule = preg_replace('/^required\|/', 'nullable|', $rule) ?? $rule;
-            if (! str_starts_with($arRule, 'nullable|')) {
-                $arRule = 'nullable|' . ltrim($arRule, '|');
+            $localizedRule = preg_replace('/^required\|/', 'nullable|', $rule) ?? $rule;
+            if (! str_starts_with($localizedRule, 'nullable|')) {
+                $localizedRule = 'nullable|' . ltrim($localizedRule, '|');
             }
 
-            $localized[$field . '_ar'] = $arRule;
+            foreach ($suffixes as $suffix) {
+                $localized[$field . $suffix] = $localizedRule;
+            }
         }
 
         return $localized;

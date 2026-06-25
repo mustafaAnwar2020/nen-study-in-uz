@@ -209,6 +209,7 @@ return [
         'title' => 'Language',
         'ar'    => 'Arabic',
         'en'    => 'English',
+        'ru'    => 'Russian',
     ],
 
     'nen_landing' => [

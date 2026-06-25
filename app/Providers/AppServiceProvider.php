@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('*', function ($view) {
             $locale = app()->getLocale();
-            $isRtl = $locale === 'ar';
+            $isRtl = in_array($locale, config('locales.rtl', ['ar']), true);
 
             $view->with('currentLocale', $locale);
             $view->with('isRtl', $isRtl);

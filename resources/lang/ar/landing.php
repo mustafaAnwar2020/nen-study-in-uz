@@ -1,10 +1,13 @@
 <?php
 
 return [
+    'meta' => [
+        'page_title' => 'الدراسة في أوزباكستان',
+    ],
     'nav' => [
         'home'               => 'الرئيسية',
         'about'              => 'عن الدراسة',
-        'why'                => 'لماذا؟',
+        'why'                => 'لماذا أوزباكستان؟',
         'your_path'          => 'مسارك',
         'required_documents' => 'المستندات المطلوبة',
         'collection_point'   => 'نقطة التجميع',
@@ -170,6 +173,7 @@ return [
     'language' => [
         'english' => 'English',
         'arabic' => 'العربية',
+        'russian' => 'Русский',
         'switch' => 'اختر اللغة',
     ],
 ];

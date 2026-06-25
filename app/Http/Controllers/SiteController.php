@@ -51,6 +51,7 @@ class SiteController extends Controller
             $featuredEvent = null;
         }
 
+        $documentTitle = __('landing.meta.page_title');
         $pageTitle = 'Home';
 
         $heroSlides = NenLandingHeroSlide::query()

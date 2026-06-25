@@ -8,12 +8,16 @@ trait HasLocalizedAttributes
     {
         $locale = $locale ?? app()->getLocale();
 
-        if ($locale === 'ar') {
-            $arKey = $attribute . '_ar';
-            $arValue = $this->{$arKey} ?? null;
+        if ($locale !== 'en') {
+            $suffix = config("locales.db_suffix.{$locale}");
 
-            if (is_string($arValue) && trim($arValue) !== '') {
-                return $arValue;
+            if ($suffix) {
+                $localizedKey = $attribute . $suffix;
+                $localizedValue = $this->{$localizedKey} ?? null;
+
+                if (is_string($localizedValue) && trim($localizedValue) !== '') {
+                    return $localizedValue;
+                }
             }
         }
 

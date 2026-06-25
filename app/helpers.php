@@ -490,9 +490,47 @@ if (! function_exists('landing_get')) {
     }
 }
 
+if (! function_exists('landing_item_localized')) {
+    /**
+     * Resolve a landing list item (step, card, etc.).
+     * For non-English locales, uses the translation fallback when the DB has no _ar/_ru value
+     * instead of falling back to the English DB column.
+     */
+    function landing_item_localized(?object $item, string $attribute, mixed $fallback): mixed
+    {
+        if ($item === null) {
+            return $fallback;
+        }
+
+        $locale = app()->getLocale();
+
+        if ($locale === 'en') {
+            $value = $item->{$attribute} ?? null;
+
+            if (is_string($value) && trim($value) !== '') {
+                return $value;
+            }
+
+            return $fallback;
+        }
+
+        $suffix = config("locales.db_suffix.{$locale}");
+
+        if ($suffix) {
+            $localized = $item->{$attribute . $suffix} ?? null;
+
+            if (is_string($localized) && trim($localized) !== '') {
+                return $localized;
+            }
+        }
+
+        return $fallback;
+    }
+}
+
 if (! function_exists('is_rtl')) {
     function is_rtl(): bool
     {
-        return app()->getLocale() === 'ar';
+        return in_array(app()->getLocale(), config('locales.rtl', ['ar']), true);
     }
 }

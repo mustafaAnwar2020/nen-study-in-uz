@@ -171,6 +171,7 @@
             letter-spacing: -0.02em;
             white-space: nowrap;
             flex-shrink: 0;
+            margin-left: 0 !important;
         }
         body.nen-landing-body #hero .row-right2 {
             overflow: visible;
@@ -190,6 +191,84 @@
         }
         body.nen-landing-body #hero .nen-hero-nav .card-lucide-arrow1 {
             width: 18px;
+        }
+
+        /* Russian: longer labels — compact nav + room for language switcher and CTA */
+        @media (min-width: 769px) {
+            html[lang="ru"] body.nen-landing-body #hero .row2.nen-hero-nav {
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                row-gap: 10px;
+                column-gap: 14px;
+                padding: 12px 16px 12px 20px;
+                border-radius: 24px;
+            }
+
+            html[lang="ru"] body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links {
+                flex: 1 1 auto;
+                min-width: 0;
+                max-width: calc(100% - 220px);
+                flex-wrap: wrap;
+                justify-content: flex-start;
+                gap: 6px 14px;
+                row-gap: 6px;
+            }
+
+            html[lang="ru"] body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links a {
+                font-size: clamp(13px, 0.95vw, 15px);
+                letter-spacing: -0.01em;
+                white-space: nowrap;
+            }
+
+            html[lang="ru"] body.nen-landing-body #hero .row-right2 {
+                flex: 0 0 auto;
+                margin-left: auto;
+                gap: 12px !important;
+            }
+
+            html[lang="ru"] body.nen-landing-body #hero .nen-hero-nav .card5 {
+                width: auto;
+                min-width: 0;
+                max-width: 180px;
+                padding: 12px 14px;
+                gap: 8px;
+            }
+
+            html[lang="ru"] body.nen-landing-body #hero .nen-hero-nav .card-img2 {
+                display: none;
+            }
+
+            html[lang="ru"] body.nen-landing-body #hero .nen-hero-nav .card-text-left1 {
+                font-size: clamp(12px, 0.9vw, 14px);
+                line-height: 1.3;
+                white-space: normal;
+                text-align: center;
+            }
+
+            html[lang="ru"] body.nen-landing-body #hero .nen-hero-nav .card-lucide-arrow1 {
+                width: 16px;
+                flex-shrink: 0;
+            }
+
+            html[lang="ru"] body.nen-landing-body #hero .nen-lang-dropdown__toggle {
+                font-size: 14px;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1280px) {
+            html[lang="ru"] body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links {
+                flex: 1 1 100%;
+                max-width: 100%;
+                order: 2;
+                justify-content: center;
+            }
+
+            html[lang="ru"] body.nen-landing-body #hero .row-right2 {
+                order: 1;
+                width: 100%;
+                justify-content: flex-end;
+            }
         }
 
         /* home.css @container row-top4 stacks .row2 vertically — keep hero nav horizontal */
@@ -638,7 +717,33 @@
         }
 
         body.nen-landing-body .nen-scroll-wrap .frame-c .frame-col-bottom {
-            width: auto !important;
+            width: 100% !important;
+        }
+
+        body.nen-landing-body .nen-scroll-wrap .frame-c {
+            gap: 14px;
+            padding: 10px 12px 10px 10px;
+            align-items: stretch;
+        }
+
+        body.nen-landing-body .nen-scroll-wrap .frame-c .frame-col {
+            flex: 1;
+            min-width: 0;
+            gap: 16px;
+        }
+
+        body.nen-landing-body .nen-scroll-wrap .frame-c .frame-col-top {
+            width: auto;
+            flex: 1;
+            min-width: 0;
+        }
+
+        body.nen-landing-body .nen-scroll-wrap .frame-c .frame-img3 {
+            border-radius: 8px;
+            object-fit: cover;
+            align-self: stretch;
+            height: auto;
+            max-height: 154px;
         }
 
         body.nen-landing-body .nen-scroll-wrap .row-e .row-text3 {
@@ -673,6 +778,110 @@
         body.nen-landing-body .nen-scroll-wrap .card-c:hover {
             transform: translateY(-6px);
             box-shadow: 0 14px 30px -12px rgba(0, 0, 0, 0.28);
+        }
+
+        /* ── Agency cards RTL ── */
+        html[dir="rtl"] body.nen-landing-body #study-agencies .nen-scroll-wrap .row19,
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .row15 {
+            direction: rtl;
+        }
+
+        html[dir="rtl"] body.nen-landing-body #study-agencies .nen-scroll-wrap .card-c {
+            align-items: flex-start;
+            text-align: right;
+            padding: 18px 16px !important;
+        }
+
+        html[dir="rtl"] body.nen-landing-body #study-agencies .nen-scroll-wrap .card-col-bottom,
+        html[dir="rtl"] body.nen-landing-body #study-agencies .nen-scroll-wrap .card-col {
+            align-items: flex-start;
+            align-self: stretch;
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            gap: 12px;
+        }
+
+        html[dir="rtl"] body.nen-landing-body #study-agencies .nen-scroll-wrap .card-text3 {
+            text-align: right;
+            width: 100%;
+        }
+
+        html[dir="rtl"] body.nen-landing-body .nen-agency-contact {
+            display: flex !important;
+            flex-direction: row !important;
+            direction: rtl !important;
+            justify-content: flex-start !important;
+            align-items: center !important;
+            align-self: stretch !important;
+            width: 100% !important;
+            gap: 8px !important;
+        }
+
+        html[dir="rtl"] body.nen-landing-body .nen-agency-contact .row-text3 {
+            text-align: right !important;
+            margin: 0 !important;
+        }
+
+        html[dir="rtl"] body.nen-landing-body .nen-agency-contact--phone .row-text3 {
+            direction: ltr !important;
+            unicode-bidi: embed !important;
+            text-align: right !important;
+        }
+
+        /* Translation cards: keep image on the left, right-align text block */
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .frame-c {
+            direction: ltr;
+            text-align: right;
+        }
+
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .frame-col {
+            direction: rtl;
+            align-items: flex-start;
+            text-align: right;
+        }
+
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .frame-col-top,
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .frame-col-bottom {
+            width: 100%;
+            align-items: flex-start;
+            align-self: stretch;
+        }
+
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .frame-col-top {
+            gap: 8px;
+        }
+
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .frame-col-bottom {
+            gap: 10px;
+            width: 100% !important;
+            max-width: none !important;
+            align-items: flex-start !important;
+            align-self: stretch !important;
+        }
+
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .frame-text3,
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .frame-text4 {
+            text-align: right;
+            width: 100%;
+        }
+
+        html[dir="rtl"] body.nen-landing-body #study-agencies .row-top9 .row-col2,
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .row-top8 .row-col2 {
+            text-align: right;
+            align-items: flex-start;
+        }
+
+        @container group-bottom1 (width < 1429px) {
+            html[dir="rtl"] body.nen-landing-body .nen-scroll-wrap .row15 > * {
+                text-align: right !important;
+            }
+        }
+
+        @container group5 (width < 1383px) {
+            html[dir="rtl"] body.nen-landing-body .nen-scroll-wrap .row19 > * {
+                text-align: right !important;
+            }
         }
 
         /* ── Success Partners infinite marquee ──
@@ -762,6 +971,41 @@
     }
     @media (prefers-reduced-motion: reduce) {
         body.nen-landing-body #about .subtitle2.nen-reveal .nen-word { color: #232323; }
+    }
+
+    /* ── Documents & FAQ: centered section titles ── */
+    body.nen-landing-body #documents .col-top4,
+    body.nen-landing-body #faq .col-top5 {
+        width: 100%;
+        max-width: 644px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        align-self: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    body.nen-landing-body #documents .col15 {
+        width: 100%;
+        align-self: stretch;
+    }
+
+    body.nen-landing-body #documents .col-top4 .column-subtitle3,
+    body.nen-landing-body #documents .col-top4 .column-text-bottom,
+    body.nen-landing-body #faq .col-top5 .column-subtitle3,
+    body.nen-landing-body #faq .col-top5 .column-text-bottom {
+        width: 100%;
+        text-align: center;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #documents .col-top4,
+    html[dir="rtl"] body.nen-landing-body #faq .col-top5,
+    html[dir="rtl"] body.nen-landing-body #documents .col-top4 .column-subtitle3,
+    html[dir="rtl"] body.nen-landing-body #documents .col-top4 .column-text-bottom,
+    html[dir="rtl"] body.nen-landing-body #faq .col-top5 .column-subtitle3,
+    html[dir="rtl"] body.nen-landing-body #faq .col-top5 .column-text-bottom {
+        text-align: center;
+        align-items: center;
     }
 
     /* ── Required Documents: uniform card grid + scroll-in animation ── */
@@ -2220,21 +2464,38 @@
         flex-direction: column;
         align-items: stretch;
         gap: clamp(36px, 5vw, 56px);
+        padding: clamp(40px, 5vw, 80px) clamp(24px, 4vw, 80px);
     }
+
+    body.nen-landing-body .tesrimonials.nen-about-section > * {
+        text-align: unset;
+    }
+
     body.nen-landing-body .nen-about-section__top {
-        display: flex;
-        align-items: flex-start;
-        gap: clamp(32px, 6vw, 114px);
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(280px, 1.05fr);
+        align-items: start;
+        gap: clamp(28px, 4vw, 80px);
         width: 100%;
     }
+
     body.nen-landing-body .nen-about-section__top .tesrimonials-col-left {
-        width: auto;
-        flex: 1 1 0;
+        width: 100%;
         min-width: 0;
-        max-width: 920px;
+        max-width: none;
+        flex: unset;
     }
+
     body.nen-landing-body .nen-about-section__top .tesrimonials-col2 {
         max-width: 558px;
+        width: 100%;
+    }
+
+    body.nen-landing-body .nen-about-nen .tesrimonials-subtitle-national {
+        font-size: clamp(36px, 4.5vw, 64px);
+        line-height: 1.25;
+        letter-spacing: -0.03em;
+        word-break: break-word;
     }
 
     html[dir="rtl"] body.nen-landing-body .nen-about-nen,
@@ -2266,7 +2527,7 @@
 
     html[dir="rtl"] body.nen-landing-body .nen-about-section__bottom {
         margin-right: 0;
-        margin-left: auto;
+        margin-left: 0;
         text-align: right;
         align-items: flex-start;
     }
@@ -2277,7 +2538,7 @@
     }
     body.nen-landing-body .nen-about-section__bottom {
         width: 100%;
-        max-width: 558px;
+        max-width: 100%;
         display: flex;
         flex-direction: column;
         gap: 28px;
@@ -2314,37 +2575,39 @@
     }
     body.nen-landing-body .nen-about-nen__stats {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: clamp(10px, 1.4vw, 16px);
         margin: 20px 0 24px;
+        width: 100%;
     }
     body.nen-landing-body .nen-about-nen__stat {
         background: #f5f8f9;
         border-radius: 16px;
-        padding: 16px 18px;
+        padding: clamp(12px, 1.4vw, 16px) clamp(12px, 1.2vw, 18px);
         text-align: left;
+        min-width: 0;
     }
     html[dir="rtl"] body.nen-landing-body .nen-about-nen__stat {
         text-align: right;
     }
     body.nen-landing-body .nen-about-nen__stat-value {
         margin: 0 0 6px;
-        font-size: 28px;
+        font-size: clamp(20px, 2.2vw, 28px);
         font-weight: 800;
         line-height: 1;
         color: #111;
     }
     body.nen-landing-body .nen-about-nen__stat-title {
         margin: 0 0 8px;
-        font-size: 14px;
+        font-size: clamp(11px, 1.1vw, 14px);
         font-weight: 700;
         line-height: 1.35;
         color: #017785;
     }
     body.nen-landing-body .nen-about-nen__stat-desc {
         margin: 0;
-        font-size: 13px;
-        line-height: 1.55;
+        font-size: clamp(11px, 1vw, 13px);
+        line-height: 1.5;
         color: #5b5b5b;
     }
     body.nen-landing-body .nen-about-nen__mission-title {
@@ -2363,13 +2626,27 @@
         line-height: 1.65;
         color: #5b5b5b;
         text-align: left;
+        max-width: 558px;
+        width: 100%;
+        align-self: flex-start;
     }
     html[dir="rtl"] body.nen-landing-body .nen-about-nen__mission {
         text-align: right;
+        align-self: flex-start;
     }
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
         body.nen-landing-body .nen-about-nen__stats {
-            grid-template-columns: 1fr;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            gap: 12px;
+            padding-bottom: 4px;
+        }
+
+        body.nen-landing-body .nen-about-nen__stat {
+            flex: 0 0 min(200px, 72vw);
         }
     }
 
@@ -2380,16 +2657,19 @@
         align-items: flex-start;
         gap: 14px;
         width: 100% !important;
-        max-width: 1020px;
+        max-width: none;
         height: auto !important;
         min-height: auto;
-        flex: 0 0 auto;
+        min-width: 0;
+        flex: unset;
+        flex-grow: 0 !important;
         align-self: stretch;
         background: #f5f8f9 !important;
         border-radius: 16px;
         padding: 20px 22px;
         overflow: visible !important;
         text-align: left;
+        box-sizing: border-box;
     }
 
     body.nen-landing-body .nen-collection-map__tabs,
@@ -2698,14 +2978,13 @@
     }
 
     @container body (width < 821px) {
-        body.nen-landing-body .nen-about-section__top {
-            flex-direction: column;
+        body.nen-landing-body .tesrimonials.nen-about-section {
+            gap: clamp(36px, 5vw, 56px);
             align-items: stretch;
-            gap: 40px;
         }
-        body.nen-landing-body .nen-about-section__top .nen-collection-map {
-            width: 100%;
-            max-width: 100%;
+
+        body.nen-landing-body .tesrimonials.nen-about-section > * {
+            text-align: unset;
         }
     }
 
@@ -2716,6 +2995,7 @@
             align-items: stretch;
         }
         body.nen-landing-body .nen-about-section__top {
+            display: flex;
             flex-direction: column;
             gap: 28px;
         }
@@ -2750,6 +3030,86 @@
             height: 100% !important;
             min-height: 100% !important;
         }
+    }
+
+    /* ── Arabic (RTL): comfortable line spacing sitewide ── */
+    html[dir="rtl"] body.nen-landing-body {
+        line-height: 1.75;
+    }
+
+    html[dir="rtl"] body.nen-landing-body :where(
+        p,
+        li,
+        .text,
+        .column-text-bottom,
+        .tesrimonials-text-an-international,
+        .tesrimonials-text-bottom,
+        .nen-about-nen__intro,
+        .nen-about-nen__mission,
+        .nen-about-nen__stat-desc,
+        .row-text2,
+        .row-text3,
+        .card-text1,
+        .card-text4,
+        .text-join-the-ultimate,
+        .faq-answer,
+        .nen-step__desc,
+        .nen-step__hint,
+        .nen-collection-map__meta,
+        .nen-foot__tagline
+    ) {
+        line-height: 1.85 !important;
+    }
+
+    html[dir="rtl"] body.nen-landing-body :where(
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .subtitle1,
+        .column-subtitle1,
+        .column-subtitle3,
+        .subtitle-we-re-not-just-about,
+        .tesrimonials-subtitle-national,
+        .tesrimonials-subtitle-key-milestones,
+        .nen-about-nen__mission-title,
+        .nen-about-nen__stat-title,
+        .card-subtitle2,
+        .nen-hero-title,
+        .nen-hero-title__study,
+        .nen-hero-title__country
+    ) {
+        line-height: 1.5 !important;
+        letter-spacing: 0 !important;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #hero .nen-hero-title {
+        gap: 10px;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #hero .text-join-the-ultimate {
+        line-height: 1.9 !important;
+    }
+
+    html[dir="rtl"] body.nen-landing-body #faq .faq-btn-d .btn-label {
+        line-height: 1.65 !important;
+    }
+
+    html[dir="rtl"] body.nen-landing-body :where(
+        .btn-a,
+        .btn-b,
+        .btn-c,
+        .btn-d,
+        .column-btn1,
+        .column-btn2,
+        .tesrimonials-btn,
+        .row-btn,
+        .nen-collection-map__tab,
+        .nen-collection-map__location-btn
+    ) {
+        line-height: 1.45 !important;
     }
 </style>
 @endpush
@@ -2808,7 +3168,7 @@
                     <div class="nen-lang-dropdown">
                         <button class="nen-lang-dropdown__toggle" id="nenLangBtn" type="button">
                             <img src="{{ asset('site/home/assets/globe.png') }}" class="globe" alt="Language" />
-                            <span id="nenCurrentLang">{{ app()->getLocale() === 'ar' ? 'AR' : 'EN' }}</span>
+                            <span id="nenCurrentLang">{{ config('locales.labels.' . app()->getLocale(), strtoupper(app()->getLocale())) }}</span>
                         </button>
                         <div class="nen-lang-dropdown__menu" id="nenLangMenu">
                             <a class="nen-lang-dropdown__item {{ app()->getLocale() === 'en' ? 'is-active' : '' }}"
@@ -2818,6 +3178,10 @@
                             <a class="nen-lang-dropdown__item {{ app()->getLocale() === 'ar' ? 'is-active' : '' }}"
                                 href="{{ route('site.locale.switch', 'ar') }}" data-lang="ar" data-label="AR">
                                 <span class="flag-icon flag-icon-sa"></span> {{ __('landing.language.arabic') }}
+                            </a>
+                            <a class="nen-lang-dropdown__item {{ app()->getLocale() === 'ru' ? 'is-active' : '' }}"
+                                href="{{ route('site.locale.switch', 'ru') }}" data-lang="ru" data-label="RU">
+                                <span class="flag-icon flag-icon-ru"></span> {{ __('landing.language.russian') }}
                             </a>
                         </div>
                     </div>
@@ -2948,7 +3312,7 @@
     @if ($landing->show_about ?? true)
         <div class="col3" id="about">
             <div class="column-a col-top2">
-                <button class="btn-a column-btn1 hover-dark">{{ landing_get($landing, 'about_label') ?? __('landing.about.badge') }}</button>
+                {{-- <button class="btn-a column-btn1 hover-dark">{{ landing_get($landing, 'about_label') ?? __('landing.about.badge') }}</button> --}}
                 <h2 class="column-subtitle1">{{ landing_get($landing, 'about_title') ?? __('landing.about.title') }}</h2>
             </div>
 
@@ -2994,7 +3358,7 @@
         <div class="col5 section" id="why-uzbekistan">
             <div class="col6">
                 <div class="column-a col-top3">
-                    <button class="btn-a column-btn1 hover-dark">{{ __('landing.features.badge') }}</button>
+                    {{-- <button class="btn-a column-btn1 hover-dark">{{ __('landing.features.badge') }}</button> --}}
                     <h2 class="column-subtitle1">{{ landing_get($landing, 'features_title') ?? __('landing.features.title') }}</h2>
                 </div>
 
@@ -3134,8 +3498,8 @@
                             @php
                                 $stepNum = $idx + 1;
                                 $step = $stepsByNumber->get($stepNum);
-                                $title = $step ? $step->localized('title') : ($stepTitles[$idx] ?? '');
-                                $desc = $step ? $step->localized('description') : ($stepDescs[$idx] ?? '');
+                                $title = landing_item_localized($step, 'title', $stepTitles[$idx] ?? '');
+                                $desc = landing_item_localized($step, 'description', $stepDescs[$idx] ?? '');
                                 $num = str_pad((string) $stepNum, 2, '0', STR_PAD_LEFT);
                             @endphp
                             <div class="nen-step" tabindex="0" role="button"
@@ -3170,7 +3534,7 @@
         <div class="col13 section" id="documents">
             <div class="col14">
                 <div class="column-c col-top4">
-                    <button class="btn-a column-btn2 hover-dark">{{ __('landing.documents.badge') }}</button>
+                    {{-- <button class="btn-a column-btn2 hover-dark">{{ __('landing.documents.badge') }}</button> --}}
                     <h2 class="column-subtitle3">{{ landing_get($landing, 'documents_title') ?? __('landing.documents.title') }}</h2>
                     <p class="column-text-bottom">
                         {{ landing_get($landing, 'documents_subtitle') ?? __('landing.documents.subtitle') }}
@@ -3207,10 +3571,10 @@
         <div class="tesrimonials nen-about-section" id="about-nen">
             <div class="nen-about-section__top">
                 <div class="tesrimonials-col-left nen-about-nen">
-                    <a href="{{ $landing->milestones_cta_url ?? '#collection-point' }}"
+                    {{-- <a href="{{ $landing->milestones_cta_url ?? '#collection-point' }}"
                         class="btn-c tesrimonials-btn hover-dark">
                         {{ landing_get($landing, 'milestones_cta_text') ?? __('landing.milestones.find_collection_point') }}
-                    </a>
+                    </a> --}}
 
                     <div class="tesrimonials-col2">
                         <h2 class="tesrimonials-subtitle-national">
@@ -3269,7 +3633,7 @@
             </div>
 
             <div class="nen-about-section__bottom tesrimonials-col-bottom">
-                <h2 class="tesrimonials-subtitle-key-milestones">{{ __('landing.milestones.key_milestones') }}</h2>
+                {{-- <h2 class="tesrimonials-subtitle-key-milestones">{{ __('landing.milestones.key_milestones') }}</h2> --}}
 
                 <div class="nen-about-nen__stats">
                     @foreach (__('landing.milestones.stats') as $stat)
@@ -3281,7 +3645,7 @@
                     @endforeach
                 </div>
 
-                <h3 class="nen-about-nen__mission-title">{{ __('landing.milestones.mission_title') }}</h3>
+                {{-- <h3 class="nen-about-nen__mission-title">{{ __('landing.milestones.mission_title') }}</h3> --}}
                 <p class="text tesrimonials-text-bottom nen-about-nen__mission">
                     {{ __('landing.milestones.mission') }}
                 </p>
@@ -3303,7 +3667,7 @@
             <div class="col17">
                 <div class="row-d row-top9">
                     <div class="row-col2">
-                        <button class="btn-c row-btn hover-dark">{{ __('landing.agencies.trusted_badge') }}</button>
+                        {{-- <button class="btn-c row-btn hover-dark">{{ __('landing.agencies.trusted_badge') }}</button> --}}
                         <h2 class="row-subtitle">
                             {{ landing_get($landing, 'trusted_agencies_title') ?? __('landing.agencies.trusted_title') }}</h2>
                         <p class="text row-text-bottom">
@@ -3345,14 +3709,14 @@
                                             <p class="card-text3">{{ $agency->localized('name') }}</p>
                                             <div class="card-col">
                                                 @if ($agency->localized('location'))
-                                                    <div class="row-e row-top3">
+                                                    <div class="row-e row-top3 nen-agency-contact">
                                                         <img src="{{ asset('site/home/assets/row/row-location.png') }}"
                                                             class="row-smart-phone row-location" alt="Location" />
                                                         <p class="row-text3">{{ $agency->localized('location') }}</p>
                                                     </div>
                                                 @endif
                                                 @if ($agency->phone)
-                                                    <div class="row-e row-bottom2">
+                                                    <div class="row-e row-bottom2 nen-agency-contact nen-agency-contact--phone">
                                                         <img src="{{ asset('site/home/assets/row/row-smart-phone.png') }}"
                                                             class="row-smart-phone" alt="Phone" />
                                                         <p class="row-text3">{{ $agency->phone }}</p>
@@ -3375,7 +3739,7 @@
         <div class="col12" id="translation-agencies">
             <div class="row-d row-top8">
                 <div class="row-col2">
-                    <button class="btn-c row-btn hover-dark">{{ __('landing.agencies.translation_badge') }}</button>
+                    {{-- <button class="btn-c row-btn hover-dark">{{ __('landing.agencies.translation_badge') }}</button> --}}
                     <h2 class="row-subtitle">{{ landing_get($landing, 'agencies_title') ?? __('landing.agencies.translation_title') }}</h2>
                     <p class="text row-text-bottom">
                         {{ landing_get($landing, 'agencies_subtitle') ?? __('landing.agencies.translation_subtitle') }}
@@ -3410,14 +3774,14 @@
                                     </div>
                                     <div class="frame-col-bottom">
                                         @if ($agency->localized('location'))
-                                            <div class="row-e row-top2">
+                                            <div class="row-e row-top2 nen-agency-contact">
                                                 <img src="{{ asset('site/home/assets/row/row-location.png') }}"
                                                     class="row-smart-phone row-location" alt="Location" />
                                                 <p class="row-text3">{{ $agency->localized('location') }}</p>
                                             </div>
                                         @endif
                                         @if ($agency->phone)
-                                            <div class="row-e row-bottom1">
+                                            <div class="row-e row-bottom1 nen-agency-contact nen-agency-contact--phone">
                                                 <img src="{{ asset('site/home/assets/row/row-smart-phone.png') }}"
                                                     class="row-smart-phone" alt="Phone" />
                                                 <p class="row-text3">{{ $agency->phone }}</p>
@@ -3443,7 +3807,7 @@
         <div class="col18 section" id="faq">
             <div class="col19">
                 <div class="column-c col-top5">
-                    <button class="btn-a column-btn2 hover-dark">{{ __('landing.faq.badge') }}</button>
+                    {{-- <button class="btn-a column-btn2 hover-dark">{{ __('landing.faq.badge') }}</button> --}}
                     <h2 class="column-subtitle3">{{ landing_get($landing, 'faq_title') ?? __('landing.faq.title') }}</h2>
                     <p class="column-text-bottom">{{ __('landing.faq.subtitle') }}</p>
                 </div>
@@ -3780,7 +4144,9 @@
 
                 function apply() {
                     offset = Math.max(0, Math.min(offset, maxOffset()));
-                    inner.style.transform = 'translateX(-' + offset + 'px)';
+                    const rtl = document.documentElement.getAttribute('dir') === 'rtl';
+                    const x = rtl ? offset : -offset;
+                    inner.style.transform = 'translateX(' + x + 'px)';
                 }
 
                 function advance() {

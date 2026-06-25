@@ -5,8 +5,26 @@
 html[dir="rtl"] body.nen-landing-body {
     font-family: 'Cairo', 'Manrope', sans-serif;
     text-align: right;
-    line-height: 1.65;
+    line-height: 1.75;
     letter-spacing: 0;
+}
+
+/* Body copy — Arabic needs more vertical rhythm than Latin */
+html[dir="rtl"] body.nen-landing-body :where(
+    p,
+    li,
+    .text,
+    .column-text-bottom,
+    .tesrimonials-text-an-international,
+    .tesrimonials-text-bottom,
+    .text-join-the-ultimate,
+    .faq-answer,
+    .card-text1,
+    .card-text4,
+    .row-text2,
+    .row-text3
+) {
+    line-height: 1.85;
 }
 
 html[dir="rtl"] body.nen-landing-body :where(h1, h2, h3, h4, h5, h6, p, a, button, li, span, label, input, textarea, select) {
@@ -72,6 +90,35 @@ html[dir="rtl"] body.nen-landing-body .nen-foot__logo {
 html[dir="rtl"] body.nen-landing-body .nen-scroll-wrap .row15,
 html[dir="rtl"] body.nen-landing-body .nen-scroll-wrap .row19 {
     direction: ltr; /* keep carousel transform math LTR */
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-agency-contact {
+    display: flex !important;
+    flex-direction: row !important;
+    direction: rtl !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    align-self: stretch !important;
+    width: 100% !important;
+    gap: 8px !important;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-agency-contact .row-text3 {
+    text-align: right !important;
+    margin: 0 !important;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-agency-contact--phone .row-text3 {
+    direction: ltr !important;
+    unicode-bidi: embed !important;
+    text-align: right !important;
+}
+
+html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .frame-col-bottom {
+    width: 100% !important;
+    max-width: none !important;
+    align-items: flex-start !important;
+    align-self: stretch !important;
 }
 
 html[dir="rtl"] body.nen-landing-body .row-circle-black-left img,

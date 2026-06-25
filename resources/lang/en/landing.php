@@ -1,10 +1,13 @@
 <?php
 
 return [
+    'meta' => [
+        'page_title' => 'Study in Uzbekistan',
+    ],
     'nav' => [
         'home'               => 'Home',
         'about'              => 'About',
-        'why'                => 'Why?',
+        'why'                => 'Why Uzbekistan?',
         'your_path'          => 'Your Path',
         'required_documents' => 'Documents',
         'collection_point'   => 'Collection',
@@ -170,6 +173,7 @@ return [
     'language' => [
         'english' => 'English',
         'arabic' => 'Arabic',
+        'russian' => 'Russian',
         'switch' => 'Select language',
     ],
 ];

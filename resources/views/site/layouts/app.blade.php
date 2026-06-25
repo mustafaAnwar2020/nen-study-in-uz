@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ data_get($settings, 'general.site_name', 'NEN') }} - {{ $pageTitle ?? 'Welcome' }}</title>
+    <title>{{ $documentTitle ?? data_get($settings, 'general.site_name', 'NEN') . ' - ' . ($pageTitle ?? 'Welcome') }}</title>
     <meta name="description" content="{{ data_get($settings, 'general.site_about', '') }}">
     <meta name="keywords" content="">
     <!-- Favicons -->

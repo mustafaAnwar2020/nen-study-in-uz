@@ -11,7 +11,9 @@ class LocaleController extends Controller
 {
     public function switch(Request $request, string $locale): RedirectResponse
     {
-        if (! in_array($locale, ['en', 'ar'], true)) {
+        $supported = config('locales.supported', ['en', 'ar']);
+
+        if (! in_array($locale, $supported, true)) {
             abort(404);
         }
 

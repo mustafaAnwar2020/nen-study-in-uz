@@ -6,15 +6,29 @@ class LandingContent
 {
     public static function get(object $landing, string $key): mixed
     {
-        if (app()->getLocale() === 'ar') {
-            $arKey = $key . '_ar';
-            $arValue = $landing->{$arKey} ?? null;
+        $locale = app()->getLocale();
 
-            if (is_string($arValue) && trim($arValue) !== '') {
-                return $arValue;
+        if ($locale !== 'en') {
+            $suffix = config("locales.db_suffix.{$locale}");
+
+            if ($suffix) {
+                $localizedKey = $key . $suffix;
+                $localizedValue = $landing->{$localizedKey} ?? null;
+
+                if (is_string($localizedValue) && trim($localizedValue) !== '') {
+                    return $localizedValue;
+                }
+
+                return null;
             }
         }
 
-        return $landing->{$key} ?? null;
+        $value = $landing->{$key} ?? null;
+
+        if (is_string($value) && trim($value) === '') {
+            return null;
+        }
+
+        return $value;
     }
 }
