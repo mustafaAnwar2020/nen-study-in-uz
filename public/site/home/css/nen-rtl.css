@@ -114,6 +114,17 @@ html[dir="rtl"] body.nen-landing-body .nen-agency-contact--phone .row-text3 {
     text-align: right !important;
 }
 
+html[dir="rtl"] body.nen-landing-body .nen-foot__contact--phone > a,
+html[dir="rtl"] body.nen-landing-body .nen-foot__contact a[href^="mailto:"] {
+    direction: ltr !important;
+    unicode-bidi: embed !important;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__contact--phone > a {
+    text-align: right !important;
+    white-space: nowrap;
+}
+
 html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .frame-col-bottom {
     width: 100% !important;
     max-width: none !important;
@@ -183,6 +194,12 @@ html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-subtitle2 {
     text-align: right;
 }
 
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-container2,
+html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-container2 h2 {
+    text-align: right;
+    width: 100%;
+}
+
 html[dir="rtl"] body.nen-landing-body #how-it-works .subtitle-we-re-not-just-about,
 html[dir="rtl"] body.nen-landing-body #how-it-works .col-left2,
 html[dir="rtl"] body.nen-landing-body #how-it-works .col-left2 .text {
@@ -195,6 +212,11 @@ html[dir="rtl"] body.nen-landing-body #how-it-works .col-left2 .text {
 
 html[dir="rtl"] body.nen-landing-body #how-it-works .subtitle-we-re-not-just-about {
     line-height: 1.35 !important;
+}
+
+html[dir="rtl"] body.nen-landing-body #how-it-works .frame-right2,
+html[dir="rtl"] body.nen-landing-body #how-it-works .frame-right2 p {
+    text-align: right;
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-step__desc {
@@ -224,7 +246,7 @@ html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-a,
 html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-container1,
 html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card-container3 {
     text-align: right;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 html[dir="rtl"] body.nen-landing-body #why-uzbekistan .container-frame-right {

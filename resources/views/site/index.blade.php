@@ -271,6 +271,33 @@
             }
         }
 
+        /* English: spread nav links across the bar — larger type, wider gaps */
+        @media (min-width: 769px) {
+            html[lang="en"] body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links {
+                justify-content: space-between;
+                gap: clamp(14px, 1.6vw, 28px);
+                flex: 1 1 auto;
+                min-width: 0;
+                padding-inline: clamp(16px, 2vw, 36px);
+            }
+
+            html[lang="en"] body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links a {
+                font-size: clamp(14px, 1.08vw, 17px);
+                letter-spacing: -0.02em;
+            }
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+            html[lang="en"] body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links a {
+                font-size: clamp(13px, 1.15vw, 16px);
+            }
+
+            html[lang="en"] body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links {
+                gap: clamp(10px, 1.3vw, 18px);
+                padding-inline: clamp(10px, 1.5vw, 20px);
+            }
+        }
+
         /* home.css @container row-top4 stacks .row2 vertically — keep hero nav horizontal */
         @container row-top4 (width < 1028px) {
             body.nen-landing-body #hero .row2.nen-hero-nav {
@@ -294,10 +321,10 @@
             body.nen-landing-body #hero .nen-hero-header {
                 gap: 16px;
             }
-            body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links a {
+            html:not([lang="en"]) body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links a {
                 font-size: 12px;
             }
-            body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links {
+            html:not([lang="en"]) body.nen-landing-body #hero .nen-hero-nav .row3.nen-nav-links {
                 gap: 8px;
             }
         }
@@ -872,6 +899,23 @@
             align-items: flex-start;
         }
 
+        html[dir="rtl"] body.nen-landing-body #documents .col-top4 .column-subtitle3,
+        html[dir="rtl"] body.nen-landing-body #documents .col-top4 .column-text-bottom,
+        html[dir="rtl"] body.nen-landing-body #trusted-agencies .row-subtitle,
+        html[dir="rtl"] body.nen-landing-body #trusted-agencies .row-text-bottom,
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .row-subtitle,
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .row-text-bottom {
+            white-space: nowrap;
+            max-width: none;
+            width: auto;
+        }
+
+        html[dir="rtl"] body.nen-landing-body #translation-agencies .row-top8 .row-text-bottom,
+        html[dir="rtl"] body.nen-landing-body #trusted-agencies .row-text-bottom,
+        html[dir="rtl"] body.nen-landing-body #documents .col-top4 .column-text-bottom {
+            font-size: clamp(13px, 1.05vw, 15px);
+        }
+
         @container group-bottom1 (width < 1429px) {
             html[dir="rtl"] body.nen-landing-body .nen-scroll-wrap .row15 > * {
                 text-align: right !important;
@@ -976,13 +1020,18 @@
     /* ── Documents & FAQ: centered section titles ── */
     body.nen-landing-body #documents .col-top4,
     body.nen-landing-body #faq .col-top5 {
-        width: 100%;
-        max-width: 644px;
+        width: auto;
+        max-width: none;
         margin-left: auto !important;
         margin-right: auto !important;
         align-self: center;
         align-items: center;
         text-align: center;
+    }
+
+    body.nen-landing-body #faq .col-top5 {
+        width: 100%;
+        max-width: 644px;
     }
 
     body.nen-landing-body #documents .col15 {
@@ -991,11 +1040,42 @@
     }
 
     body.nen-landing-body #documents .col-top4 .column-subtitle3,
-    body.nen-landing-body #documents .col-top4 .column-text-bottom,
+    body.nen-landing-body #documents .col-top4 .column-text-bottom {
+        width: auto;
+        max-width: none;
+        text-align: center;
+        white-space: nowrap;
+    }
+
     body.nen-landing-body #faq .col-top5 .column-subtitle3,
     body.nen-landing-body #faq .col-top5 .column-text-bottom {
         width: 100%;
         text-align: center;
+    }
+
+    body.nen-landing-body #documents .col-top4 .column-text-bottom {
+        font-size: clamp(13px, 1.05vw, 16px);
+    }
+
+    /* Agency section headers: title + subtitle each on one line */
+    body.nen-landing-body #trusted-agencies .row-top9 .row-col2,
+    body.nen-landing-body #translation-agencies .row-top8 .row-col2 {
+        width: auto;
+        max-width: none;
+    }
+
+    body.nen-landing-body #trusted-agencies .row-subtitle,
+    body.nen-landing-body #translation-agencies .row-subtitle,
+    body.nen-landing-body #trusted-agencies .row-text-bottom,
+    body.nen-landing-body #translation-agencies .row-text-bottom {
+        white-space: nowrap;
+        max-width: none;
+        width: auto;
+    }
+
+    body.nen-landing-body #trusted-agencies .row-text-bottom,
+    body.nen-landing-body #translation-agencies .row-text-bottom {
+        font-size: clamp(13px, 1.05vw, 16px);
     }
 
     html[dir="rtl"] body.nen-landing-body #documents .col-top4,
@@ -1413,6 +1493,8 @@
             gap: 16px;
             padding: 22px 24px !important;
             justify-content: flex-start;
+            align-items: flex-start !important;
+            text-align: start;
         }
         body.nen-landing-body #why-uzbekistan .card-container3,
         body.nen-landing-body #why-uzbekistan .card-container1 {
@@ -1420,16 +1502,20 @@
             gap: 8px;
             max-width: none;
             width: 100%;
+            align-items: flex-start !important;
+            text-align: start;
         }
         body.nen-landing-body #why-uzbekistan .card-subtitle2,
         body.nen-landing-body #why-uzbekistan .card-container2 h2 {
             font-size: 36px;
             line-height: 1;
+            text-align: start;
         }
         body.nen-landing-body #why-uzbekistan .card-text4,
         body.nen-landing-body #why-uzbekistan .card-text1 {
             font-size: 13px;
             line-height: 1.38;
+            text-align: start;
         }
         body.nen-landing-body #why-uzbekistan .row-top5,
         body.nen-landing-body #why-uzbekistan .card7 .row-top1,
@@ -2626,13 +2712,30 @@
         line-height: 1.65;
         color: #5b5b5b;
         text-align: left;
-        max-width: 558px;
+        max-width: none;
         width: 100%;
-        align-self: flex-start;
+        align-self: stretch;
     }
     html[dir="rtl"] body.nen-landing-body .nen-about-nen__mission {
         text-align: right;
-        align-self: flex-start;
+        align-self: stretch;
+        white-space: nowrap;
+        font-size: clamp(13px, 1.05vw, 15px);
+    }
+
+    @media (max-width: 768px) {
+        html[dir="rtl"] body.nen-landing-body .nen-about-nen__mission {
+            white-space: normal;
+        }
+
+        body.nen-landing-body #documents .col-top4 .column-subtitle3,
+        body.nen-landing-body #documents .col-top4 .column-text-bottom,
+        body.nen-landing-body #trusted-agencies .row-subtitle,
+        body.nen-landing-body #trusted-agencies .row-text-bottom,
+        body.nen-landing-body #translation-agencies .row-subtitle,
+        body.nen-landing-body #translation-agencies .row-text-bottom {
+            white-space: normal;
+        }
     }
     @media (max-width: 900px) {
         body.nen-landing-body .nen-about-nen__stats {
