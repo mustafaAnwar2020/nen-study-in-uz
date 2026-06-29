@@ -837,8 +837,8 @@
         html[dir="rtl"] body.nen-landing-body .nen-agency-contact {
             display: flex !important;
             flex-direction: row !important;
-            direction: rtl !important;
-            justify-content: flex-start !important;
+            direction: ltr !important;
+            justify-content: flex-end !important;
             align-items: center !important;
             align-self: stretch !important;
             width: 100% !important;
@@ -846,8 +846,16 @@
         }
 
         html[dir="rtl"] body.nen-landing-body .nen-agency-contact .row-text3 {
+            order: 1;
+            flex: 1 1 auto !important;
+            min-width: 0 !important;
             text-align: right !important;
             margin: 0 !important;
+        }
+
+        html[dir="rtl"] body.nen-landing-body .nen-agency-contact .row-smart-phone {
+            order: 2;
+            flex-shrink: 0 !important;
         }
 
         html[dir="rtl"] body.nen-landing-body .nen-agency-contact--phone .row-text3 {

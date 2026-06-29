@@ -95,8 +95,8 @@ html[dir="rtl"] body.nen-landing-body .nen-scroll-wrap .row19 {
 html[dir="rtl"] body.nen-landing-body .nen-agency-contact {
     display: flex !important;
     flex-direction: row !important;
-    direction: rtl !important;
-    justify-content: flex-start !important;
+    direction: ltr !important;
+    justify-content: flex-end !important;
     align-items: center !important;
     align-self: stretch !important;
     width: 100% !important;
@@ -104,14 +104,54 @@ html[dir="rtl"] body.nen-landing-body .nen-agency-contact {
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-agency-contact .row-text3 {
+    order: 1;
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
     text-align: right !important;
     margin: 0 !important;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-agency-contact .row-smart-phone {
+    order: 2;
+    flex-shrink: 0 !important;
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-agency-contact--phone .row-text3 {
     direction: ltr !important;
     unicode-bidi: embed !important;
     text-align: right !important;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__contacts {
+    align-items: flex-start;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__contact {
+    direction: ltr !important;
+    justify-content: flex-end !important;
+    width: 100%;
+    text-align: right;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__contact .nen-foot__cicon {
+    order: 2;
+    flex-shrink: 0;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__contact > a {
+    order: 1;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__contact--phone .nen-foot__lang {
+    order: 3;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__contact--phone > a {
+    order: 2;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-foot__contact--phone .nen-foot__chat {
+    order: 1;
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-foot__contact--phone > a,
@@ -123,6 +163,18 @@ html[dir="rtl"] body.nen-landing-body .nen-foot__contact a[href^="mailto:"] {
 html[dir="rtl"] body.nen-landing-body .nen-foot__contact--phone > a {
     text-align: right !important;
     white-space: nowrap;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-about-nen__stat-value {
+    direction: ltr;
+    unicode-bidi: embed;
+    text-align: right;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-collection-map__meta a[href^="tel:"],
+html[dir="rtl"] body.nen-landing-body .nen-collection-map__meta a[href^="mailto:"] {
+    direction: ltr;
+    unicode-bidi: embed;
 }
 
 html[dir="rtl"] body.nen-landing-body #translation-agencies .nen-scroll-wrap .frame-col-bottom {
@@ -164,12 +216,28 @@ html[dir="rtl"] body.nen-landing-body .nen-lang-dropdown__menu {
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-step__card,
-html[dir="rtl"] body.nen-landing-body .nen-step__head,
-html[dir="rtl"] body.nen-landing-body .nen-step__desc,
-html[dir="rtl"] body.nen-landing-body .nen-step__title,
-html[dir="rtl"] body.nen-landing-body .nen-step__hint {
+html[dir="rtl"] body.nen-landing-body .nen-step__head {
     text-align: right;
-    align-items: flex-end;
+    align-items: flex-start;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-step__title,
+html[dir="rtl"] body.nen-landing-body .nen-step__hint,
+html[dir="rtl"] body.nen-landing-body .nen-step__desc {
+    text-align: right;
+    width: 100%;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-step__num {
+    align-self: flex-start;
+    direction: ltr;
+    unicode-bidi: embed;
+    text-align: right;
+    width: 100%;
+}
+
+html[dir="rtl"] body.nen-landing-body .nen-step__drawer {
+    align-items: flex-start;
 }
 
 html[dir="rtl"] body.nen-landing-body .nen-step__accent {
@@ -277,14 +345,14 @@ html[dir="rtl"] body.nen-landing-body #why-uzbekistan .container-frame-right {
     }
 
     html[dir="rtl"] body.nen-landing-body #how-it-works .row-top6 {
-        align-items: flex-end;
+        align-items: flex-start;
     }
 
     html[dir="rtl"] body.nen-landing-body #how-it-works .subtitle-we-re-not-just-about,
     html[dir="rtl"] body.nen-landing-body #how-it-works .col-left2,
     html[dir="rtl"] body.nen-landing-body #how-it-works .col-left2 .text {
         text-align: right;
-        align-items: flex-end;
+        align-items: flex-start;
     }
 
     html[dir="rtl"] body.nen-landing-body #why-uzbekistan .card6,
